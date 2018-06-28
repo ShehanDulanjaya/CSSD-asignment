@@ -15,7 +15,7 @@ import javafx.scene.chart.PieChart.Data;
  *
  * @author SHEHA
  */
-public class sensorStation implements Serializable{
+public class SensorMonitor implements Serializable{
     
     private String sensorMonitorID;
     private List<Double> coords;
@@ -27,7 +27,7 @@ public class sensorStation implements Serializable{
     public int readingsCount;
     public Data reading;
 
-    public sensorStation(String sensorMonitorID, List<Double> coords, Boolean isActive, Double intereval, Long lastReadingTime, int readingsCount, Data reading) {
+    public SensorMonitor(String sensorMonitorID, List<Double> coords, Boolean isActive, Double intereval, Long lastReadingTime, int readingsCount, Data reading) {
         this.sensorMonitorID = sensorMonitorID;
         this.coords = coords;
         this.isActive = isActive;
