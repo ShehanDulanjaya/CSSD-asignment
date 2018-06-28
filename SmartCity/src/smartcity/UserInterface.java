@@ -5,6 +5,8 @@
  */
 package smartcity;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author SHEHA
