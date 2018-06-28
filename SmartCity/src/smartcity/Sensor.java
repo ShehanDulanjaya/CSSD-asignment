@@ -5,7 +5,7 @@ public class Sensor{
 		this.sensorID = sensorID;
 	}
 	
-	public void getSensorID(){
+	public String getSensorID(){
 		return sensorID;
 	}
 	
