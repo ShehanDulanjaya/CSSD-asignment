@@ -1,3 +1,6 @@
+package smartcity;
+
+
 public class Sensor{
 	private String sensorID;
 	
@@ -5,7 +8,7 @@ public class Sensor{
 		this.sensorID = sensorID;
 	}
 	
-	public void getSensorID(){
+	public String getSensorID(){
 		return sensorID;
 	}
 	
