@@ -1,4 +1,4 @@
-package smartcity;
+package Classes;
 
 
 public class Sensor{
