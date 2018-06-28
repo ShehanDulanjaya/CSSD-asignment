@@ -12,8 +12,13 @@ import java.util.List;
  * @author Akila Jayasinghe
  */
 public class PublicInterface {
+
     private String ID;
     public List<EmbllishedData> data;
+
+    public PublicInterface(String ID) {
+        this.ID = ID;
+    }
 
     public String getID() {
         return ID;

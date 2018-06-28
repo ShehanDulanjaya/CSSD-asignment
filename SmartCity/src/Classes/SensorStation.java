@@ -18,6 +18,10 @@ public class SensorStation implements Serializable{
    private List<SensorMonitor> sensorMonitors;
    private Mothership oberver;
 
+    public SensorStation(String stationID) {
+        this.stationID = stationID;
+    }
+   
     public String getStationID() {
         return stationID;
     }

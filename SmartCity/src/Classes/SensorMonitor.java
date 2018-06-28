@@ -8,8 +8,6 @@ package Classes;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.PieChart.Data;
 
 /**
  *

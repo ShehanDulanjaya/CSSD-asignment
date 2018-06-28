@@ -1,6 +1,5 @@
 package Classes;
 
-
 import java.util.List;
 
 /*
@@ -8,14 +7,19 @@ import java.util.List;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author SHEHA
  */
 public class Mothership {
+
     private String ID;
     private List<SensorStation> sensorStation;
+
+    public Mothership(String ID, List<SensorStation> sensorStation) {
+        this.ID = ID;
+        this.sensorStation = sensorStation;
+    }
 
     public String getID() {
         return ID;

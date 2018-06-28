@@ -9,17 +9,22 @@ package Classes;
  *
  * @author Dos
  */
-
 import java.util.ArrayList;
+
 public class EmbllishedData {
-    
-   
-    
+
     public Data data;
     public Long timeInMills;
     public ArrayList<Double> location;
     public String sensorID;
-    
+
+    public EmbllishedData(Data data, Long timeInMills, ArrayList<Double> location, String sensorID) {
+        this.data = data;
+        this.timeInMills = timeInMills;
+        this.location = location;
+        this.sensorID = sensorID;
+    }
+
     public Data getData() {
         return data;
     }
@@ -52,6 +57,3 @@ public class EmbllishedData {
         this.sensorID = sensorID;
     }
 }
-    
-    
-
