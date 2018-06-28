@@ -1,3 +1,6 @@
+package smartcity;
+
+
 public class Sensor{
 	private String sensorID;
 	
