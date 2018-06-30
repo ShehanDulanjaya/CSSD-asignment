@@ -1,7 +1,9 @@
 package Classes;
 
 import java.util.List;
-public class Clock {
+import java.util.Observable;
+import java.util.Observer;
+public class Clock extends Observable {
     
     public List<SensorMonitor> observers;
     public double notifyFrequncy;
@@ -36,5 +38,21 @@ public class Clock {
         this.clock = clock;
     }
         
+    
+    public void registerObserver(Observer o) {
+        this.observers.add((SensorMonitor) o);//add available sensor monitors
+    }
+
+    public void unregisterObserver(Observer o) {
+        this.observers.remove(o);//remove sensor monitor from list
+    }
+    
+    public void notifyObservers() {
+        for(Observer o:observers){
+            
+        }
+        
+        
+    }
     
 }
