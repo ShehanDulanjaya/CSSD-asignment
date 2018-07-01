@@ -5,15 +5,16 @@
  */
 package Classes;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  *
  * @author SHEHA
  */
-public class SensorMonitor implements Serializable{
+public class SensorMonitor implements Observer{
     
     private String sensorMonitorID;
     private List<Double> coords;
@@ -90,6 +91,17 @@ public class SensorMonitor implements Serializable{
 
     public Data getReading() {
         return reading;
+    }
+
+    @Override
+    public void update(Observable o, Object o1) {
+        
+    }
+    
+    
+    public void notifyObservers() {
+        
+        
     }
     
             

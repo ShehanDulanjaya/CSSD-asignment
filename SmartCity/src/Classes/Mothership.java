@@ -1,6 +1,8 @@
 package Classes;
 
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,8 +13,8 @@ import java.util.List;
  *
  * @author SHEHA
  */
-public class Mothership {
-
+public class Mothership implements Observer{
+ 
     private String ID;
     private List<SensorStation> sensorStation;
 
@@ -36,4 +38,12 @@ public class Mothership {
     public void setSensorStation(List<SensorStation> sensorStation) {
         this.sensorStation = sensorStation;
     }
+
+    @Override
+    public void update(Observable o, Object o1) {
+        
+    }
+    
+    
+    
 }

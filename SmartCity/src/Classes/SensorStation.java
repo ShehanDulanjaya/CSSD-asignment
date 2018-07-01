@@ -8,15 +8,19 @@ package Classes;
 import Classes.SensorMonitor;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Observer;
+import java.util.Observable;
+import javafx.beans.InvalidationListener;
+
 
 /**
  *
  * @author Akila Jayasinghe
  */
-public class SensorStation implements Serializable{
+public class SensorStation implements Observer{
    private String stationID;
    private List<SensorMonitor> sensorMonitors;
-   private Mothership oberver;
+   private Mothership observer;
 
     public SensorStation(String stationID) {
         this.stationID = stationID;
@@ -39,11 +43,23 @@ public class SensorStation implements Serializable{
     }
 
     public Mothership getOberver() {
-        return oberver;
+        return observer;
     }
 
-    public void setOberver(Mothership oberver) {
-        this.oberver = oberver;
+    public void setOberver(Mothership observer) {
+        this.observer = observer;
     }
+
+    @Override
+    public void update(Observable o, Object o1) {
+       
+               
+               }
+
     
+    
+
+    
+
+   
 }
