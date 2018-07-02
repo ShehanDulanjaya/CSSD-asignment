@@ -6,6 +6,7 @@
 package File;
 
 import Classes.Sensor;
+import Classes.SensorMonitor;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,6 +15,7 @@ import java.io.FileWriter;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -27,7 +29,7 @@ private Sensor sensor;
     }
     
     
-        public static void write(String filename, Object obj){
+        public static boolean write(String filename, Object obj){
             
         try {
             FileOutputStream fil=new FileOutputStream(filename);
@@ -35,12 +37,13 @@ private Sensor sensor;
             oo.writeObject(obj);
            
             fil.flush();
+            oo.close();
             fil.close();
-           
+           return true;
         } catch (Exception e) {
             System.out.println("write "+ e);
         }
-
+return false;
     }
         
         
@@ -85,5 +88,5 @@ private Sensor sensor;
             
         return false;
     }
-    
+   
 }
