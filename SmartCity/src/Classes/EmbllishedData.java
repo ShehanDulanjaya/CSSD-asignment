@@ -17,7 +17,11 @@ public class EmbllishedData {
     public Long timeInMills;
     public ArrayList<Double> location;
     public String sensorID;
-
+    
+    public EmbllishedData() {
+    System.out.println("Constructor method called.");
+    }
+    
     public EmbllishedData(Data data, Long timeInMills, ArrayList<Double> location, String sensorID) {
         this.data = data;
         this.timeInMills = timeInMills;
@@ -56,4 +60,5 @@ public class EmbllishedData {
     public void setSensorID(String sensorID) {
         this.sensorID = sensorID;
     }
+    
 }
