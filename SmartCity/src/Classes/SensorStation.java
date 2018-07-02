@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Observer;
 import java.util.Observable;
-import javafx.beans.InvalidationListener;
+
 
 
 /**
@@ -49,12 +49,15 @@ public class SensorStation implements Observer{
     public void setOberver(Mothership observer) {
         this.observer = observer;
     }
-
+    
+    
     @Override
-    public void update(Observable o, Object o1) {
-       
-               
-               }
+    public void update(Observable o, Object ob) {
+         if(ob instanceof SensorMonitor){
+             sensorMonitors.add((SensorMonitor) ob);
+         }
+        
+    }
 
     
     

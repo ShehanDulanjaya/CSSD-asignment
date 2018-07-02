@@ -94,6 +94,7 @@ public class SensorMonitor implements Observer{
     public Data getReading() {
         return reading;
     }
+    
     public void doTick(){
         
     }
@@ -109,7 +110,28 @@ public class SensorMonitor implements Observer{
         return this.location.toAdress();
     }
    
+    public void registerObserver(Observer o) {
+        this.observers=(SensorStation) o;
+        //can add only one sensor station to sensor monitor
+    }
 
+    public void unregisterObserver(Observer o) {
+        this.observers=null;
+    }
+    
+    private void shouldNotifySensorStation(){
+        
+    }
+
+//    public void embellishData(SensorMonitor sensorMonitorID,Data reading,Long timeinMills,List<Double> coords){
+//        
+//        Object ob = new Object();
+//        ob.
+//        
+//        return null;
+//        
+//    }
+    
     @Override
     public void update(Observable o, Object ob) {
          if(ob instanceof SensorMonitor){
@@ -123,7 +145,7 @@ public class SensorMonitor implements Observer{
     
     
     public void notifyObservers() {
-        
+        observers.update(null,this);
         
     }
     
