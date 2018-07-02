@@ -44,12 +44,13 @@ public class Clock extends Observable {
     }
 
     public void unregisterObserver(Observer o) {
-        this.observers.remove(o);//remove sensor monitor from list
+        this.observers.remove((SensorMonitor)o);//remove sensor monitor from list
     }
     
     public void notifyObservers() {
         for(Observer o:observers){
             
+            o.update(this, o);
         }
         
         

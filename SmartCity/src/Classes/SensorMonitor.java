@@ -20,11 +20,12 @@ public class SensorMonitor implements Observer{
     private List<Double> coords;
     private Boolean isActive;
     private Double intereval;
-    //private SensorStation observers;
+    private SensorStation observers;
     private Long lastReadingTime;
-   // private Sensor sensor;
+   private Sensor sensor;
     public int readingsCount;
     public Data reading;
+    public Location location;
 
     public SensorMonitor(String sensorMonitorID, List<Double> coords, Boolean isActive, Double intereval, Long lastReadingTime, int readingsCount, Data reading) {
         this.sensorMonitorID = sensorMonitorID;
@@ -34,6 +35,7 @@ public class SensorMonitor implements Observer{
         this.lastReadingTime = lastReadingTime;
         this.readingsCount = readingsCount;
         this.reading = reading;
+        
     }
     
 
@@ -92,9 +94,30 @@ public class SensorMonitor implements Observer{
     public Data getReading() {
         return reading;
     }
+    public void doTick(){
+        
+    }
+    
+    public void setLocation(Location location){
+        this.location=location;
+        new Location(location.getLatitude(),location.getLongitude());
+        
+    }
+    
+    public String getLocation(){
+      
+        return this.location.toAdress();
+    }
+   
 
     @Override
-    public void update(Observable o, Object o1) {
+    public void update(Observable o, Object ob) {
+         if(ob instanceof SensorMonitor){
+                if(((SensorMonitor) ob).getIsActive()){
+                    doTick();
+                }
+            }
+        
         
     }
     

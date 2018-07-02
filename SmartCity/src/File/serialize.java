@@ -66,24 +66,24 @@ private Sensor sensor;
     }
 
     
-//    public static boolean read(String filename,Object clas){
-//        try {
-//            FileInputStream fil=new FileInputStream(filename);
-//            ObjectInputStream oo=new ObjectInputStream(fil);
-//            Object obj= oo.readObject();
-//            
-//            fil.close();
-//            if(clas.getClass().equals(obj.getClass())){
-//                lib = (Library) obj;
-//                return true;
-//            }
-//            
-//        } catch (Exception e) {
-//            System.out.println("read "+ e);
-//        }
-//
-//            lib =new Library();
-//        return false;
-//    }
+    public static boolean read(String filename,Object clas){
+        try {
+            FileInputStream fil=new FileInputStream(filename);
+            ObjectInputStream oo=new ObjectInputStream(fil);
+            Object obj= oo.readObject();
+            
+            fil.close();
+            if(clas.getClass().equals(obj.getClass())){
+                clas = obj;
+                return true;
+            }
+            
+        } catch (Exception e) {
+            System.out.println("read "+ e);
+        }
+
+            
+        return false;
+    }
     
 }
