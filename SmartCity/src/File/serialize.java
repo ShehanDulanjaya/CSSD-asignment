@@ -6,6 +6,7 @@
 package File;
 
 import Classes.Sensor;
+import Classes.SensorMonitor;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,6 +15,7 @@ import java.io.FileWriter;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -85,5 +87,31 @@ private Sensor sensor;
             
         return false;
     }
+    
+    public static ArrayList<SensorMonitor> readSensorMonitor(){
+          try {
+            FileInputStream fil=new FileInputStream("sensormonitor.txt");
+            ObjectInputStream oo=new ObjectInputStream(fil);         
+    
+            ArrayList<SensorMonitor> sr = (ArrayList<SensorMonitor>) oo.readObject();
+            oo.close();
+            fil.close();
+               
+            //Sensor[] bo=sr.toArray(new Sensor[0]);
+            // for(Sensor sensor:sr){
+            // System.out.print(sensor.getSensorID());
+            // }
+             
+                return sr;
+            
+            
+        } catch (Exception e) {
+            System.out.println("read "+ e);
+        }
+
+            
+        return null;
+      }
+    
     
 }
