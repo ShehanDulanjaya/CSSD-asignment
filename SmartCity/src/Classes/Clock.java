@@ -52,7 +52,18 @@ public class Clock extends Observable {
             
             o.update(this, o);
         }
+               
+    }
+    
+    private void trackTime(){
         
+    }
+    
+    public void getInstance(){
+        
+    }
+    
+    public void waitForTime(){
         
     }
     
