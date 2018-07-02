@@ -88,7 +88,7 @@ return false;
             
         return false;
     }
-<<<<<<< HEAD
+
     
     public static ArrayList<SensorMonitor> readSensorMonitor(){
           try {
@@ -115,8 +115,5 @@ return false;
         return null;
       }
     
-    
-=======
-   
->>>>>>> 08a8c91f2304053863ef322fe29fa29b8dab690b
+
 }
