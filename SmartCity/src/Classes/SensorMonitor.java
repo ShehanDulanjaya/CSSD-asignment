@@ -5,6 +5,10 @@
  */
 package Classes;
 
+import File.serialize;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -14,7 +18,7 @@ import java.util.Observer;
  *
  * @author SHEHA
  */
-public class SensorMonitor implements Observer{
+public class SensorMonitor implements Observer,Serializable{
     
     private String sensorMonitorID;
     private List<Double> coords;
@@ -123,15 +127,15 @@ public class SensorMonitor implements Observer{
         
     }
 
-//    public void embellishData(SensorMonitor sensorMonitorID,Data reading,Long timeinMills,List<Double> coords){
-//        
-//        Object ob = new Object();
-//        ob.
-//        
-//        return null;
-//        
-//    }
-    
+    public void embellishData(SensorMonitor sensorMonitorID,Data reading,Long timeinMills,List<Double> coords){
+        
+      
+    }
+    public  boolean addNewSensor(String sensorID, String sensorType, String description, Boolean status, String frequency){
+        this.sensor = new Sensor(sensorID,sensorType,description,status,frequency);
+        boolean result=serialize.write("sensor.txt", this.sensor);
+        return result;
+    }
     @Override
     public void update(Observable o, Object ob) {
          if(ob instanceof SensorMonitor){
@@ -149,6 +153,6 @@ public class SensorMonitor implements Observer{
         
     }
     
-            
+      
     
 }

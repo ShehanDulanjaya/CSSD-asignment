@@ -29,7 +29,7 @@ private Sensor sensor;
     }
     
     
-        public static void write(String filename, Object obj){
+        public static boolean write(String filename, Object obj){
             
         try {
             FileOutputStream fil=new FileOutputStream(filename);
@@ -37,12 +37,13 @@ private Sensor sensor;
             oo.writeObject(obj);
            
             fil.flush();
+            oo.close();
             fil.close();
-           
+           return true;
         } catch (Exception e) {
             System.out.println("write "+ e);
         }
-
+return false;
     }
         
         
@@ -87,6 +88,7 @@ private Sensor sensor;
             
         return false;
     }
+<<<<<<< HEAD
     
     public static ArrayList<SensorMonitor> readSensorMonitor(){
           try {
@@ -114,4 +116,7 @@ private Sensor sensor;
       }
     
     
+=======
+   
+>>>>>>> 08a8c91f2304053863ef322fe29fa29b8dab690b
 }

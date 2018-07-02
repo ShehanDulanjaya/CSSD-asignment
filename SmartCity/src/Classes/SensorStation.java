@@ -17,10 +17,12 @@ import java.util.Observable;
  *
  * @author Akila Jayasinghe
  */
-public class SensorStation implements Observer{
+public class SensorStation implements Observer,Serializable{
    private String stationID;
    private List<SensorMonitor> sensorMonitors;
    private Mothership observer;
+   public SensorMonitor sensrmoni;
+   private EmbllishedData embllishedData;
 
     public SensorStation(String stationID) {
         this.stationID = stationID;
@@ -50,11 +52,14 @@ public class SensorStation implements Observer{
         this.observer = observer;
     }
     
-    
+    public void receiveSensorData(EmbllishedData embllishedData){
+        this.embllishedData=embllishedData;
+    }
     @Override
     public void update(Observable o, Object ob) {
          if(ob instanceof SensorMonitor){
              sensorMonitors.add((SensorMonitor) ob);
+             this.sensrmoni=(SensorMonitor) ob;
          }
         
     }
