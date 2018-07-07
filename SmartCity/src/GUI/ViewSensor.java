@@ -5,6 +5,11 @@
  */
 package GUI;
 
+import Classes.Sensor;
+import File.serialize;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Akila Jayasinghe
@@ -16,6 +21,7 @@ public class ViewSensor extends javax.swing.JFrame {
      */
     public ViewSensor() {
         initComponents();
+        tableLoad();
     }
 
     /**
@@ -57,34 +63,34 @@ public class ViewSensor extends javax.swing.JFrame {
 
         viewSensorTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Name", "Type", "Sensor Description", "Current Data", "Status", "Freaquency"
+                "Sensor ID", "Type", "Sensor Description", "Status", "Freaquency"
             }
         ));
         jScrollPane1.setViewportView(viewSensorTable);
@@ -174,7 +180,16 @@ public class ViewSensor extends javax.swing.JFrame {
             }
         });
     }
-
+public void tableLoad(){
+    DefaultTableModel model=(DefaultTableModel) viewSensorTable.getModel();
+     model.setRowCount(0);
+  ArrayList<Sensor> allSensors = serialize.getAllSensors();
+                for(Sensor sensor:allSensors){
+                    //sensor.setSensorID("praneeth");
+                       //System.out.print(sensor.getSensorID());
+                        model.addRow(new Object[]{sensor.getSensorID(),sensor.getSensorType(),sensor.getDescription(),sensor.getStatus(),sensor.getFrequency()});
+                    }  
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSensor;
     private javax.swing.JButton backButton;

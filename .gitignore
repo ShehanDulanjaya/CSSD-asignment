@@ -24,3 +24,6 @@ hs_err_pid*
 /SmartCity/nbproject/private/
 /SmartCity/build/
 SmartCity/nbproject/project.properties
+SmartCity/src/GUI/ViewSensor.form
+SmartCity/src/GUI/ViewSensor.java
+SmartCity/src/GUI/ViewSensor.java
