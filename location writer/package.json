@@ -1,0 +1,16 @@
+{
+  "name": "",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "file-system": "^2.2.2",
+    "morgan": "^1.9.0"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "version": "",
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
