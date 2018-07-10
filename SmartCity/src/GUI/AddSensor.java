@@ -5,6 +5,10 @@
  */
 package GUI;
 
+import Classes.Sensor;
+import File.serialize;
+import java.util.ArrayList;
+
 /**
  *
  * @author Akila Jayasinghe
@@ -70,6 +74,11 @@ public class AddSensor extends javax.swing.JFrame {
         typeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select -", "Flood Sensor", "Traffic Sensor", "Bin Sensor" }));
 
         addButton.setText("Add");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         cancelButton.setText("Cancel");
 
@@ -154,6 +163,11 @@ public class AddSensor extends javax.swing.JFrame {
     private void freaquencyBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_freaquencyBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_freaquencyBoxActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+         ArrayList<Sensor> allSensors = serialize.getAllSensors();
+         Sensor sr = new Sensor(sensorID, sensorType, description, rootPaneCheckingEnabled, frequency)
+    }//GEN-LAST:event_addButtonActionPerformed
 
     /**
      * @param args the command line arguments
