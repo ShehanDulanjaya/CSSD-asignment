@@ -166,6 +166,10 @@ public class AddSensor extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
          ArrayList<Sensor> allSensors = serialize.getAllSensors();
+         Sensor sr = new Sensor("sensorID", "ensorType", "description", true, "frequency");
+         serialize.write("sensor.txt", sr);
+         
+         
         // Sensor sr = new Sensor(sensorID, sensorType, description, rootPaneCheckingEnabled, frequency)
     }//GEN-LAST:event_addButtonActionPerformed
 
