@@ -24,7 +24,7 @@ public class HomeSensor extends javax.swing.JInternalFrame {
     public HomeSensor() {
         initComponents();
 //       load();
-        tableLoad();
+//        tableLoad();
     }
     
     public void tableLoad(){
