@@ -229,7 +229,7 @@ public class MainSensor extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Sensor Home");
+        jLabel16.setText("Sensor");
 
         javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
         titlePanel.setLayout(titlePanelLayout);
@@ -327,7 +327,7 @@ public class MainSensor extends javax.swing.JFrame {
     private void addSensorPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addSensorPanelMouseClicked
        
         bodyPanel.removeAll();
-        AddSensoro a =new AddSensoro();
+        AddSensor a =new AddSensor();
         a.setVisible(true);
         bodyPanel.add(a);
    

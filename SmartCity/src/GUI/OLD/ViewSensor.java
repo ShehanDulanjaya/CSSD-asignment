@@ -140,7 +140,7 @@ public class ViewSensor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addSensorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSensorActionPerformed
-        AddSensoro a = new AddSensoro();
+        AddSensor a = new AddSensor();
         a.show();
         this.dispose();
     }//GEN-LAST:event_addSensorActionPerformed
@@ -181,12 +181,11 @@ public class ViewSensor extends javax.swing.JFrame {
         });
     }
 public void tableLoad(){
+    
     DefaultTableModel model=(DefaultTableModel) viewSensorTable.getModel();
-     model.setRowCount(0);
-  ArrayList<Sensor> allSensors = serialize.getAllSensors();
+    model.setRowCount(0);
+    ArrayList<Sensor> allSensors = serialize.getAllSensors();
                 for(Sensor sensor:allSensors){
-                    //sensor.setSensorID("praneeth");
-                       //System.out.print(sensor.getSensorID());
                         model.addRow(new Object[]{sensor.getSensorID(),sensor.getSensorType(),sensor.getDescription(),sensor.getStatus(),sensor.getFrequency()});
                     }  
 }

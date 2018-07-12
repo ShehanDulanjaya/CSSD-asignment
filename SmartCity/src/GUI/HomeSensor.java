@@ -5,8 +5,12 @@
  */
 package GUI;
 
+import Classes.Sensor;
+import File.serialize;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,6 +24,16 @@ public class HomeSensor extends javax.swing.JInternalFrame {
     public HomeSensor() {
         initComponents();
 //       load();
+        tableLoad();
+    }
+    
+    public void tableLoad(){
+    DefaultTableModel model=(DefaultTableModel) sensorTable.getModel();
+     model.setRowCount(0);
+    ArrayList<Sensor> allSensors = serialize.getAllSensors();
+                for(Sensor sensor:allSensors){
+                        model.addRow(new Object[]{sensor.getSensorID(),sensor.getSensorType(),sensor.getDescription(),sensor.getStatus(),sensor.getFrequency()});
+                    }  
     }
     
     private void load(){
