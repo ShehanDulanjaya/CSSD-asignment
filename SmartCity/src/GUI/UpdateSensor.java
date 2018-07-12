@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import Classes.Data;
 import Classes.Sensor;
 import File.serialize;
 import java.awt.Color;
@@ -210,9 +211,16 @@ public class UpdateSensor extends javax.swing.JInternalFrame {
         }
         
         ArrayList<Sensor> allSensors = serialize.getAllSensors();
+        Data data = new Data();
+        Sensor sr = new Sensor(idTextBox.getText(), typeComboBox.getSelectedItem().toString(), DescriptionTextBox.getText(), status, frequencyTextBox.getText(),data);
         
-        Sensor sr = new Sensor(idTextBox.getText(), typeComboBox.getSelectedItem().toString(), DescriptionTextBox.getText(), status, frequencyTextBox.getText());
-//        serialize.write("sensor.txt", sr);
+        Sensor find=findSensor(idTextBox.getText(), allSensors);
+        if(find!=null){
+            allSensors.remove(find);
+            allSensors.add(sr);
+            serialize.write("sensor.txt", allSensors);
+        }
+        
 
     }//GEN-LAST:event_addButtonMouseClicked
 
