@@ -58,8 +58,7 @@ public class SensorStation implements Observer,Serializable{
     @Override
     public void update(Observable o, Object ob) {
          if(ob instanceof SensorMonitor){
-             sensorMonitors.add((SensorMonitor) ob);
-             this.sensrmoni=(SensorMonitor) ob;
+             receiveSensorData((EmbllishedData) ob);
          }
         
     }

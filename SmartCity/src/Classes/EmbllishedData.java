@@ -23,7 +23,7 @@ public class EmbllishedData {
     System.out.println("Constructor method called.");
     }
     
-    public EmbllishedData(Data data, Long timeInMills, ArrayList<Double> location, String sensorID) {
+    public EmbllishedData(Data data, Long timeInMills,List<Double> location, String sensorID) {
         this.data = data;
         this.timeInMills = timeInMills;
         this.location = location;

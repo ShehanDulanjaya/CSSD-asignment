@@ -31,7 +31,7 @@ public class SensorMonitor implements Observer,Serializable{
     public Data reading;
     public Location location;
 
-    public SensorMonitor(String sensorMonitorID, List<Double> coords, Boolean isActive, Double intereval, Long lastReadingTime, int readingsCount, Data reading) {
+    public SensorMonitor(String sensorMonitorID, List<Double> coords, Boolean isActive, Double intereval, Long lastReadingTime, int readingsCount, Data reading,Sensor sensor) {
         this.sensorMonitorID = sensorMonitorID;
         this.coords = coords;
         this.isActive = isActive;
@@ -39,6 +39,7 @@ public class SensorMonitor implements Observer,Serializable{
         this.lastReadingTime = lastReadingTime;
         this.readingsCount = readingsCount;
         this.reading = reading;
+        this.sensor=sensor;
         
     }
     
@@ -63,8 +64,8 @@ public class SensorMonitor implements Observer,Serializable{
         this.lastReadingTime = lastReadingTime;
     }
 
-    public void setReadingsCount(int readingsCount) {
-        this.readingsCount = readingsCount;
+    public void setReadingsCount() {
+        this.readingsCount = readingsCount+1;
     }
 
     public void setReading(Data reading) {
@@ -127,8 +128,9 @@ public class SensorMonitor implements Observer,Serializable{
         
     }
 
-    public void embellishData(SensorMonitor sensorMonitorID,Data reading,Long timeinMills,List<Double> coords){
-        
+    public EmbllishedData embellishData(){
+      EmbllishedData emb = new EmbllishedData(reading, lastReadingTime, coords, sensorMonitorID);
+      return emb;
       
     }
     public  boolean addNewSensor(String sensorID, String sensorType, String description, Boolean status, String frequency){
@@ -149,7 +151,7 @@ public class SensorMonitor implements Observer,Serializable{
     
     
     public void notifyObservers() {
-        observers.update(null,this);
+        observers.update(null,embellishData());
         
     }
     
