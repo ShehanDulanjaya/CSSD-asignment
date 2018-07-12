@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import Classes.Data;
 import Classes.Sensor;
 import File.serialize;
 import java.awt.Color;
@@ -213,9 +214,9 @@ public class AddSensor extends javax.swing.JInternalFrame {
         else{
             status=false;
         }
-        
+        Data data=new Data();
         ArrayList<Sensor> allSensors = serialize.getAllSensors();
-        Sensor sr = new Sensor(idTextBox.getText(), typeComboBox.getSelectedItem().toString(), DescriptionTextBox.getText(), status, frequencyTextBox.getText());
+        Sensor sr = new Sensor(idTextBox.getText(), typeComboBox.getSelectedItem().toString(), DescriptionTextBox.getText(), status, frequencyTextBox.getText(),data);
         serialize.write("sensor.txt", sr);
 
     }//GEN-LAST:event_addButtonMouseClicked
