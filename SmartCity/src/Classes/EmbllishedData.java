@@ -10,12 +10,13 @@ package Classes;
  * @author Dos
  */
 import java.util.ArrayList;
+import java.util.List;
 
 public class EmbllishedData {
 
     public Data data;
     public Long timeInMills;
-    public ArrayList<Double> location;
+    public List<Double> location;
     public String sensorID;
     
     public EmbllishedData() {
@@ -45,11 +46,11 @@ public class EmbllishedData {
         this.timeInMills = timeInMills;
     }
 
-    public ArrayList<Double> getLocation() {
+    public List<Double> getLocation() {
         return location;
     }
 
-    public void setLocation(ArrayList<Double> location) {
+    public void setLocation(List<Double> location) {
         this.location = location;
     }
 
