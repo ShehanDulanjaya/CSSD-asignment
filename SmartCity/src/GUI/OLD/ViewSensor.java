@@ -140,7 +140,7 @@ public class ViewSensor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addSensorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSensorActionPerformed
-        AddSensor a = new AddSensor();
+        AddSensoro a = new AddSensoro();
         a.show();
         this.dispose();
     }//GEN-LAST:event_addSensorActionPerformed
