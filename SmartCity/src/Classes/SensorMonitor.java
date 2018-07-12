@@ -142,7 +142,7 @@ public class SensorMonitor implements Observer,Serializable{
     public void update(Observable o, Object ob) {
          if(ob instanceof SensorMonitor){
                 if(((SensorMonitor) ob).getIsActive()){
-                    doTick();
+                    ((SensorMonitor) ob).doTick();
                 }
             }
         

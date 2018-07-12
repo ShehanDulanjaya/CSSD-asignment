@@ -9,13 +9,23 @@ public class Sensor implements Serializable{
     private String description;
     private Boolean status;
     private String frequency;
+    private Data data;
 
-    public Sensor(String sensorID, String sensorType, String description, Boolean status, String frequency) {
+    public Sensor(String sensorID, String sensorType, String description, Boolean status, String frequency,Data data) {
         this.sensorID = sensorID;
         this.sensorType = sensorType;
         this.description = description;
         this.status = status;
         this.frequency = frequency;
+        this.data=data;
+    }
+
+    public Data getData() {
+        return data;
+    }
+
+    public void setData(Data data) {
+        this.data = data;
     }
 
     
