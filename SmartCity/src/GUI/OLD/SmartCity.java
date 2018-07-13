@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package GUI.OLD;
 
+import Classes.Data;
 import Classes.Sensor;
 import Classes.SensorMonitor;
 import File.serialize;
@@ -36,9 +37,9 @@ public class SmartCity extends Application {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Hello World!");
-              
-      Sensor senr=new Sensor("sheha2", "food sensor", "food sensor",true, "food sensor");
-      Sensor senrb=new Sensor("banuka", "food sensor", "food sensor",true, "food sensor");
+      Data data =new Data();        
+      Sensor senr=new Sensor("sheha2", "food sensor", "food sensor",true, "food sensor",data);
+      Sensor senrb=new Sensor("banuka", "food sensor", "food sensor",true, "food sensor",data);
       sen2.add(senrb);
       sen2.add(senr);
 //        sen2.add(senr);

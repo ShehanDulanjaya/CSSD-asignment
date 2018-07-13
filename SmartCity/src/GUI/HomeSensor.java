@@ -9,6 +9,8 @@ import Classes.Sensor;
 import File.serialize;
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JDesktopPane;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,7 +26,8 @@ public class HomeSensor extends javax.swing.JInternalFrame {
     public HomeSensor() {
         initComponents();
 //       load();
-//        tableLoad();
+        tableLoad();
+        
     }
     
     public void tableLoad(){
@@ -238,11 +241,12 @@ public class HomeSensor extends javax.swing.JInternalFrame {
 
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
         // TODO add your handling code here:
-//        MainSensorStation m = new MainSensorStation();
+        MainSensorStation m = new MainSensorStation();
 //        m.getContentPane();
-//        AddSensorStation a = new AddSensorStation();
+        AddSensor a = new AddSensor();
 //        m.removeAll();
-//        m.add(a);
+        m.getParent().add(a);
+        
 
     }//GEN-LAST:event_addButtonMouseClicked
 
@@ -253,7 +257,16 @@ public class HomeSensor extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null,"Select Sensor from the Table");
         }
         else{
-           
+            int x=sensorTable.getSelectedRow();
+            String id=(String) sensorTable.getValueAt(x, 0);
+            System.out.println("home"+id);
+            
+            UpdateSensor u =new UpdateSensor();
+            JDesktopPane n =getDesktopPane();
+ 
+            n.add(u);
+            u.show();
+            u=null;
         }
                     
     }//GEN-LAST:event_updateButtonMouseClicked
@@ -265,7 +278,7 @@ public class HomeSensor extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null,"Select Sensor from the Table");
         }
         else{
-           
+            
         }
     }//GEN-LAST:event_deleteButtonMouseClicked
 

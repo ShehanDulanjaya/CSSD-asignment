@@ -5,6 +5,7 @@
  */
 package Classes;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.Random;
 
@@ -12,9 +13,9 @@ import java.util.Random;
  *
  * @author Akila Jayasinghe
  */
-public class Data {
+public class Data implements Serializable{
        private Double readings;
-private static DecimalFormat df2 = new DecimalFormat("0.##");
+    private static DecimalFormat df2 = new DecimalFormat("0.##");
    
     public Data() {
     }

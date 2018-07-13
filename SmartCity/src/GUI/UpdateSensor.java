@@ -5,10 +5,12 @@
  */
 package GUI;
 
+import Classes.Data;
 import Classes.Sensor;
 import File.serialize;
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -24,9 +26,19 @@ public class UpdateSensor extends javax.swing.JInternalFrame {
 
         initComponents();
         
-//        javax.swing.plaf.InternalFrameUI ifu;
-//        ifu = this.getUI();
-//        ((javax.swing.plaf.basic.BasicInternalFrameUI)ifu).setNorthPane(null);
+        System.out.println("GUI.UpdateSensor.<init>() ");
+        
+    }
+    
+    
+    Sensor findSensor(String sensorId, ArrayList<Sensor> allsensors){
+        for(Sensor sensor:allsensors){
+                if(sensorId.equals(sensor.getSensorID())){
+                    System.out.println("if eka");
+                    return sensor;
+                }
+            }
+                        return null;
     }
 
     /**
@@ -58,6 +70,7 @@ public class UpdateSensor extends javax.swing.JInternalFrame {
         typeComboBox = new javax.swing.JComboBox<>();
         activeRadioButton = new javax.swing.JRadioButton();
         deactiveRadioButton = new javax.swing.JRadioButton();
+        jLabel10 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(680, 480));
 
@@ -92,7 +105,7 @@ public class UpdateSensor extends javax.swing.JInternalFrame {
         jLabel4.setText("Update Sensor");
         addButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
-        jPanel1.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 140, -1));
+        jPanel1.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 140, -1));
 
         clearButton.setBackground(new java.awt.Color(102, 48, 142));
         clearButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
@@ -122,43 +135,47 @@ public class UpdateSensor extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Sensor ID");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 120, 30));
-        jPanel1.add(idTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 230, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 120, 30));
+        jPanel1.add(idTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 230, 30));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setText("Type");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 120, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 120, 30));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel5.setText("Status");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 120, 30));
-        jPanel1.add(DescriptionTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 230, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 120, 30));
+        jPanel1.add(DescriptionTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 230, 30));
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel6.setText("Description");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 120, 30));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 120, 30));
 
         frequencyTextBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 frequencyTextBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(frequencyTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 230, 30));
+        jPanel1.add(frequencyTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 230, 30));
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel9.setText("Freaquency");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 120, 30));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 120, 30));
 
         typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select -", "Flood Sensor", "Traffic Sensor", "Bin Sensor" }));
-        jPanel1.add(typeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 230, 30));
+        jPanel1.add(typeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 230, 30));
 
         buttonGroup1.add(activeRadioButton);
         activeRadioButton.setText("Active");
-        jPanel1.add(activeRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, -1, -1));
+        jPanel1.add(activeRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
 
         buttonGroup1.add(deactiveRadioButton);
         deactiveRadioButton.setText("Deactive");
-        jPanel1.add(deactiveRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, -1, -1));
+        jPanel1.add(deactiveRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel10.setText("Update Sensor");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,14 +208,18 @@ public class UpdateSensor extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_clearButtonMouseExited
 
     private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseClicked
+          
+        clear();
+    }//GEN-LAST:event_clearButtonMouseClicked
+
+    public void clear(){
         idTextBox.setText("");
         typeComboBox.setSelectedIndex(0);
         DescriptionTextBox.setText("");
         buttonGroup1.clearSelection();
-        frequencyTextBox.setText("");        
-        
-    }//GEN-LAST:event_clearButtonMouseClicked
-
+        frequencyTextBox.setText("");      
+    }
+    
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
         
         Boolean status;
@@ -209,9 +230,16 @@ public class UpdateSensor extends javax.swing.JInternalFrame {
             status=false;
         }
         
-//        ArrayList<Sensor> allSensors = serialize.getAllSensors();
-//        Sensor sr = new Sensor(idTextBox.getText(), typeComboBox.getSelectedItem().toString(), DescriptionTextBox.getText(), status, frequencyTextBox.getText());
-//        serialize.write("sensor.txt", sr);
+        ArrayList<Sensor> allSensors = serialize.getAllSensors();
+        Data data= new Data();
+        Sensor sr = new Sensor(idTextBox.getText(), typeComboBox.getSelectedItem().toString(), DescriptionTextBox.getText(), status, frequencyTextBox.getText(),data);
+        allSensors.add(sr);
+        serialize.write("sensor.txt", allSensors);
+        
+        JOptionPane.showMessageDialog(null,"Sensor Added Successfully");
+        
+        clear();
+        
 
     }//GEN-LAST:event_addButtonMouseClicked
 
@@ -230,6 +258,7 @@ public class UpdateSensor extends javax.swing.JInternalFrame {
     private javax.swing.JTextField frequencyTextBox;
     private javax.swing.JTextField idTextBox;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

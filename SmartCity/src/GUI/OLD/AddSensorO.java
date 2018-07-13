@@ -5,6 +5,7 @@
  */
 package GUI.OLD;
 
+import Classes.Data;
 import Classes.Sensor;
 import File.serialize;
 import java.util.ArrayList;
@@ -164,8 +165,10 @@ public class AddSensorO extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
          ArrayList<Sensor> allSensors = serialize.getAllSensors();
-         Sensor sr = new Sensor("sensorID", "ensorType", "description", true, "frequency");
-         serialize.write("sensor.txt", sr);
+         Data data= new Data();
+         Sensor sr = new Sensor("sensorID", "ensorType", "description", true, "frequency",data);
+         allSensors.add(sr);
+         serialize.write("sensor.txt", allSensors);
          
          
         // Sensor sr = new Sensor(sensorID, sensorType, description, rootPaneCheckingEnabled, frequency)

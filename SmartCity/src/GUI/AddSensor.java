@@ -5,10 +5,12 @@
  */
 package GUI;
 
+import Classes.Data;
 import Classes.Sensor;
 import File.serialize;
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -196,14 +198,18 @@ public class AddSensor extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_clearButtonMouseExited
 
     private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseClicked
+          
+        clear();
+    }//GEN-LAST:event_clearButtonMouseClicked
+
+    public void clear(){
         idTextBox.setText("");
         typeComboBox.setSelectedIndex(0);
         DescriptionTextBox.setText("");
         buttonGroup1.clearSelection();
-        frequencyTextBox.setText("");        
-        
-    }//GEN-LAST:event_clearButtonMouseClicked
-
+        frequencyTextBox.setText("");      
+    }
+    
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
         
         Boolean status;
@@ -215,8 +221,15 @@ public class AddSensor extends javax.swing.JInternalFrame {
         }
         
         ArrayList<Sensor> allSensors = serialize.getAllSensors();
-        Sensor sr = new Sensor(idTextBox.getText(), typeComboBox.getSelectedItem().toString(), DescriptionTextBox.getText(), status, frequencyTextBox.getText());
-        serialize.write("sensor.txt", sr);
+        Data data= new Data();
+        Sensor sr = new Sensor(idTextBox.getText(), typeComboBox.getSelectedItem().toString(), DescriptionTextBox.getText(), status, frequencyTextBox.getText(),data);
+        allSensors.add(sr);
+        serialize.write("sensor.txt", allSensors);
+        
+        JOptionPane.showMessageDialog(null,"Sensor Added Successfully");
+        
+        clear();
+        
 
     }//GEN-LAST:event_addButtonMouseClicked
 

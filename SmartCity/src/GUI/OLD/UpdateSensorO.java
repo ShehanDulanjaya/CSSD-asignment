@@ -72,6 +72,11 @@ public class UpdateSensorO extends javax.swing.JFrame {
         typeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select -", "Flood Sensor", "Traffic Sensor", "Bin Sensor" }));
 
         updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
         cancelButton.setText("Cancel");
 
@@ -173,6 +178,10 @@ public class UpdateSensorO extends javax.swing.JFrame {
     private void freaquencyBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_freaquencyBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_freaquencyBoxActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateButtonActionPerformed
 
     /**
      * @param args the command line arguments

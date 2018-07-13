@@ -27,10 +27,11 @@ public class MainSensor extends javax.swing.JFrame {
     
     public void homeUi(){
         
-        bodyPanel.removeAll();
+        bodyPane.removeAll();
         HomeSensor h =new HomeSensor();
         h.setVisible(true);
-        bodyPanel.add(h);
+        bodyPane.add(h);
+        
 
     }
 
@@ -64,7 +65,7 @@ public class MainSensor extends javax.swing.JFrame {
         topPanel = new javax.swing.JPanel();
         closeLabel = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        bodyPanel = new javax.swing.JPanel();
+        bodyPane = new javax.swing.JDesktopPane();
 
         jLabel1.setText("jLabel1");
 
@@ -280,20 +281,18 @@ public class MainSensor extends javax.swing.JFrame {
 
         background.add(topPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 680, 30));
 
-        bodyPanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout bodyPanelLayout = new javax.swing.GroupLayout(bodyPanel);
-        bodyPanel.setLayout(bodyPanelLayout);
-        bodyPanelLayout.setHorizontalGroup(
-            bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 670, Short.MAX_VALUE)
+        javax.swing.GroupLayout bodyPaneLayout = new javax.swing.GroupLayout(bodyPane);
+        bodyPane.setLayout(bodyPaneLayout);
+        bodyPaneLayout.setHorizontalGroup(
+            bodyPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 680, Short.MAX_VALUE)
         );
-        bodyPanelLayout.setVerticalGroup(
-            bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        bodyPaneLayout.setVerticalGroup(
+            bodyPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 480, Short.MAX_VALUE)
         );
 
-        background.add(bodyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 90, 670, 480));
+        background.add(bodyPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 680, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -326,10 +325,10 @@ public class MainSensor extends javax.swing.JFrame {
 
     private void addSensorPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addSensorPanelMouseClicked
        
-        bodyPanel.removeAll();
+        bodyPane.removeAll();
         AddSensor a =new AddSensor();
         a.setVisible(true);
-        bodyPanel.add(a);
+        bodyPane.add(a);
    
     }//GEN-LAST:event_addSensorPanelMouseClicked
 
@@ -394,7 +393,7 @@ public class MainSensor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addSensorPanel;
     private javax.swing.JPanel background;
-    private javax.swing.JPanel bodyPanel;
+    private javax.swing.JDesktopPane bodyPane;
     private javax.swing.JLabel cityLabel;
     private javax.swing.JLabel closeLabel;
     private javax.swing.JPanel homePanel;
