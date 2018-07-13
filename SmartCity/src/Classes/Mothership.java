@@ -41,9 +41,9 @@ public class Mothership implements Observer{
         this.sensorStation = sensorStation;
     }
     
-    public void addNewSensorStation(SensorStation station){
-         this.sensorStation.add(station);
-        serialize.write("sensor.txt", sensorStation);
+    public boolean addNewSensorStation(SensorStation station){
+        this.sensorStation.add(station);
+        return serialize.write("sensorstation.txt", sensorStation);
         
     }
 
@@ -52,6 +52,34 @@ public class Mothership implements Observer{
         
     }
     
+    public boolean removeSensorStation(String Id){
+        SensorStation s= findSensorStation(Id, this.sensorStation);
+        this.sensorStation.remove(s);
+        return serialize.write("sensorstation.txt", sensorStation);
+        
+    }
+    
+    public boolean updateSensorStation(String Id, SensorStation station){
+        SensorStation s= findSensorStation(Id, this.sensorStation);
+        if(s!=null){
+               this.sensorStation.remove(s);
+               this.sensorStation.add(station);
+               return serialize.write("sensorstation.txt", sensorStation);
+        }
+        else{
+            return false;
+        }
+    }    
+    
+    public SensorStation findSensorStation(String sensorId, ArrayList<SensorStation> allSensorStations){
+        for(SensorStation station:allSensorStations){
+                if(sensorId.equals(station.getStationID())){
+                   
+                    return station;
+                }
+            }
+                        return null;
+    }
     
     
 }
