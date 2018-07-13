@@ -230,42 +230,14 @@ public class UpdateSensor extends javax.swing.JInternalFrame {
             status=false;
         }
         
-        ArrayList<Sensor> allSensors = serialize.getAllSensors();
-<<<<<<< HEAD
-        Data data= new Data();
-        Sensor sr = new Sensor(idTextBox.getText(), typeComboBox.getSelectedItem().toString(), DescriptionTextBox.getText(), status, frequencyTextBox.getText(),data);
-        allSensors.add(sr);
-        serialize.write("sensor.txt", allSensors);
-        
-        JOptionPane.showMessageDialog(null,"Sensor Added Successfully");
-        
-        clear();
-=======
-        Data data = new Data();
-        Sensor sr = new Sensor(idTextBox.getText(), typeComboBox.getSelectedItem().toString(), DescriptionTextBox.getText(), status, frequencyTextBox.getText(),data);
-        
-        Sensor find=findSensor(idTextBox.getText(), allSensors);
-        if(find!=null){
-            allSensors.remove(find);
-            allSensors.add(sr);
-            serialize.write("sensor.txt", allSensors);
-        }
->>>>>>> 6bfdd23eafc3c9fbfb2c850cbd4e1184e94e896c
-        
+       
 
     }//GEN-LAST:event_addButtonMouseClicked
 
     private void frequencyTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frequencyTextBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_frequencyTextBoxActionPerformed
-Sensor findSensor(String sensorId, ArrayList<Sensor> allsensors){
-        for(Sensor sensor:allsensors){
-                if(sensorId.equals(sensor.getSensorID())){
-                    return sensor;
-                }
-            }
-                        return null;
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField DescriptionTextBox;

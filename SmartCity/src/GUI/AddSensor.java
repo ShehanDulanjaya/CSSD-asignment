@@ -221,8 +221,8 @@ public class AddSensor extends javax.swing.JInternalFrame {
         }
         Data data=new Data();
         ArrayList<Sensor> allSensors = serialize.getAllSensors();
-<<<<<<< HEAD
-        Data data= new Data();
+
+
         Sensor sr = new Sensor(idTextBox.getText(), typeComboBox.getSelectedItem().toString(), DescriptionTextBox.getText(), status, frequencyTextBox.getText(),data);
         allSensors.add(sr);
         serialize.write("sensor.txt", allSensors);
@@ -230,11 +230,8 @@ public class AddSensor extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(null,"Sensor Added Successfully");
         
         clear();
-        
-=======
-        Sensor sr = new Sensor(idTextBox.getText(), typeComboBox.getSelectedItem().toString(), DescriptionTextBox.getText(), status, frequencyTextBox.getText(),data);
-        serialize.write("sensor.txt", sr);
->>>>>>> 6bfdd23eafc3c9fbfb2c850cbd4e1184e94e896c
+
+
 
     }//GEN-LAST:event_addButtonMouseClicked
 
