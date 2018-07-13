@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import Classes.Data;
 import Classes.Sensor;
 import File.serialize;
 import java.awt.Color;
@@ -18,7 +19,9 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Akila Jayasinghe
  */
-public class HomeSensor extends javax.swing.JInternalFrame {
+public class HomeSensor extends JInternalFrame {
+public static String globalId;
+ArrayList<Sensor> allSensors = serialize.getAllSensors();
 
     /**
      * Creates new form Home
@@ -27,13 +30,13 @@ public class HomeSensor extends javax.swing.JInternalFrame {
         initComponents();
 //       load();
         tableLoad();
-        
+       
     }
     
     public void tableLoad(){
     DefaultTableModel model=(DefaultTableModel) sensorTable.getModel();
      model.setRowCount(0);
-    ArrayList<Sensor> allSensors = serialize.getAllSensors();
+    
                 for(Sensor sensor:allSensors){
                         model.addRow(new Object[]{sensor.getSensorID(),sensor.getSensorType(),sensor.getDescription(),sensor.getStatus(),sensor.getFrequency()});
                     }  
@@ -241,12 +244,12 @@ public class HomeSensor extends javax.swing.JInternalFrame {
 
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
         // TODO add your handling code here:
-        MainSensorStation m = new MainSensorStation();
-//        m.getContentPane();
-        AddSensor a = new AddSensor();
-//        m.removeAll();
-        m.getParent().add(a);
-        
+            AddSensor a =new AddSensor();
+            JDesktopPane n =this.getDesktopPane();
+            n.removeAll();
+            
+            n.add(a);
+            a.show();
 
     }//GEN-LAST:event_addButtonMouseClicked
 
@@ -260,13 +263,15 @@ public class HomeSensor extends javax.swing.JInternalFrame {
             int x=sensorTable.getSelectedRow();
             String id=(String) sensorTable.getValueAt(x, 0);
             System.out.println("home"+id);
-            
+            globalId=id;
+           
             UpdateSensor u =new UpdateSensor();
-            JDesktopPane n =getDesktopPane();
- 
+            JDesktopPane n =this.getDesktopPane();
+            n.removeAll();
+            
             n.add(u);
             u.show();
-            u=null;
+         //asd  as
         }
                     
     }//GEN-LAST:event_updateButtonMouseClicked
@@ -278,10 +283,37 @@ public class HomeSensor extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null,"Select Sensor from the Table");
         }
         else{
-            
+            int y=JOptionPane.showConfirmDialog(null,"Do you really want to Delete ?","Delete",JOptionPane.YES_NO_OPTION);
+            if(y==0){
+                
+                int x=sensorTable.getSelectedRow();
+                String id=(String) sensorTable.getValueAt(x, 0);
+
+                Sensor s = findSensor(id, allSensors);
+                allSensors.remove(s);
+
+                boolean check =serialize.write("sensor.txt", allSensors);
+
+                if(check){
+                    JOptionPane.showMessageDialog(null,"Sensor Deleted");
+                    tableLoad();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"Sensor Delete Error");
+                }
+            }
         }
     }//GEN-LAST:event_deleteButtonMouseClicked
 
+    private static Sensor findSensor(String sensorId, ArrayList<Sensor> allsensors){
+        for(Sensor sensor:allsensors){
+                if(sensorId.equals(sensor.getSensorID())){
+                   
+                    return sensor;
+                }
+            }
+                        return null;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addButton;

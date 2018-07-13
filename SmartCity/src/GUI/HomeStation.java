@@ -6,6 +6,7 @@
 package GUI;
 
 import java.awt.Color;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,12 +23,7 @@ public class HomeStation extends javax.swing.JInternalFrame {
 //       load();
     }
     
-    private void load(){
-         javax.swing.plaf.InternalFrameUI ifu;
-        ifu = this.getUI();
-        ((javax.swing.plaf.basic.BasicInternalFrameUI)ifu).setNorthPane(null);
-    }
-
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -158,6 +154,9 @@ public class HomeStation extends javax.swing.JInternalFrame {
         updateButton.setBackground(new java.awt.Color(102, 48, 142));
         updateButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         updateButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateButtonMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 updateButtonMouseEntered(evt);
             }
@@ -181,6 +180,9 @@ public class HomeStation extends javax.swing.JInternalFrame {
         deleteButton.setBackground(new java.awt.Color(102, 48, 142));
         deleteButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         deleteButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteButtonMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 deleteButtonMouseEntered(evt);
             }
@@ -262,12 +264,35 @@ public class HomeStation extends javax.swing.JInternalFrame {
 
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
         // TODO add your handling code here:
-        MainSensorStation m = new MainSensorStation();
-        m.getContentPane();
-        AddSensorStation a = new AddSensorStation();
-        m.removeAll();
-        m.add(a);
+        AddSensorStation a =new AddSensorStation();
+            JDesktopPane n =this.getDesktopPane();
+            n.removeAll();
+            
+            n.add(a);
+            a.show();
     }//GEN-LAST:event_addButtonMouseClicked
+
+    private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
+        // TODO add your handling code here:
+        if (true == sensorStationTable.getSelectionModel().isSelectionEmpty())
+        {
+            JOptionPane.showMessageDialog(null,"Select Sensor from the Table");
+        }
+        else{
+            
+        }
+    }//GEN-LAST:event_updateButtonMouseClicked
+
+    private void deleteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseClicked
+        // TODO add your handling code here:
+        if (true == sensorStationTable.getSelectionModel().isSelectionEmpty())
+        {
+            JOptionPane.showMessageDialog(null,"Select Sensor from the Table");
+        }
+        else{
+            
+        }
+    }//GEN-LAST:event_deleteButtonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
