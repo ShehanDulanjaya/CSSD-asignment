@@ -1,5 +1,7 @@
 package Classes;
 
+import File.serialize;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -16,9 +18,9 @@ import java.util.Observer;
 public class Mothership implements Observer{
  
     private String ID;
-    private List<SensorStation> sensorStation;
+    private ArrayList<SensorStation> sensorStation;
 
-    public Mothership(String ID, List<SensorStation> sensorStation) {
+    public Mothership(String ID, ArrayList<SensorStation> sensorStation) {
         this.ID = ID;
         this.sensorStation = sensorStation;
     }
@@ -35,8 +37,14 @@ public class Mothership implements Observer{
         return sensorStation;
     }
 
-    public void setSensorStation(List<SensorStation> sensorStation) {
+    public void setSensorStation(ArrayList<SensorStation> sensorStation) {
         this.sensorStation = sensorStation;
+    }
+    
+    public void addNewSensorStation(SensorStation station){
+         this.sensorStation.add(station);
+        serialize.write("sensor.txt", sensorStation);
+        
     }
 
     @Override

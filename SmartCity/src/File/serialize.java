@@ -7,6 +7,7 @@ package File;
 
 import Classes.Sensor;
 import Classes.SensorMonitor;
+import Classes.SensorStation;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -101,6 +102,32 @@ public static ArrayList<Sensor> getAllSensors(){
                 }
                 else{
                      ArrayList<Sensor>sr  = new ArrayList<>();
+
+                     fil.close();
+                     return sr;
+                }
+            
+        } catch (Exception e) {
+            System.out.println("read "+ e);
+        }
+
+            
+        return null;
+      }
+
+public static ArrayList<SensorStation> getAllSensorStations(){
+          try {
+            FileInputStream fil=new FileInputStream("sensorstation.txt");
+                     
+                if(fil.available()>0){
+                    ObjectInputStream oo=new ObjectInputStream(fil);
+                 ArrayList<SensorStation> sr = (ArrayList<SensorStation>) oo.readObject();
+                 oo.close();
+                 fil.close();
+                 return sr;
+                }
+                else{
+                     ArrayList<SensorStation>sr  = new ArrayList<>();
 
                      fil.close();
                      return sr;
