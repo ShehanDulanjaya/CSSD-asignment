@@ -1,6 +1,7 @@
 package Classes;
 
 import File.serialize;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -15,7 +16,7 @@ import java.util.Observer;
  *
  * @author SHEHA
  */
-public class Mothership implements Observer{
+public class Mothership implements Observer,Serializable{
  
     private String ID;
     private String name;
@@ -34,7 +35,7 @@ public class Mothership implements Observer{
         this.ID = ID;
     }
 
-    public List<SensorStation> getSensorStation() {
+    public ArrayList<SensorStation> getSensorStation() {
         return sensorStation;
     }
 
@@ -58,19 +59,7 @@ public class Mothership implements Observer{
         this.sensorStation.remove(s);
         return serialize.write("sensorstation.txt", sensorStation);
         
-    }
-    
-    public boolean updateSensorStation(String Id, SensorStation station){
-        SensorStation s= findSensorStation(Id, this.sensorStation);
-        if(s!=null){
-               this.sensorStation.remove(s);
-               this.sensorStation.add(station);
-               return serialize.write("sensorstation.txt", sensorStation);
-        }
-        else{
-            return false;
-        }
-    }    
+    } 
     
     public SensorStation findSensorStation(String sensorId, ArrayList<SensorStation> allSensorStations){
         for(SensorStation station:allSensorStations){

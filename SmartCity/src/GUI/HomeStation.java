@@ -5,24 +5,40 @@
  */
 package GUI;
 
+import Classes.Mothership;
+import Classes.SensorStation;
+import File.serialize;
+import static GUI.HomeSensor.globalId;
 import java.awt.Color;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Akila Jayasinghe
  */
 public class HomeStation extends javax.swing.JInternalFrame {
-
+public static String globId;
+Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());    
     /**
      * Creates new form Home
      */
     public HomeStation() {
         initComponents();
 //       load();
+        tableLoad();
     }
     
+    public void tableLoad(){
+    DefaultTableModel model=(DefaultTableModel) sensorStationTable.getModel();
+     model.setRowCount(0);
+    
+                for(SensorStation station:mother.getSensorStation()){
+                        model.addRow(new Object[]{station.getStationID(),station.getName()});
+                    }  
+    }
+//    dsasd
   
     /**
      * This method is called from within the constructor to initialize the form.
@@ -69,29 +85,29 @@ public class HomeStation extends javax.swing.JInternalFrame {
 
         sensorStationTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Station Name", "Location", "No. of Active Sensors"
+                "Station Name", "Location"
             }
         ));
         sensorStationTable.setGridColor(new java.awt.Color(255, 255, 255));
@@ -279,7 +295,18 @@ public class HomeStation extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null,"Select Sensor from the Table");
         }
         else{
+            int x=sensorStationTable.getSelectedRow();
+            String id=(String) sensorStationTable.getValueAt(x, 0);
+            System.out.println("home"+id);
+            globId=id;
+
+//        aa   a
+            UpdateSensorStation u =new UpdateSensorStation();
+            JDesktopPane n =this.getDesktopPane();
+            n.removeAll();
             
+            n.add(u);
+            u.show();
         }
     }//GEN-LAST:event_updateButtonMouseClicked
 
@@ -290,8 +317,23 @@ public class HomeStation extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null,"Select Sensor from the Table");
         }
         else{
-            
-        }
+            int y=JOptionPane.showConfirmDialog(null,"Do you really want to Delete ?","Delete",JOptionPane.YES_NO_OPTION);
+            if(y==0){
+                
+                int x=sensorStationTable.getSelectedRow();
+                String id=(String) sensorStationTable.getValueAt(x, 0);
+               boolean check= mother.removeSensorStation(id);
+
+               if(check){
+                            JOptionPane.showMessageDialog(null,"Sensor Station Deleted");
+                            tableLoad();
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null,"Sensor Station Delete Error");
+                        }
+
+            }
+            }
     }//GEN-LAST:event_deleteButtonMouseClicked
 
 

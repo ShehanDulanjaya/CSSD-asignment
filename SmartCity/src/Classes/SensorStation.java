@@ -7,6 +7,7 @@ package Classes;
 
 import Classes.SensorMonitor;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
 import java.util.Observable;
@@ -20,11 +21,11 @@ import java.util.Observable;
 public class SensorStation implements Observer,Serializable{
    private String stationID;
    private String name;
-   private List<SensorMonitor> sensorMonitors;
+   private ArrayList<SensorMonitor> sensorMonitors;
    private Mothership observer;
    private EmbllishedData embllishedData;
 
-    public SensorStation(String stationID, String name, List<SensorMonitor> sensorMonitors, Mothership observer) {
+    public SensorStation(String stationID, String name, ArrayList<SensorMonitor> sensorMonitors, Mothership observer) {
         this.stationID = stationID;
         this.name = name;
         this.sensorMonitors = sensorMonitors;
@@ -61,7 +62,7 @@ public class SensorStation implements Observer,Serializable{
         return sensorMonitors;
     }
 
-    public void setSensorMonitors(List<SensorMonitor> sensorMonitors) {
+    public void setSensorMonitors(ArrayList<SensorMonitor> sensorMonitors) {
         this.sensorMonitors = sensorMonitors;
     }
 

@@ -10,6 +10,7 @@ import Classes.Sensor;
 import Classes.SensorMonitor;
 import Classes.SensorStation;
 import File.serialize;
+import static GUI.HomeStation.globId;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -19,18 +20,23 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author Akila Jayasinghe
  */
-public class AddSensorStation extends javax.swing.JInternalFrame {
+public class UpdateSensorStation extends javax.swing.JInternalFrame {
 Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations()); 
+
+ArrayList<SensorStation> station=serialize.getAllSensorStations();
+SensorStation s=null;
     /**
      * Creates new form Home
      */
-    public AddSensorStation() {
+    public UpdateSensorStation() {
 
         initComponents();
         
-//        javax.swing.plaf.InternalFrameUI ifu;
-//        ifu = this.getUI();
-//        ((javax.swing.plaf.basic.BasicInternalFrameUI)ifu).setNorthPane(null);
+        String x= globId;
+        s= mother.findSensorStation(globId, station);
+        
+        idTextBox.setText(s.getStationID());
+        nameTextBox.setText(s.getName());
     }
 
     /**
@@ -45,12 +51,9 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
         jPasswordField1 = new javax.swing.JPasswordField();
         jPanel1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        addButton = new javax.swing.JPanel();
+        updateButton = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        clearButton = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         nameTextBox = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -71,57 +74,31 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
         jLabel15.setText("A step towards Smart Sri Lanka");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 450, 171, -1));
 
-        addButton.setBackground(new java.awt.Color(102, 48, 142));
-        addButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        addButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        updateButton.setBackground(new java.awt.Color(102, 48, 142));
+        updateButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        updateButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addButtonMouseClicked(evt);
+                updateButtonMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                addButtonMouseEntered(evt);
+                updateButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                addButtonMouseExited(evt);
+                updateButtonMouseExited(evt);
             }
         });
-        addButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        updateButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Add New_25px.png")); // NOI18N
-        addButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 50));
+        updateButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 50));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Add Station");
-        addButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        jLabel4.setText("Update Station");
+        updateButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
-        jPanel1.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 130, -1));
-
-        clearButton.setBackground(new java.awt.Color(102, 48, 142));
-        clearButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        clearButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                clearButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                clearButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                clearButtonMouseExited(evt);
-            }
-        });
-        clearButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Broom_25px.png")); // NOI18N
-        clearButton.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 30, 50));
-
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Clear Form");
-        clearButton.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
-
-        jPanel1.add(clearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 140, -1));
+        jPanel1.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 140, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Station Name");
@@ -131,10 +108,12 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setText("Station Id");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 120, 30));
+
+        idTextBox.setEditable(false);
         jPanel1.add(idTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 230, 30));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel10.setText("Add Sensor Station");
+        jLabel10.setText("Update Sensor Station");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -151,52 +130,45 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseEntered
+    private void updateButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseEntered
         evt.getComponent().setBackground(new Color(80, 80, 125));
-    }//GEN-LAST:event_addButtonMouseEntered
+    }//GEN-LAST:event_updateButtonMouseEntered
 
-    private void addButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseExited
+    private void updateButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseExited
         evt.getComponent().setBackground(new Color(102, 48, 142));
-    }//GEN-LAST:event_addButtonMouseExited
-
-    private void clearButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseEntered
-        evt.getComponent().setBackground(new Color(80, 80, 125));
-    }//GEN-LAST:event_clearButtonMouseEntered
-
-    private void clearButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseExited
-        evt.getComponent().setBackground(new Color(102, 48, 142));
-    }//GEN-LAST:event_clearButtonMouseExited
-
-    private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseClicked
-        clear();
-    }//GEN-LAST:event_clearButtonMouseClicked
+    }//GEN-LAST:event_updateButtonMouseExited
 
     public void clear(){
         nameTextBox.setText("");
         idTextBox.setText("");
     }
     
-    private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
+    private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
 
-        ArrayList<SensorMonitor> sensorMonitor = null;
-        SensorStation station =new SensorStation(idTextBox.getText(), nameTextBox.getText(), sensorMonitor, mother);
-        boolean check=mother.addNewSensorStation(station);
-        
-        if(check){
-            JOptionPane.showMessageDialog(null,"Sensor Station Added Successfully");
-            clear();
-        }
-        else{
-            JOptionPane.showMessageDialog(null,"Sensor Station Add Fail");
-        }
-        
+       int y=JOptionPane.showConfirmDialog(null,"Do you really want to Update ?","Update",JOptionPane.YES_NO_OPTION);
+            if(y==0){
+                
+              SensorStation  s1= mother.findSensorStation(idTextBox.getText(), serialize.getAllSensorStations());
+                
+                mother.removeSensorStation(idTextBox.getText());
+               s1.setName(nameTextBox.getText());
+               boolean check = mother.addNewSensorStation(s1);
 
-    }//GEN-LAST:event_addButtonMouseClicked
+               
+                    if(check){
+                        JOptionPane.showMessageDialog(null,"Sensor Station Updated");
+                        
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"Sensor Station Update Error");
+                    }
+        
+            }
+
+    }//GEN-LAST:event_updateButtonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel addButton;
-    private javax.swing.JPanel clearButton;
     private javax.swing.JTextField idTextBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -204,10 +176,9 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField nameTextBox;
+    private javax.swing.JPanel updateButton;
     // End of variables declaration//GEN-END:variables
 }
