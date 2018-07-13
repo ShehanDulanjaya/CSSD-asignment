@@ -1,6 +1,7 @@
 package Classes;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Sensor implements Serializable{
 
@@ -72,4 +73,7 @@ public class Sensor implements Serializable{
         this.frequency = frequency;
     }
 
+    
+    
+    
 }

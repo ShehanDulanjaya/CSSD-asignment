@@ -134,7 +134,11 @@ public class SensorMonitor implements Observer,Serializable{
       
     }
     public  boolean addNewSensor(String sensorID, String sensorType, String description, Boolean status, String frequency,Data data){
+<<<<<<< HEAD
         
+=======
+       
+>>>>>>> 6bfdd23eafc3c9fbfb2c850cbd4e1184e94e896c
         this.sensor = new Sensor(sensorID,sensorType,description,status,frequency,data);
         boolean result=serialize.write("sensor.txt", this.sensor);
         return result;
