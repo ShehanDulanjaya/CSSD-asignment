@@ -21,18 +21,9 @@ public class Mothership implements Observer{
     private String name;
     private ArrayList<SensorStation> sensorStation;
 
-    public Mothership(String ID, ArrayList<SensorStation> sensorStation,String name) {
+    public Mothership(String ID, ArrayList<SensorStation> sensorStation) {
         this.ID = ID;
         this.sensorStation = sensorStation;
-        this.name=name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getID() {

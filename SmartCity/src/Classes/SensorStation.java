@@ -19,14 +19,35 @@ import java.util.Observable;
  */
 public class SensorStation implements Observer,Serializable{
    private String stationID;
+   private String name;
    private List<SensorMonitor> sensorMonitors;
    private Mothership observer;
-   public SensorMonitor sensrmoni;
    private EmbllishedData embllishedData;
 
-    public SensorStation(String stationID) {
+    public SensorStation(String stationID, String name, List<SensorMonitor> sensorMonitors, Mothership observer) {
         this.stationID = stationID;
+        this.name = name;
+        this.sensorMonitors = sensorMonitors;
+        this.observer = observer;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Mothership getObserver() {
+        return observer;
+    }
+
+    public void setObserver(Mothership observer) {
+        this.observer = observer;
+    }
+
+    
    
     public String getStationID() {
         return stationID;
