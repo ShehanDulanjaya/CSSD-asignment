@@ -18,11 +18,21 @@ import java.util.Observer;
 public class Mothership implements Observer{
  
     private String ID;
+    private String name;
     private ArrayList<SensorStation> sensorStation;
 
-    public Mothership(String ID, ArrayList<SensorStation> sensorStation) {
+    public Mothership(String ID, ArrayList<SensorStation> sensorStation,String name) {
         this.ID = ID;
         this.sensorStation = sensorStation;
+        this.name=name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getID() {
