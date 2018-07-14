@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Akila Jayasinghe
  */
 public class HomeSensor extends JInternalFrame {
-public static String globalId;
+public static String globalSensorId;
 ArrayList<Sensor> allSensors = serialize.getAllSensors();
 
     /**
@@ -29,7 +29,7 @@ ArrayList<Sensor> allSensors = serialize.getAllSensors();
     public HomeSensor() {
         initComponents();
 //       load();
-        tableLoad();
+//        tableLoad();
        
     }
     
@@ -263,7 +263,7 @@ ArrayList<Sensor> allSensors = serialize.getAllSensors();
             int x=sensorTable.getSelectedRow();
             String id=(String) sensorTable.getValueAt(x, 0);
             System.out.println("home"+id);
-            globalId=id;
+            globalSensorId=id;
            
             UpdateSensor u =new UpdateSensor();
             JDesktopPane n =this.getDesktopPane();

@@ -55,14 +55,14 @@ public class Mothership implements Observer,Serializable{
     }
     
     public boolean removeSensorStation(String Id){
-        SensorStation s= findSensorStation(Id, this.sensorStation);
+        SensorStation s= findSensorStation(Id);
         this.sensorStation.remove(s);
         return serialize.write("sensorstation.txt", sensorStation);
         
     } 
     
-    public SensorStation findSensorStation(String sensorId, ArrayList<SensorStation> allSensorStations){
-        for(SensorStation station:allSensorStations){
+    public SensorStation findSensorStation(String sensorId){
+        for(SensorStation station:sensorStation){
                 if(sensorId.equals(station.getStationID())){
                    
                     return station;

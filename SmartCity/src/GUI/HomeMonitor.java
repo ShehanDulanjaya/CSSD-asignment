@@ -18,20 +18,23 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Akila Jayasinghe
  */
-public class HomeStation extends javax.swing.JInternalFrame {
-public static String globalStationId;
+public class HomeMonitor extends javax.swing.JInternalFrame {
+    
+public static String globalMonitorId;
 Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());    
+SensorStation station = mother.findSensorStation(globalMonitorId);
+
     /**
      * Creates new form Home
      */
-    public HomeStation() {
+    public HomeMonitor() {
         initComponents();
 //       load();
         tableLoad();
     }
     
     public void tableLoad(){
-    DefaultTableModel model=(DefaultTableModel) sensorStationTable.getModel();
+    DefaultTableModel model=(DefaultTableModel) monitorTable.getModel();
      model.setRowCount(0);
     
                 for(SensorStation station:mother.getSensorStation()){
@@ -53,7 +56,7 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
         jPanel1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        sensorStationTable = new javax.swing.JTable();
+        monitorTable = new javax.swing.JTable();
         viewButton = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -83,7 +86,7 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
         jLabel15.setText("A step towards Smart Sri Lanka");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 430, 171, -1));
 
-        sensorStationTable.setModel(new javax.swing.table.DefaultTableModel(
+        monitorTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -107,19 +110,11 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
                 {null, null}
             },
             new String [] {
-                "Station ID", "Station Name"
+                "Station Name", "Location"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        sensorStationTable.setGridColor(new java.awt.Color(255, 255, 255));
-        jScrollPane2.setViewportView(sensorStationTable);
+        ));
+        monitorTable.setGridColor(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setViewportView(monitorTable);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 640, 348));
 
@@ -144,7 +139,7 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("View Station");
+        jLabel2.setText("View Monitor");
         viewButton.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
         jPanel1.add(viewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
@@ -170,10 +165,10 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Add Station");
+        jLabel4.setText("Add Monitor");
         addButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
-        jPanel1.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 130, -1));
+        jPanel1.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 130, -1));
 
         updateButton.setBackground(new java.awt.Color(102, 48, 142));
         updateButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
@@ -196,10 +191,10 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Update Station");
-        updateButton.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        jLabel6.setText("Update Monitor");
+        updateButton.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 15, -1, 20));
 
-        jPanel1.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 140, -1));
+        jPanel1.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, 150, -1));
 
         deleteButton.setBackground(new java.awt.Color(102, 48, 142));
         deleteButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
@@ -222,7 +217,7 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Delete Station");
+        jLabel8.setText("Delete Monitor");
         deleteButton.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
         jPanel1.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, 140, -1));
@@ -275,12 +270,12 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
 
     private void viewButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseClicked
         
-        if (true == sensorStationTable.getSelectionModel().isSelectionEmpty())
+        if (true == monitorTable.getSelectionModel().isSelectionEmpty())
         {
-            JOptionPane.showMessageDialog(null,"Select Sensor Monitor from the Table");
+            JOptionPane.showMessageDialog(null,"Select Sensor Station from the Table");
         }
         else{
-            MainSensorMonitor m =new MainSensorMonitor();
+            MainSensor m =new MainSensor();
             m.setVisible(true);
         }
             
@@ -288,7 +283,7 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
 
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
         // TODO add your handling code here:
-        AddSensorStation a =new AddSensorStation();
+        AddMonitor a =new AddMonitor();
             JDesktopPane n =this.getDesktopPane();
             n.removeAll();
             
@@ -298,15 +293,15 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
 
     private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
         // TODO add your handling code here:
-        if (true == sensorStationTable.getSelectionModel().isSelectionEmpty())
+        if (true == monitorTable.getSelectionModel().isSelectionEmpty())
         {
             JOptionPane.showMessageDialog(null,"Select Sensor from the Table");
         }
         else{
-            int x=sensorStationTable.getSelectedRow();
-            String id=(String) sensorStationTable.getValueAt(x, 0);
+            int x=monitorTable.getSelectedRow();
+            String id=(String) monitorTable.getValueAt(x, 0);
             System.out.println("home"+id);
-            globalStationId=id;
+            globalMonitorId=id;
 
 //        aa   a
             UpdateSensorStation u =new UpdateSensorStation();
@@ -320,7 +315,7 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
 
     private void deleteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseClicked
         // TODO add your handling code here:
-        if (true == sensorStationTable.getSelectionModel().isSelectionEmpty())
+        if (true == monitorTable.getSelectionModel().isSelectionEmpty())
         {
             JOptionPane.showMessageDialog(null,"Select Sensor from the Table");
         }
@@ -328,8 +323,8 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
             int y=JOptionPane.showConfirmDialog(null,"Do you really want to Delete ?","Delete",JOptionPane.YES_NO_OPTION);
             if(y==0){
                 
-                int x=sensorStationTable.getSelectedRow();
-                String id=(String) sensorStationTable.getValueAt(x, 0);
+                int x=monitorTable.getSelectedRow();
+                String id=(String) monitorTable.getValueAt(x, 0);
                boolean check= mother.removeSensorStation(id);
 
                if(check){
@@ -360,7 +355,7 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable sensorStationTable;
+    private javax.swing.JTable monitorTable;
     private javax.swing.JPanel updateButton;
     private javax.swing.JPanel viewButton;
     // End of variables declaration//GEN-END:variables

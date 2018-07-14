@@ -10,7 +10,7 @@ import Classes.Sensor;
 import Classes.SensorMonitor;
 import Classes.SensorStation;
 import File.serialize;
-import static GUI.HomeStation.globId;
+import static GUI.HomeStation.globalStationId;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -32,8 +32,8 @@ SensorStation s=null;
 
         initComponents();
         
-        String x= globId;
-        s= mother.findSensorStation(globId, station);
+        String x= globalStationId;
+        s= mother.findSensorStation(globalStationId);
         
         idTextBox.setText(s.getStationID());
         nameTextBox.setText(s.getName());
@@ -148,7 +148,7 @@ SensorStation s=null;
        int y=JOptionPane.showConfirmDialog(null,"Do you really want to Update ?","Update",JOptionPane.YES_NO_OPTION);
             if(y==0){
                 
-              SensorStation  s1= mother.findSensorStation(idTextBox.getText(), serialize.getAllSensorStations());
+              SensorStation  s1= mother.findSensorStation(idTextBox.getText());
                 
                 mother.removeSensorStation(idTextBox.getText());
                s1.setName(nameTextBox.getText());
