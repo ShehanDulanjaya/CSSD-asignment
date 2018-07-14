@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Akila Jayasinghe
+ * @author Azxcaaaakila Jayasinghe
  */
 public class HomeSensor extends JInternalFrame {
 public static String globalSensorId;

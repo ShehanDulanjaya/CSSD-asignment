@@ -6,10 +6,15 @@
 package GUI;
 
 import Classes.Data;
+import Classes.Mothership;
 import Classes.Sensor;
+import Classes.SensorMonitor;
+import Classes.SensorStation;
 import File.serialize;
+import static GUI.HomeStation.globalStationId;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -18,7 +23,8 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  * @author Akila Jayasinghe
  */
 public class AddMonitor extends javax.swing.JInternalFrame {
-
+Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());    
+SensorStation station = mother.findSensorStation(globalStationId);
     /**
      * Creates new form Home
      */
@@ -51,16 +57,13 @@ public class AddMonitor extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         idTextBox = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        DescriptionTextBox = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        frequencyTextBox = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        typeComboBox = new javax.swing.JComboBox<>();
         activeRadioButton = new javax.swing.JRadioButton();
         deactiveRadioButton = new javax.swing.JRadioButton();
         jLabel10 = new javax.swing.JLabel();
+        intervalTextBox1 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        mapPanel = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(680, 480));
 
@@ -121,47 +124,42 @@ public class AddMonitor extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Sensor ID");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 120, 30));
-        jPanel1.add(idTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 230, 30));
-
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel2.setText("Type");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 120, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 120, 30));
+        jPanel1.add(idTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 230, 30));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel5.setText("Status");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 120, 30));
-        jPanel1.add(DescriptionTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 230, 30));
-
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel6.setText("Description");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 120, 30));
-
-        frequencyTextBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                frequencyTextBoxActionPerformed(evt);
-            }
-        });
-        jPanel1.add(frequencyTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 230, 30));
-
-        jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel9.setText("Freaquency");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 120, 30));
-
-        typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select -", "Flood Sensor", "Traffic Sensor", "Bin Sensor" }));
-        jPanel1.add(typeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 230, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 120, 30));
 
         buttonGroup1.add(activeRadioButton);
         activeRadioButton.setText("Active");
-        jPanel1.add(activeRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
+        jPanel1.add(activeRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
 
         buttonGroup1.add(deactiveRadioButton);
         deactiveRadioButton.setText("Deactive");
-        jPanel1.add(deactiveRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
+        jPanel1.add(deactiveRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel10.setText("Add Monitor");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
+        jPanel1.add(intervalTextBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 230, 30));
+
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel11.setText("Interval");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 120, 30));
+
+        javax.swing.GroupLayout mapPanelLayout = new javax.swing.GroupLayout(mapPanel);
+        mapPanel.setLayout(mapPanelLayout);
+        mapPanelLayout.setHorizontalGroup(
+            mapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 360, Short.MAX_VALUE)
+        );
+        mapPanelLayout.setVerticalGroup(
+            mapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 170, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(mapPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 360, 170));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -200,10 +198,9 @@ public class AddMonitor extends javax.swing.JInternalFrame {
 
     public void clear(){
         idTextBox.setText("");
-        typeComboBox.setSelectedIndex(0);
-        DescriptionTextBox.setText("");
+        intervalTextBox1.setText("");
         buttonGroup1.clearSelection();
-        frequencyTextBox.setText("");      
+            
     }
     
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
@@ -215,48 +212,46 @@ public class AddMonitor extends javax.swing.JInternalFrame {
         else{
             status=false;
         }
-        Data data=new Data();
-        ArrayList<Sensor> allSensors = serialize.getAllSensors();
-
-
-        Sensor sr = new Sensor(idTextBox.getText(), typeComboBox.getSelectedItem().toString(), DescriptionTextBox.getText(), status, frequencyTextBox.getText(),data);
-        allSensors.add(sr);
-        serialize.write("sensor.txt", allSensors);
-        
-        JOptionPane.showMessageDialog(null,"Sensor Added Successfully");
-        
-        clear();
-
-
-
+        System.out.println("GUI.AddMonitor.addButtonMouseClickedxcxcvxc()");
+//        ArrayList<SensorStation> stat=serialize.getAllSensorStations();
+//        Data data= new Data();
+//        List<Double> coords=null;
+//        Sensor sensor =new Sensor(title, title, title, status, title, data);
+//        SensorMonitor monitor= new SensorMonitor(idTextBox.getText(), coords, status, 0, 0, 0, data, sensor, station);
+//        
+////        mother.removeSensorStation(globalStationId);
+//        station.addNewSensorMonitor(monitor);
+////        stat.add(station);
+////        boolean check=serialize.write("sensorstation.txt", stat);
+////        
+////        if(check){
+////            JOptionPane.showMessageDialog(null,"Sensor Monitor Added Successfully");
+////            clear();
+////        }
+////        else{
+////            JOptionPane.showMessageDialog(null,"Sensor Monitor Add Fail");
+////        }
     }//GEN-LAST:event_addButtonMouseClicked
-
-    private void frequencyTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frequencyTextBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_frequencyTextBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField DescriptionTextBox;
     private javax.swing.JRadioButton activeRadioButton;
     private javax.swing.JPanel addButton;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel clearButton;
     private javax.swing.JRadioButton deactiveRadioButton;
-    private javax.swing.JTextField frequencyTextBox;
     private javax.swing.JTextField idTextBox;
+    private javax.swing.JTextField intervalTextBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JComboBox<String> typeComboBox;
+    private javax.swing.JPanel mapPanel;
     // End of variables declaration//GEN-END:variables
 }

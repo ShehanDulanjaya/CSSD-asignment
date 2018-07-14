@@ -79,10 +79,11 @@ public class SensorStation implements Observer,Serializable{
         this.embllishedData=embllishedData;
     }
     
-    public void addNewSensorMonitor(SensorMonitor monitor){
+    public ArrayList<SensorMonitor> addNewSensorMonitor(SensorMonitor monitor){
        
-        sensorMonitors.add(monitor);
+        this.sensorMonitors.add(monitor);
         
+        return this.sensorMonitors;
     }
     
     public void removeSensorMonitor(SensorMonitor monitor){

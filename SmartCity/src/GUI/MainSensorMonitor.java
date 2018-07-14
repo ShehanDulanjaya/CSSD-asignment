@@ -11,7 +11,7 @@ import java.awt.Color;
 
 /**
  *
- * @author Akila Jayasinghe
+ * @author Akila Jaaaaaaaaaayasinghea
  */
 public class MainSensorMonitor extends javax.swing.JFrame {
 

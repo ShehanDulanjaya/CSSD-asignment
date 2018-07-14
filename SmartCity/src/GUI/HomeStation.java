@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Akila Jayasinghe
+ * @author Akila Jayaaasinghe
  */
 public class HomeStation extends javax.swing.JInternalFrame {
 public static String globalStationId;
@@ -280,6 +280,11 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
             JOptionPane.showMessageDialog(null,"Select Sensor Monitor from the Table");
         }
         else{
+            int x=sensorStationTable.getSelectedRow();
+            String id=(String) sensorStationTable.getValueAt(x, 0);
+            System.out.println("home"+id);
+            globalStationId=id;
+            
             MainSensorMonitor m =new MainSensorMonitor();
             m.setVisible(true);
         }
@@ -287,7 +292,7 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
     }//GEN-LAST:event_viewButtonMouseClicked
 
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
-        // TODO add your handling code here:
+        // TODO add your handling code here:fsf
         AddSensorStation a =new AddSensorStation();
             JDesktopPane n =this.getDesktopPane();
             n.removeAll();

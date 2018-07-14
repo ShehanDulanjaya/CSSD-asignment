@@ -6,9 +6,10 @@
 package GUI;
 
 import Classes.Mothership;
+import Classes.SensorMonitor;
 import Classes.SensorStation;
 import File.serialize;
-
+import static GUI.HomeStation.globalStationId;
 import java.awt.Color;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
@@ -22,7 +23,7 @@ public class HomeMonitor extends javax.swing.JInternalFrame {
     
 public static String globalMonitorId;
 Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());    
-SensorStation station = mother.findSensorStation(globalMonitorId);
+SensorStation station = mother.findSensorStation(globalStationId);
 
     /**
      * Creates new form Home
@@ -31,15 +32,19 @@ SensorStation station = mother.findSensorStation(globalMonitorId);
         initComponents();
 //       load();
         tableLoad();
+        
     }
     
     public void tableLoad(){
     DefaultTableModel model=(DefaultTableModel) monitorTable.getModel();
      model.setRowCount(0);
     
-                for(SensorStation station:mother.getSensorStation()){
-                        model.addRow(new Object[]{station.getStationID(),station.getName()});
+            if(station.getAllSensorMonitors()!=null){
+                for(SensorMonitor monitor:station.getAllSensorMonitors()){
+                   
+                        model.addRow(new Object[]{monitor.getSensorMonitorID()});
                     }  
+            }
     }
 //    dsasd
   
@@ -278,11 +283,11 @@ SensorStation station = mother.findSensorStation(globalMonitorId);
             MainSensor m =new MainSensor();
             m.setVisible(true);
         }
-            
+//            aaaa
     }//GEN-LAST:event_viewButtonMouseClicked
 
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
-        // TODO add your handling code here:
+        // TODO add yaour handling code here:
         AddMonitor a =new AddMonitor();
             JDesktopPane n =this.getDesktopPane();
             n.removeAll();
@@ -329,7 +334,7 @@ SensorStation station = mother.findSensorStation(globalMonitorId);
 
                if(check){
                             JOptionPane.showMessageDialog(null,"Sensor Station Deleted");
-                            tableLoad();
+//                  a  a      a  tableLoad();
                         }
                         else{
                             JOptionPane.showMessageDialog(null,"Sensor Station Delete Error");
