@@ -212,7 +212,7 @@ SensorStation station = mother.findSensorStation(globalStationId);
         else{
             status=false;
         }
-        System.out.println("GUI.AddMonitor.addButtonMouseClickedxcxcvxc()");
+        System.out.println("GUI.AddMoasnitor");
 //        ArrayList<SensorStation> stat=serialize.getAllSensorStations();
 //        Data data= new Data();
 //        List<Double> coords=null;
