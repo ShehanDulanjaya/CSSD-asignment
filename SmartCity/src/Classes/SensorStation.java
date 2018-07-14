@@ -92,8 +92,12 @@ public class SensorStation implements Observer,Serializable{
     }
     
     public ArrayList<SensorMonitor> getAllSensorMonitors(){
-        
+        if(this.sensorMonitors!=null){
         return this.sensorMonitors;
+        }
+        else{
+            return null;
+        }
     }
     
     public SensorMonitor getASensorMonitor(String id){
