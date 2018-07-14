@@ -143,7 +143,7 @@ public static ArrayList<SensorStation> getAllSensorStations(){
     
     public static ArrayList<SensorMonitor> readSensorMonitor(){
         try {
-            FileInputStream fil=new FileInputStream("sensormonitor.txt");
+            FileInputStream fil=new FileInputStream("clocksm.txt");
                      
                 if(fil.available()>0){
                     ObjectInputStream oo=new ObjectInputStream(fil);

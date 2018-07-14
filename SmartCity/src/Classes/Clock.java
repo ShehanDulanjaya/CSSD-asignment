@@ -1,24 +1,29 @@
 package Classes;
 
+import File.serialize;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-public class Clock extends Observable {
+import java.util.Timer;
+public class Clock extends Observable implements Serializable {
     
-    public List<SensorMonitor> observers;
+    public ArrayList<SensorMonitor> observers;
     public double notifyFrequncy;
     private Clock clock;
-
-    public Clock(double notifyFrequncy, Clock clock) {
-        this.notifyFrequncy = notifyFrequncy;
-        this.clock = clock;
-    }
+    private long wait;
+   private static final Clock instance = new Clock();
+   
+   public static Clock getInstance(){
+       return instance;
+   }
     
     public List<SensorMonitor> getObservers() {
         return observers;
     }
 
-    public void setObservers(List<SensorMonitor> observers) {
+    public void setObservers(ArrayList<SensorMonitor> observers) {
         this.observers = observers;
     }
 
@@ -40,11 +45,13 @@ public class Clock extends Observable {
         
     
     public void registerObserver(Observer o) {
-        this.observers.add((SensorMonitor) o);//add available sensor monitors
+        this.observers.add((SensorMonitor) o);
+        serialize.write("clocksm.txt", this.observers);//add available sensor monitors
     }
 
     public void unregisterObserver(Observer o) {
-        this.observers.remove((SensorMonitor)o);//remove sensor monitor from list
+        this.observers.remove((SensorMonitor)o);
+        serialize.write("clocksm.txt", this.observers);//remove sensor monitor from list
     }
     
     public void notifyObservers() {
@@ -56,15 +63,24 @@ public class Clock extends Observable {
     }
     
     private void trackTime(){
-        
+          long wait=5000;
+    Timer t=  new Timer();
+    t.schedule( 
+        new java.util.TimerTask() {
+            @Override
+            public void run() {
+               notifyObservers();
+                    
+            }
+        },0,wait
+            
+         
+);
     }
     
-    public void getInstance(){
-        
-    }
-    
-    public void waitForTime(){
-        
+  
+    public void waitForTime(long wait){
+        this.wait=wait;
     }
     
 }
