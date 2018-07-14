@@ -5,12 +5,14 @@
  */
 package GUI;
 
+import Classes.Location;
 import Classes.Mothership;
 import Classes.SensorMonitor;
 import Classes.SensorStation;
 import File.serialize;
 import static GUI.HomeStation.globalStationId;
 import java.awt.Color;
+import java.util.List;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -41,8 +43,12 @@ SensorStation station = mother.findSensorStation(globalStationId);
     
             if(station.getAllSensorMonitors()!=null){
                 for(SensorMonitor monitor:station.getAllSensorMonitors()){
-                   
-                        model.addRow(new Object[]{monitor.getSensorMonitorID()});
+                        List<Double> cords= monitor.getCoords();
+                        
+                        Location l =new Location(cords.get(0),cords.get(1));
+                        String s=l.toAdress();
+                        
+                        model.addRow(new Object[]{monitor.getSensorMonitorID(),s});
                     }  
             }
     }
@@ -309,7 +315,7 @@ SensorStation station = mother.findSensorStation(globalStationId);
             globalMonitorId=id;
 
 //        aa   a
-            UpdateMonitor u =new UpdateMonitor();
+            UpdateMointor u =new UpdateMointor();
             JDesktopPane n =this.getDesktopPane();
             n.removeAll();
             
