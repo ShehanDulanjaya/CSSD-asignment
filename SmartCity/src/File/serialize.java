@@ -142,21 +142,22 @@ public static ArrayList<SensorStation> getAllSensorStations(){
       }
     
     public static ArrayList<SensorMonitor> readSensorMonitor(){
-          try {
+        try {
             FileInputStream fil=new FileInputStream("sensormonitor.txt");
-            ObjectInputStream oo=new ObjectInputStream(fil);         
-    
-            ArrayList<SensorMonitor> sr = (ArrayList<SensorMonitor>) oo.readObject();
-            oo.close();
-            fil.close();
-               
-            //Sensor[] bo=sr.toArray(new Sensor[0]);
-            // for(Sensor sensor:sr){
-            // System.out.print(sensor.getSensorID());
-            // }
-             
-                return sr;
-            
+                     
+                if(fil.available()>0){
+                    ObjectInputStream oo=new ObjectInputStream(fil);
+                 ArrayList<SensorMonitor> sr = (ArrayList<SensorMonitor>) oo.readObject();
+                 oo.close();
+                 fil.close();
+                 return sr;
+                }
+                else{
+                     ArrayList<SensorMonitor>sr  = new ArrayList<>();
+
+                     fil.close();
+                     return sr;
+                }
             
         } catch (Exception e) {
             System.out.println("read "+ e);
@@ -164,7 +165,5 @@ public static ArrayList<SensorStation> getAllSensorStations(){
 
             
         return null;
-      }
-
 }
   

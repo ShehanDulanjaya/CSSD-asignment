@@ -19,7 +19,7 @@ import java.util.Observer;
 public class Mothership implements Observer,Serializable{
  
     private String ID;
-    private String name;
+    
     private ArrayList<SensorStation> sensorStation;
 
     public Mothership(String ID, ArrayList<SensorStation> sensorStation) {
