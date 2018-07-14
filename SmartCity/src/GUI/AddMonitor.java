@@ -212,25 +212,25 @@ SensorStation station = mother.findSensorStation(globalStationId);
         else{
             status=false;
         }
-        System.out.println("GUI.AddMoasnitor");
-//        ArrayList<SensorStation> stat=serialize.getAllSensorStations();
-//        Data data= new Data();
-//        List<Double> coords=null;
-//        Sensor sensor =new Sensor(title, title, title, status, title, data);
-//        SensorMonitor monitor= new SensorMonitor(idTextBox.getText(), coords, status, 0, 0, 0, data, sensor, station);
-//        
-////        mother.removeSensorStation(globalStationId);
-//        station.addNewSensorMonitor(monitor);
-////        stat.add(station);
-////        boolean check=serialize.write("sensorstation.txt", stat);
-////        
-////        if(check){
-////            JOptionPane.showMessageDialog(null,"Sensor Monitor Added Successfully");
-////            clear();
-////        }
-////        else{
-////            JOptionPane.showMessageDialog(null,"Sensor Monitor Add Fail");
-////        }
+        //System.out.println("GUI.AddMoasnitorkjkj");
+        ArrayList<SensorStation> stat=serialize.getAllSensorStations();
+        Data data= new Data();
+        List<Double> coords=null;
+        Sensor sensor =new Sensor(title, title, title, status, title, data);
+        SensorMonitor monitor= new SensorMonitor(idTextBox.getText(), coords, status, 0, 0, 0, data, sensor, station);
+        
+        mother.removeSensorStation(globalStationId);
+        station.addNewSensorMonitor(monitor);
+       boolean check= mother.addNewSensorStation(station);
+       
+        
+        if(check){
+            JOptionPane.showMessageDialog(null,"Sensor Monitor Added Successfully");
+            clear();
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Sensor Monitor Add Fail");
+        }
     }//GEN-LAST:event_addButtonMouseClicked
 
 
