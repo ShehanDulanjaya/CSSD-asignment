@@ -40,19 +40,31 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 public class UpdateMointor extends javax.swing.JInternalFrame {
 Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());    
 SensorStation station = mother.findSensorStation(globalStationId);
-
+SensorMonitor m=station.getASensorMonitor(globalMonitorId);
+ List<Double> coords= new ArrayList<Double>();
+String x[]=null;
+boolean select=false;
     /**
      * Creates new form Home
      */
     public UpdateMointor() {
 
         initComponents();
-      SensorMonitor m=station.getASensorMonitor(globalMonitorId);
+      
       idTextBox.setText(m.getSensorMonitorID());
       intervalTextBox2.setText(Long.toString(m.getIntereval()));
       if(m.getIsActive()){
-        
+        activeRadioButton.setSelected(true);
     }
+      else{
+          deactiveRadioButton.setSelected(true);
+      }
+      
+      coords=m.getCoords();
+//      
+      Location l =new Location(coords.get(0), coords.get(1));
+      String s=l.toAdress();
+      locationTextBox.setText(s);
       
        
     }
@@ -114,14 +126,16 @@ SensorStation station = mother.findSensorStation(globalStationId);
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Add Monitor");
+        jLabel4.setText("Update Monitor");
         addButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
-        jPanel1.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 130, -1));
+        jPanel1.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 150, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Sensor ID");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 120, 30));
+
+        idTextBox.setEditable(false);
         jPanel1.add(idTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 230, 30));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -137,7 +151,7 @@ SensorStation station = mother.findSensorStation(globalStationId);
         jPanel1.add(deactiveRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel10.setText("Add Monitor");
+        jLabel10.setText("Update Monitor");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
 
         locationTextBox.setEditable(false);
@@ -219,24 +233,26 @@ SensorStation station = mother.findSensorStation(globalStationId);
         else{
             status=false;
         }
-        //System.out.println("GUI.AddMoasnitorkjkj");
-        ArrayList<SensorStation> stat=serialize.getAllSensorStations();
-        Data data= new Data();
-        List<Double> coords= new ArrayList<Double>();
-        Sensor sensor =new Sensor(title, title, title, status, title, data);
-        SensorMonitor monitor= new SensorMonitor(idTextBox.getText(), coords, status, 0, 0, 0, data, sensor, station);
+       
+        if(select){
+            coords.set(0,Double.parseDouble(x[0]));
+            coords.set(1,Double.parseDouble(x[1]));
+        }
         
         mother.removeSensorStation(globalStationId);
-        station.addNewSensorMonitor(monitor);
+        station.removeSensorMonitor(m);
+        m.setCoords(coords);
+        m.setIsActive(status);
+        station.addNewSensorMonitor(m);
        boolean check= mother.addNewSensorStation(station);
        
         
         if(check){
-            JOptionPane.showMessageDialog(null,"Sensor Monitor Added Successfully");
+            JOptionPane.showMessageDialog(null,"Sensor Monitor Update Successfully");
             clear();
         }
         else{
-            JOptionPane.showMessageDialog(null,"Sensor Monitor Add Fail");
+            JOptionPane.showMessageDialog(null,"Sensor Monitor Update Fail");
         }
     }//GEN-LAST:event_addButtonMouseClicked
 
@@ -262,11 +278,12 @@ public void mapload(){
             public void mouseClicked(MouseEvent e) {
                         int y=JOptionPane.showConfirmDialog(null,"Add this Location ?","Location",JOptionPane.YES_NO_OPTION);
                         if(y==0){
-                            String x[]=readmap();
+                            x=readmap();
                             Location l =new Location(Double.parseDouble(x[0]), Double.parseDouble(x[1]));
                             String s=l.toAdress();
                             locationTextBox.setText(s);
                             m.dispose();
+                            select = true;
                         }
                         
             }

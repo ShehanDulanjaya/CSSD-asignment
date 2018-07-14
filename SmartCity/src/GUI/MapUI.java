@@ -12,6 +12,7 @@ import com.teamdev.jxbrowser.chromium.swing.BrowserView;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.Map;
+import java.util.UUID;
 import javax.swing.JFrame;
 
 
@@ -27,15 +28,17 @@ public class MapUI extends javax.swing.JFrame {
     public MapUI() {
         initComponents();
       
-        mapload();
-        String x[]=readmap();
-        System.out.println("x: "+ x[0]);
-        
-        System.out.println("y: "+ x[1]);
-        
-        Location l =new Location(Double.parseDouble(x[0]), Double.parseDouble(x[1]));
-        String s=l.toAdress();
-        System.out.println("add : " + s);
+//        mapload();
+//        String x[]=readmap();
+//        System.out.println("x: "+ x[0]);
+//        
+//        System.out.println("y: "+ x[1]);
+//        
+//        Location l =new Location(Double.parseDouble(x[0]), Double.parseDouble(x[1]));
+//        String s=l.toAdress();
+//        System.out.println("add : " + s);
+        String uniqueID = UUID.randomUUID().toString();
+            System.out.println("GUI.MapUI.mapload()" + uniqueID);
     }
     
 public void mapload(){
@@ -49,6 +52,7 @@ public void mapload(){
     //        m.setSize(720,480);
             jPanel1.setVisible(true);
 
+            
 
         browser.loadURL("http://localhost:4200/");
 }
