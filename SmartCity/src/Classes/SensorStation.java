@@ -6,6 +6,7 @@
 package Classes;
 
 import Classes.SensorMonitor;
+import File.serialize;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +78,34 @@ public class SensorStation implements Observer,Serializable{
     public void receiveSensorData(EmbllishedData embllishedData){
         this.embllishedData=embllishedData;
     }
+    
+    public void addNewSensorMonitor(SensorMonitor monitor){
+       
+        sensorMonitors.add(monitor);
+        
+    }
+    
+    public void removeSensorMonitor(SensorMonitor monitor){
+       
+        sensorMonitors.remove(monitor);
+        
+    }
+    
+    public ArrayList<SensorMonitor> getAllSensorMonitors(){
+        
+        return this.sensorMonitors;
+    }
+    
+    public SensorMonitor getASensorMonitor(String id){
+        for(SensorMonitor monitor:this.sensorMonitors){
+                if(id.equals(monitor.getSensorMonitorID())){
+                   
+                    return monitor;
+                }
+            }
+                        return null;
+    }
+    
     @Override
     public void update(Observable o, Object ob) {
          if(ob instanceof SensorMonitor){
