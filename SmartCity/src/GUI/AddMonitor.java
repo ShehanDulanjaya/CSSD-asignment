@@ -12,10 +12,17 @@ import Classes.SensorMonitor;
 import Classes.SensorStation;
 import File.serialize;
 import static GUI.HomeStation.globalStationId;
+import com.teamdev.jxbrowser.chromium.Browser;
+import com.teamdev.jxbrowser.chromium.swing.BrowserView;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -31,10 +38,17 @@ SensorStation station = mother.findSensorStation(globalStationId);
     public AddMonitor() {
 
         initComponents();
+       
+        javax.swing.plaf.InternalFrameUI ifu;
+        ifu = frame1.getUI();
         
-//        javax.swing.plaf.InternalFrameUI ifu;
-//        ifu = this.getUI();
-//        ((javax.swing.plaf.basic.BasicInternalFrameUI)ifu).setNorthPane(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)ifu).setSouthPane(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)ifu).setNorthPane(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)ifu).setWestPane(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)ifu).setEastPane(null);
+        
+        
+         mapload();
     }
 
     /**
@@ -63,7 +77,7 @@ SensorStation station = mother.findSensorStation(globalStationId);
         jLabel10 = new javax.swing.JLabel();
         intervalTextBox1 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        mapPanel = new javax.swing.JPanel();
+        frame1 = new javax.swing.JInternalFrame();
 
         setPreferredSize(new java.awt.Dimension(680, 480));
 
@@ -148,18 +162,20 @@ SensorStation station = mother.findSensorStation(globalStationId);
         jLabel11.setText("Interval");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 120, 30));
 
-        javax.swing.GroupLayout mapPanelLayout = new javax.swing.GroupLayout(mapPanel);
-        mapPanel.setLayout(mapPanelLayout);
-        mapPanelLayout.setHorizontalGroup(
-            mapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+        frame1.setVisible(true);
+
+        javax.swing.GroupLayout frame1Layout = new javax.swing.GroupLayout(frame1.getContentPane());
+        frame1.getContentPane().setLayout(frame1Layout);
+        frame1Layout.setHorizontalGroup(
+            frame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        mapPanelLayout.setVerticalGroup(
-            mapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 170, Short.MAX_VALUE)
+        frame1Layout.setVerticalGroup(
+            frame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel1.add(mapPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 360, 170));
+        jPanel1.add(frame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 560, 170));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -233,13 +249,26 @@ SensorStation station = mother.findSensorStation(globalStationId);
         }
     }//GEN-LAST:event_addButtonMouseClicked
 
+public void mapload(){
+Browser browser = new Browser();
+BrowserView view = new BrowserView(browser);
 
+frame1.setContentPane(view);
+        frame1.setSize(400, 400);
+        frame1.setVisible(true);
+
+
+
+ 
+browser.loadURL("http://localhost:4200/");
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton activeRadioButton;
     private javax.swing.JPanel addButton;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel clearButton;
     private javax.swing.JRadioButton deactiveRadioButton;
+    private javax.swing.JInternalFrame frame1;
     private javax.swing.JTextField idTextBox;
     private javax.swing.JTextField intervalTextBox1;
     private javax.swing.JLabel jLabel1;
@@ -252,6 +281,5 @@ SensorStation station = mother.findSensorStation(globalStationId);
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel mapPanel;
     // End of variables declaration//GEN-END:variables
 }
