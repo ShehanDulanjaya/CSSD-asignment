@@ -89,7 +89,7 @@ public class MainSensorMonitor extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Home");
+        jLabel3.setText("Station Home");
 
         javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
         homePanel.setLayout(homePanelLayout);
@@ -309,8 +309,8 @@ public class MainSensorMonitor extends javax.swing.JFrame {
 
     private void closeLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseClicked
         // TODO add your handling code here:
-//        System.exit(0);
-            this.dispose();
+        System.exit(0);
+//            this.dispose();
     }//GEN-LAST:event_closeLabelMouseClicked
 
     private void addSensorPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addSensorPanelMouseEntered

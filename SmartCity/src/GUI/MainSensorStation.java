@@ -262,8 +262,8 @@ public class MainSensorStation extends javax.swing.JFrame {
 
     private void closeLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseClicked
         // TODO add your handling code here:
-//        System.exit(0);
-            this.dispose();
+        System.exit(0);
+//            this.dispose();
     }//GEN-LAST:event_closeLabelMouseClicked
 
     private void addSensorPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addSensorPanelMouseEntered

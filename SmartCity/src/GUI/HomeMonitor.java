@@ -115,7 +115,7 @@ SensorStation station = mother.findSensorStation(globalStationId);
                 {null, null}
             },
             new String [] {
-                "Station Name", "Location"
+                "Monitor Id", "Location"
             }
         ));
         monitorTable.setGridColor(new java.awt.Color(255, 255, 255));
@@ -309,7 +309,7 @@ SensorStation station = mother.findSensorStation(globalStationId);
             globalMonitorId=id;
 
 //        aa   a
-            UpdateSensorStation u =new UpdateSensorStation();
+            UpdateMonitor u =new UpdateMonitor();
             JDesktopPane n =this.getDesktopPane();
             n.removeAll();
             
@@ -330,11 +330,17 @@ SensorStation station = mother.findSensorStation(globalStationId);
                 
                 int x=monitorTable.getSelectedRow();
                 String id=(String) monitorTable.getValueAt(x, 0);
-               boolean check= mother.removeSensorStation(id);
+                
+                SensorStation station = mother.findSensorStation(globalStationId);
+                mother.removeSensorStation(station.getStationID());
+                SensorMonitor mon = station.getASensorMonitor(id);
+                station.removeSensorMonitor(mon);
+                
+               boolean check= mother.addNewSensorStation(station);
 
                if(check){
                             JOptionPane.showMessageDialog(null,"Sensor Station Deleted");
-//                  a  a      a  tableLoad();
+                            tableLoad();
                         }
                         else{
                             JOptionPane.showMessageDialog(null,"Sensor Station Delete Error");
