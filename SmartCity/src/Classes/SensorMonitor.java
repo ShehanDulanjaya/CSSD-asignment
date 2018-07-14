@@ -149,10 +149,19 @@ public class SensorMonitor implements Observer,Serializable{
       return emb;
       
     }
-    public  boolean addNewSensor(String sensorID, String sensorType, String description, Boolean status, String frequency,Data data){
-
-        this.sensor = new Sensor(sensorID,sensorType,description,status,frequency,data);
-        boolean result=serialize.write("sensor.txt", this.sensor);
+    public  boolean addNewSensor(Sensor sensor){
+ 
+        ArrayList<Sensor> allSensors = serialize.getAllSensors();
+        allSensors.add(sensor);
+        boolean result=serialize.write("sensor.txt", allSensors);
+        return result;
+    }
+    
+    public  boolean removeSensor(Sensor sensor){
+ 
+        ArrayList<Sensor> allSensors = serialize.getAllSensors();
+        allSensors.remove(sensor);
+        boolean result=serialize.write("sensor.txt", allSensors);
         return result;
     }
     @Override
