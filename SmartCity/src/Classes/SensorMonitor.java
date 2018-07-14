@@ -25,13 +25,13 @@ public class SensorMonitor implements Observer,Serializable{
     private Boolean isActive;
     private long intereval;
     private SensorStation observers;
-    private Long lastReadingTime;
+    private long lastReadingTime;
    private Sensor sensor;
     public int readingsCount;
     public Data reading;
     public Location location;
 
-    public SensorMonitor(String sensorMonitorID, List<Double> coords, Boolean isActive, Long intereval, Long lastReadingTime, int readingsCount, Data reading,Sensor sensor,SensorStation observers) {
+    public SensorMonitor(String sensorMonitorID, List<Double> coords, Boolean isActive, long intereval, long lastReadingTime, int readingsCount, Data reading,Sensor sensor,SensorStation observers) {
         this.sensorMonitorID = sensorMonitorID;
         this.coords = coords;
         this.isActive = isActive;
@@ -72,11 +72,11 @@ public class SensorMonitor implements Observer,Serializable{
         this.isActive = isActive;
     }
 
-    public void setIntereval(Long intereval) {
+    public void setIntereval(long intereval) {
         this.intereval = intereval;
     }
 
-    public void setLastReadingTime(Long lastReadingTime) {
+    public void setLastReadingTime(long lastReadingTime) {
         this.lastReadingTime = lastReadingTime;
     }
 
@@ -100,11 +100,11 @@ public class SensorMonitor implements Observer,Serializable{
         return isActive;
     }
 
-    public Long getIntereval() {
+    public long getIntereval() {
         return intereval;
     }
 
-    public Long getLastReadingTime() {
+    public long getLastReadingTime() {
         return lastReadingTime;
     }
 
