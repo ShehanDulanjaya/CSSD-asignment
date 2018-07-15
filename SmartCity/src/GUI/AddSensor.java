@@ -5,9 +5,15 @@
  */
 package GUI;
 
+import Classes.Clock;
 import Classes.Data;
+import Classes.Mothership;
 import Classes.Sensor;
+import Classes.SensorMonitor;
+import Classes.SensorStation;
 import File.serialize;
+import static GUI.HomeMonitor.globalMonitorId;
+import static GUI.HomeStation.globalStationId;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -19,7 +25,12 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  * @author Akila Jayasinghe
  */
 public class AddSensor extends javax.swing.JInternalFrame {
+Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
 
+SensorStation station = mother.findSensorStation(globalStationId);
+SensorMonitor m=station.getASensorMonitor(globalMonitorId);
+
+Clock clock=Clock.getInstance();
     /**
      * Creates new form Home
      */
@@ -31,6 +42,7 @@ public class AddSensor extends javax.swing.JInternalFrame {
 //        javax.swing.plaf.InternalFrameUI ifu;
 //        ifu = this.getUI();
 //        ((javax.swing.plaf.basic.BasicInternalFrameUI)ifu).setNorthPane(null);
+System.out.println("GUI.AddSensor.<init>()"+ globalStationId);
     }
 
     /**
@@ -222,14 +234,21 @@ public class AddSensor extends javax.swing.JInternalFrame {
         Data data=new Data();
         ArrayList<Sensor> allSensors = serialize.getAllSensors();
 
-
+        
         Sensor sr = new Sensor(idTextBox.getText(), typeComboBox.getSelectedItem().toString(), DescriptionTextBox.getText(), status, frequencyTextBox.getText(),data);
-        allSensors.add(sr);
-        boolean check = serialize.write("sensor.txt", allSensors);
+        mother.removeSensorStation(globalStationId);
+        station.removeSensorMonitor(m);
+        m.setSensor(sr);
+        m.setCheckSensor(true);
+        clock.registerObserver(m);
+        station.addNewSensorMonitor(m);
+
+        boolean check = mother.addNewSensorStation(station);
         
         if(check){
             JOptionPane.showMessageDialog(null,"Sensor Added Successfully");
             clear();
+            
         }
         else{
             JOptionPane.showMessageDialog(null,"Sensor Add Fail");

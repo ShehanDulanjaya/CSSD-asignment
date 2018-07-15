@@ -7,15 +7,18 @@ package GUI;
 
 import Classes.Location;
 import Classes.Mothership;
+import Classes.Sensor;
 import Classes.SensorMonitor;
 import Classes.SensorStation;
 import File.serialize;
 import static GUI.HomeStation.globalStationId;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,7 +30,8 @@ public class HomeMonitor extends javax.swing.JInternalFrame {
 public static String globalMonitorId;
 Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());    
 SensorStation station = mother.findSensorStation(globalStationId);
-
+ArrayList<Sensor> allSensors = serialize.getAllSensors();
+JTable bindTable = new JTable();
     /**
      * Creates new form Home
      */
@@ -58,6 +62,7 @@ SensorStation station = mother.findSensorStation(globalStationId);
                         }
                         
                         model.addRow(new Object[]{monitor.getSensorMonitorID(),monitor.getName(),status,s});
+                        System.out.println("GUI.HomeMonitor.tableLoad()"+ monitor.getSensor().getSensorType());
                     }  
             }
     }
@@ -159,7 +164,7 @@ SensorStation station = mother.findSensorStation(globalStationId);
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("View Monitor");
+        jLabel2.setText("Bind Sensor");
         viewButton.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
         jPanel1.add(viewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, -1));
@@ -295,12 +300,51 @@ SensorStation station = mother.findSensorStation(globalStationId);
             JOptionPane.showMessageDialog(null,"Select Sensor Station from the Table");
         }
         else{
-            MainSensor m =new MainSensor();
-            m.setVisible(true);
+//            
+//            int x=monitorTable.getSelectedRow();
+//            String id=(String) monitorTable.getValueAt(x, 0);
+//            System.out.println("home"+id);
+//            
+//            JTable model=new JTable(popupTableLoad());
+//            
+//            String[] buttons = { "Bind", "Cancel"};
+//                
+//                int rc = JOptionPane.showOptionDialog(null,model, "Bind Sensor",
+//                                    JOptionPane.YES_NO_OPTION, 0, null, buttons, buttons[1]);
+//                
+//                if(rc==0){
+//                    
+//                }
+                int x=monitorTable.getSelectedRow();
+                String id=(String) monitorTable.getValueAt(x, 0);
+                System.out.println("home"+id);
+                globalMonitorId=id;
+                MainSensor m = new MainSensor();
+                m.setVisible(true);
+                this.dispose();
         }
 //            aaaa
     }//GEN-LAST:event_viewButtonMouseClicked
 
+    public DefaultTableModel popupTableLoad(){
+        DefaultTableModel model= (DefaultTableModel) bindTable.getModel();
+     model.setRowCount(0);
+                model.addColumn("Sensor Name");
+                for(Sensor sensor:allSensors){
+                    
+                    String status;
+                    if(sensor.getStatus()){
+                        status ="Active";
+                    }
+                    else{
+                        status = "Deactive";
+                    }
+                        model.addRow(new Object[]{sensor.getSensorID(),sensor.getSensorType(),sensor.getDescription(),status,sensor.getFrequency()});
+                    }  
+            
+            return model;
+    }
+    
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
         // TODO add yaour handling code here:
         AddMonitor a =new AddMonitor();

@@ -6,8 +6,13 @@
 package GUI;
 
 import Classes.Data;
+import Classes.Mothership;
 import Classes.Sensor;
+import Classes.SensorMonitor;
+import Classes.SensorStation;
 import File.serialize;
+import static GUI.HomeMonitor.globalMonitorId;
+import static GUI.HomeStation.globalStationId;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JDesktopPane;
@@ -20,9 +25,11 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  * @author Akila Jayasinghe
  */
 public class UpdateSensor extends JInternalFrame {
-    
-ArrayList<Sensor> allsensors = serialize.getAllSensors();
-Sensor s;
+Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
+SensorStation station = mother.findSensorStation(globalStationId);
+SensorMonitor m=station.getASensorMonitor(globalMonitorId);
+
+Sensor s=m.getSensor();;
 
     /**
      * Creates new form Home
@@ -31,11 +38,9 @@ Sensor s;
 
         initComponents();
         
-        String x =HomeSensor.globalSensorId;
         
-        s =findSensor(x, allsensors);
         
-        idTextBox.setText(x);
+        idTextBox.setText(s.getSensorID());
         typeComboBox.setSelectedItem(s.getSensorType());
         DescriptionTextBox.setText(s.getDescription());
         frequencyTextBox.setText(s.getFrequency());
@@ -45,18 +50,10 @@ Sensor s;
         }
         else{
             deactiveRadioButton.setSelected(true);
-        }
+//        }
     }
     
     
-    private static Sensor findSensor(String sensorId, ArrayList<Sensor> allsensors){
-        for(Sensor sensor:allsensors){
-                if(sensorId.equals(sensor.getSensorID())){
-                   
-                    return sensor;
-                }
-            }
-                        return null;
     }
 
     /**
@@ -190,13 +187,6 @@ Sensor s;
         evt.getComponent().setBackground(new Color(102, 48, 142));
     }//GEN-LAST:event_updateButtonMouseExited
 
-    public void clear(){
-        idTextBox.setText("");
-        typeComboBox.setSelectedIndex(0);
-        DescriptionTextBox.setText("");
-        buttonGroup1.clearSelection();
-        frequencyTextBox.setText("");      
-    }
     
     private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
         int y=JOptionPane.showConfirmDialog(null,"Do you really want to Update ?","Update",JOptionPane.YES_NO_OPTION);
@@ -209,13 +199,21 @@ Sensor s;
                 else{
                     status=false;
                 }
-
-                Data data = new Data();
-                Sensor sr = new Sensor(idTextBox.getText(), typeComboBox.getSelectedItem().toString(), DescriptionTextBox.getText(), status, frequencyTextBox.getText(),data);
-
-                    allsensors.remove(s);
-                    allsensors.add(sr);
-                    boolean check =serialize.write("sensor.txt", allsensors);
+//
+//                Data data = new Data();
+//                Sensor sr = new Sensor(idTextBox.getText(), typeComboBox.getSelectedItem().toString(), DescriptionTextBox.getText(), status, frequencyTextBox.getText(),data);
+                
+                mother.removeSensorStation(globalStationId);
+                station.removeSensorMonitor(m);
+                s.setDescription(DescriptionTextBox.getText());
+                s.setFrequency(frequencyTextBox.getText());
+                s.setSensorType(typeComboBox.getSelectedItem().toString());
+                s.setStatus(status);
+                m.setSensor(s);
+                station.addNewSensorMonitor(m);
+                
+                    
+                    boolean check =mother.addNewSensorStation(station);
 
                     if(check){
                         JOptionPane.showMessageDialog(null,"Sensor Updated");

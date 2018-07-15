@@ -31,6 +31,7 @@ public class SensorMonitor implements Observer,Serializable{
     public int readingsCount;
     public Data reading;
     public Location location;
+    private boolean checkSensor;
 
     public SensorMonitor(String sensorMonitorID, List<Double> coords, Boolean isActive, long intereval, long lastReadingTime, int readingsCount, Data reading,Sensor sensor,SensorStation observers,String name) {
         this.sensorMonitorID = sensorMonitorID;
@@ -43,6 +44,15 @@ public class SensorMonitor implements Observer,Serializable{
         this.sensor=sensor;
         this.observers=observers;
         this.name = name;
+        this.checkSensor=false;
+    }
+
+    public boolean isCheckSensor() {
+        return checkSensor;
+    }
+
+    public void setCheckSensor(boolean checkSensor) {
+        this.checkSensor = checkSensor;
     }
 
     public String getName() {
