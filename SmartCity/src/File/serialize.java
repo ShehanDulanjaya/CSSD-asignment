@@ -75,12 +75,8 @@ return false;
             FileInputStream fil=new FileInputStream(filename);
             ObjectInputStream oo=new ObjectInputStream(fil);
             Object obj= oo.readObject();
-            
             fil.close();
-            if(clas.getClass().equals(obj.getClass())){
-                clas = obj;
-                return true;
-            }
+            
             
         } catch (Exception e) {
             System.out.println("read "+ e);
