@@ -7,6 +7,8 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 
 /**
@@ -21,7 +23,8 @@ public class MainSensor extends javax.swing.JFrame {
     public MainSensor() {
         initComponents();
         homeUi();
-        
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         
     }
     
@@ -54,9 +57,6 @@ public class MainSensor extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         weatherLabel = new javax.swing.JLabel();
         cityLabel = new javax.swing.JLabel();
-        monitorPanel = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         sensorHomePanel = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -135,50 +135,6 @@ public class MainSensor extends javax.swing.JFrame {
         cityLabel.setText("City");
         sidePanel.add(cityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 90, -1));
 
-        monitorPanel.setBackground(new java.awt.Color(54, 43, 100));
-        monitorPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                monitorPanelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                monitorPanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                monitorPanelMouseExited(evt);
-            }
-        });
-
-        jLabel10.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Structural_25px.png")); // NOI18N
-
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Sensor Monitor");
-
-        javax.swing.GroupLayout monitorPanelLayout = new javax.swing.GroupLayout(monitorPanel);
-        monitorPanel.setLayout(monitorPanelLayout);
-        monitorPanelLayout.setHorizontalGroup(
-            monitorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(monitorPanelLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        monitorPanelLayout.setVerticalGroup(
-            monitorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, monitorPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, monitorPanelLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(jLabel11)
-                .addGap(20, 20, 20))
-        );
-
-        sidePanel.add(monitorPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 230, -1));
-
         sensorHomePanel.setBackground(new java.awt.Color(85, 65, 118));
         sensorHomePanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -221,7 +177,7 @@ public class MainSensor extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
-        sidePanel.add(sensorHomePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, -1, -1));
+        sidePanel.add(sensorHomePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, -1, -1));
 
         background.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 570));
 
@@ -322,23 +278,8 @@ public class MainSensor extends javax.swing.JFrame {
         m.setVisible(true);
     }//GEN-LAST:event_homePanelMouseClicked
 
-    private void monitorPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_monitorPanelMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_monitorPanelMouseEntered
-
-    private void monitorPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_monitorPanelMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_monitorPanelMouseExited
-
-    private void monitorPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_monitorPanelMouseClicked
-        // TODO add your handling code here:
-       MainSensorMonitor m =new MainSensorMonitor();
-       this.dispose();
-       m.setVisible(true);
-    }//GEN-LAST:event_monitorPanelMouseClicked
-
     private void sensorHomePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sensorHomePanelMouseClicked
-        // TODO add your handling code here:
+       homeUi();
     }//GEN-LAST:event_sensorHomePanelMouseClicked
 
     private void sensorHomePanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sensorHomePanelMouseEntered
@@ -394,8 +335,6 @@ public class MainSensor extends javax.swing.JFrame {
     private javax.swing.JLabel closeLabel;
     private javax.swing.JPanel homePanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -404,7 +343,6 @@ public class MainSensor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JPanel monitorPanel;
     private javax.swing.JPanel sensorHomePanel;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JPanel titlePanel;

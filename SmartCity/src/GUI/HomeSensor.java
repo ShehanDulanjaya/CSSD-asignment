@@ -29,7 +29,7 @@ ArrayList<Sensor> allSensors = serialize.getAllSensors();
     public HomeSensor() {
         initComponents();
 //       load();
-//        tableLoad();
+        tableLoad();
        
     }
     
@@ -266,7 +266,7 @@ ArrayList<Sensor> allSensors = serialize.getAllSensors();
             
             n.add(u);
             u.show();
-         //asd  as
+         
         }
                     
     }//GEN-LAST:event_updateButtonMouseClicked

@@ -225,12 +225,15 @@ public class AddSensor extends javax.swing.JInternalFrame {
 
         Sensor sr = new Sensor(idTextBox.getText(), typeComboBox.getSelectedItem().toString(), DescriptionTextBox.getText(), status, frequencyTextBox.getText(),data);
         allSensors.add(sr);
-        serialize.write("sensor.txt", allSensors);
+        boolean check = serialize.write("sensor.txt", allSensors);
         
-        JOptionPane.showMessageDialog(null,"Sensor Added Successfully");
-        
-        clear();
-
+        if(check){
+            JOptionPane.showMessageDialog(null,"Sensor Added Successfully");
+            clear();
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Sensor Add Fail");
+        }
 
 
     }//GEN-LAST:event_addButtonMouseClicked
