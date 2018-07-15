@@ -24,6 +24,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
@@ -47,7 +48,8 @@ String x[]=null;
     public AddMonitor() {
 
         initComponents();
-       
+       String uniqueID = UUID.randomUUID().toString();
+       idTextBox.setText(uniqueID);
   
        
     }
@@ -146,6 +148,8 @@ String x[]=null;
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Sensor ID");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 120, 30));
+
+        idTextBox.setEditable(false);
         jPanel1.add(idTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 230, 30));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -185,8 +189,6 @@ String x[]=null;
             }
         });
         setLocationButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Marker_30px.png")); // NOI18N
         setLocationButton.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 30, 50));
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));

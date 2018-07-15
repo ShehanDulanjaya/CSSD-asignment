@@ -10,6 +10,7 @@ import Classes.Sensor;
 import File.serialize;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.UUID;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -25,7 +26,8 @@ public class AddSensor extends javax.swing.JInternalFrame {
     public AddSensor() {
 
         initComponents();
-        
+         String uniqueID = UUID.randomUUID().toString();
+       idTextBox.setText(uniqueID);
 //        javax.swing.plaf.InternalFrameUI ifu;
 //        ifu = this.getUI();
 //        ((javax.swing.plaf.basic.BasicInternalFrameUI)ifu).setNorthPane(null);
@@ -85,8 +87,6 @@ public class AddSensor extends javax.swing.JInternalFrame {
             }
         });
         addButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Add New_25px.png")); // NOI18N
         addButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 50));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -111,8 +111,6 @@ public class AddSensor extends javax.swing.JInternalFrame {
             }
         });
         clearButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Broom_25px.png")); // NOI18N
         clearButton.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 30, 50));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
@@ -126,6 +124,8 @@ public class AddSensor extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Sensor ID");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 120, 30));
+
+        idTextBox.setEditable(false);
         jPanel1.add(idTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 230, 30));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N

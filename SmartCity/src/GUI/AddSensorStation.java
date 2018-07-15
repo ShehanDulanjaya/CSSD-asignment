@@ -12,6 +12,7 @@ import Classes.SensorStation;
 import File.serialize;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.UUID;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -27,7 +28,8 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
     public AddSensorStation() {
 
         initComponents();
-        
+         String uniqueID = UUID.randomUUID().toString();
+       idTextBox.setText(uniqueID);
 //        javax.swing.plaf.InternalFrameUI ifu;
 //        ifu = this.getUI();
 //        ((javax.swing.plaf.basic.BasicInternalFrameUI)ifu).setNorthPane(null);
@@ -85,8 +87,6 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
             }
         });
         addButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Add New_25px.png")); // NOI18N
         addButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 50));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -111,8 +111,6 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
             }
         });
         clearButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Broom_25px.png")); // NOI18N
         clearButton.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 30, 50));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
@@ -131,6 +129,8 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setText("Station Id");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 120, 30));
+
+        idTextBox.setEditable(false);
         jPanel1.add(idTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 230, 30));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
