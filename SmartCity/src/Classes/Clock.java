@@ -46,12 +46,12 @@ public class Clock extends Observable implements Serializable {
     
     public void registerObserver(Observer o) {
         this.observers.add((SensorMonitor) o);
-        serialize.write("clocksm.txt", this.observers);//add available sensor monitors
+       // serialize.write("clocksm.txt", this.observers);//add available sensor monitors
     }
 
     public void unregisterObserver(Observer o) {
         this.observers.remove((SensorMonitor)o);
-        serialize.write("clocksm.txt", this.observers);//remove sensor monitor from list
+       // serialize.write("clocksm.txt", this.observers);//remove sensor monitor from list
     }
     
     public void notifyObservers() {
