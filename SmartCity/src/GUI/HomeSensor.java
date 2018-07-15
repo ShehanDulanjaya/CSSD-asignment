@@ -42,11 +42,6 @@ ArrayList<Sensor> allSensors = serialize.getAllSensors();
                     }  
     }
     
-    private void load(){
-         javax.swing.plaf.InternalFrameUI ifu;
-        ifu = this.getUI();
-        ((javax.swing.plaf.basic.BasicInternalFrameUI)ifu).setNorthPane(null);
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
