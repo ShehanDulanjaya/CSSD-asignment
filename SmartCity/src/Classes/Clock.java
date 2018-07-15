@@ -7,16 +7,21 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Timer;
+
 public class Clock extends Observable implements Serializable {
     
     public ArrayList<SensorMonitor> observers;
     public double notifyFrequncy;
     private Clock clock;
-    private long wait;
+    private static long wait=5000;
    private static final Clock instance = new Clock();
+   Timer t;
+   private boolean hasStart=false;
    
    public static Clock getInstance(){
+       
        return instance;
+       
    }
     
     public List<SensorMonitor> getObservers() {
@@ -56,20 +61,24 @@ public class Clock extends Observable implements Serializable {
     
     public void notifyObservers() {
         for(Observer o:observers){
-            
+            System.out.println("Clock start Notify Monitors");
             o.update(this, o);
+            
         }
                
     }
     
-    private void trackTime(){
-          long wait=5000;
-    Timer t=  new Timer();
+    private  void trackTime(){
+//          long wait=5000;
+    
     t.schedule( 
         new java.util.TimerTask() {
             @Override
             public void run() {
-               notifyObservers();
+                hasStart=true;
+                System.out.println("Clock Running: " + wait);
+                notifyObservers();
+                    
                     
             }
         },0,wait
@@ -80,7 +89,16 @@ public class Clock extends Observable implements Serializable {
     
   
     public void waitForTime(long wait){
-        this.wait=wait;
+        if(hasStart){
+            t.cancel();
+            t.purge();
+            hasStart=false;
+        }
+        
+            this.wait=wait;
+            t=new Timer();
+            trackTime();
+        
     }
     
 }

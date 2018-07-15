@@ -30,7 +30,7 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
 SensorStation station = mother.findSensorStation(globalStationId);
 SensorMonitor m=station.getASensorMonitor(globalMonitorId);
 
-Clock clock=Clock.getInstance();
+
     /**
      * Creates new form Home
      */
@@ -215,7 +215,8 @@ System.out.println("GUI.AddSensor.<init>()"+ globalStationId);
     }//GEN-LAST:event_clearButtonMouseClicked
 
     public void clear(){
-        idTextBox.setText("");
+        String uniqueID = UUID.randomUUID().toString();
+       idTextBox.setText(uniqueID);
         typeComboBox.setSelectedIndex(0);
         DescriptionTextBox.setText("");
         buttonGroup1.clearSelection();
@@ -240,7 +241,7 @@ System.out.println("GUI.AddSensor.<init>()"+ globalStationId);
         station.removeSensorMonitor(m);
         m.setSensor(sr);
         m.setCheckSensor(true);
-        clock.registerObserver(m);
+//        clock.registerObserver(m);
         station.addNewSensorMonitor(m);
 
         boolean check = mother.addNewSensorStation(station);

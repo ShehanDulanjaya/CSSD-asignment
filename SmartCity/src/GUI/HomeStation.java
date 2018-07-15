@@ -5,11 +5,16 @@
  */
 package GUI;
 
+import Classes.Clock;
 import Classes.Mothership;
+import Classes.SensorMonitor;
 import Classes.SensorStation;
 import File.serialize;
+import static GUI.MainSensorStation.waitTime;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Observer;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -20,7 +25,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class HomeStation extends javax.swing.JInternalFrame {
 public static String globalStationId;
-Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());    
+Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
+
     /**
      * Creates new form Home
      */
@@ -28,7 +34,9 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
         initComponents();
 //       load();
         tableLoad();
+       
     }
+ 
     
     public void tableLoad(){
     DefaultTableModel model=(DefaultTableModel) sensorStationTable.getModel();
@@ -282,7 +290,7 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
         else{
             int x=sensorStationTable.getSelectedRow();
             String id=(String) sensorStationTable.getValueAt(x, 0);
-            System.out.println("home"+id);
+         
             globalStationId=id;
             
             MainSensorMonitor m =new MainSensorMonitor();

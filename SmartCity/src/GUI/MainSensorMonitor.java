@@ -5,10 +5,16 @@
  */
 package GUI;
 
+import Classes.Clock;
+import Classes.SensorMonitor;
+import Classes.SensorStation;
+import File.serialize;
+import static GUI.MainSensorStation.waitTime;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 
 
 /**
@@ -21,10 +27,14 @@ public class MainSensorMonitor extends javax.swing.JFrame {
      * Creates new form AddSensor
      */
     public MainSensorMonitor() {
+        
         initComponents();
+        waitTimeTextBox.setText(Long.toString(waitTime));
         homeUi();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        Clock clock=Clock.getInstance();
+        clock.waitForTime(waitTime);
     }
     
     public void homeUi(){
@@ -35,6 +45,8 @@ public class MainSensorMonitor extends javax.swing.JFrame {
         bodyPane.add(h);
 
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,6 +70,11 @@ public class MainSensorMonitor extends javax.swing.JFrame {
         monitorHomePanel = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        waitTimePanel = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        waitTimeTextBox = new javax.swing.JTextField();
+        waitTimeButton = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         topPanel = new javax.swing.JPanel();
         closeLabel = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -177,6 +194,62 @@ public class MainSensorMonitor extends javax.swing.JFrame {
 
         sidePanel.add(monitorHomePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 230, -1));
 
+        waitTimePanel.setOpaque(false);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Wait Time");
+
+        waitTimeTextBox.setText("10000");
+        waitTimeTextBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                waitTimeTextBoxActionPerformed(evt);
+            }
+        });
+
+        waitTimeButton.setBackground(new java.awt.Color(102, 0, 102));
+        waitTimeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                waitTimeButtonMouseClicked(evt);
+            }
+        });
+        waitTimeButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Set Wait Time");
+        waitTimeButton.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        javax.swing.GroupLayout waitTimePanelLayout = new javax.swing.GroupLayout(waitTimePanel);
+        waitTimePanel.setLayout(waitTimePanelLayout);
+        waitTimePanelLayout.setHorizontalGroup(
+            waitTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(waitTimePanelLayout.createSequentialGroup()
+                .addGroup(waitTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(waitTimePanelLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(waitTimeTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(waitTimePanelLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(waitTimeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        waitTimePanelLayout.setVerticalGroup(
+            waitTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(waitTimePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(waitTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(waitTimeTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(waitTimeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        sidePanel.add(waitTimePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 230, -1));
+
         background.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 570));
 
         topPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -289,6 +362,17 @@ public class MainSensorMonitor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_monitorHomePanelMouseExited
 
+    private void waitTimeTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_waitTimeTextBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_waitTimeTextBoxActionPerformed
+
+    private void waitTimeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_waitTimeButtonMouseClicked
+        // TODO add your handling code here:
+        waitTime = Long.parseLong(waitTimeTextBox.getText());
+        Clock clock=Clock.getInstance();
+        clock.waitForTime(waitTime);
+    }//GEN-LAST:event_waitTimeButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -341,11 +425,16 @@ public class MainSensorMonitor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel monitorHomePanel;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JPanel titlePanel;
     private javax.swing.JPanel topPanel;
+    private javax.swing.JPanel waitTimeButton;
+    private javax.swing.JPanel waitTimePanel;
+    private javax.swing.JTextField waitTimeTextBox;
     private javax.swing.JLabel weatherLabel;
     // End of variables declaration//GEN-END:variables
 }

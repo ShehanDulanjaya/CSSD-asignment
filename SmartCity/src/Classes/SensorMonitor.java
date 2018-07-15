@@ -106,6 +106,7 @@ public class SensorMonitor implements Observer,Serializable{
 
     public void setReading(Data reading) {
         this.reading = reading;
+        notifyObservers(embellishData());
     }
 
     public String getSensorMonitorID() {
@@ -137,7 +138,12 @@ public class SensorMonitor implements Observer,Serializable{
     }
     
     public void doTick(){
-        
+         System.out.println("Sensor Monitor Do tick");
+        Data data = new Data();
+        sensor.setData(data);
+        setReading(data);
+//        setLocation(location);
+       
     }
     
     public void setLocation(Location location){
@@ -196,8 +202,9 @@ public class SensorMonitor implements Observer,Serializable{
     }
     
     
-    public void notifyObservers() {
-        observers.update(null,embellishData());
+    public void notifyObservers(EmbllishedData emb) {
+        System.out.println("Notify Sensor Staion");
+        observers.update(null,emb);
         
     }
     

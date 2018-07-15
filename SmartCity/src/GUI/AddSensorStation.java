@@ -173,7 +173,8 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
 
     public void clear(){
         nameTextBox.setText("");
-        idTextBox.setText("");
+        String uniqueID = UUID.randomUUID().toString();
+       idTextBox.setText(uniqueID);
     }
     
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked

@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import Classes.Clock;
 import Classes.Location;
 import Classes.Mothership;
 import Classes.Sensor;
@@ -62,7 +63,7 @@ JTable bindTable = new JTable();
                         }
                         
                         model.addRow(new Object[]{monitor.getSensorMonitorID(),monitor.getName(),status,s});
-                        System.out.println("GUI.HomeMonitor.tableLoad()"+ monitor.getSensor().getSensorType());
+                       
                     }  
             }
     }
@@ -317,7 +318,7 @@ JTable bindTable = new JTable();
 //                }
                 int x=monitorTable.getSelectedRow();
                 String id=(String) monitorTable.getValueAt(x, 0);
-                System.out.println("home"+id);
+                
                 globalMonitorId=id;
                 MainSensor m = new MainSensor();
                 m.setVisible(true);

@@ -208,7 +208,7 @@ String x[]=null;
         jPanel1.add(nameTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 230, 30));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel2.setText("Sensor Name");
+        jLabel2.setText("Monitor Name");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 120, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -247,7 +247,8 @@ String x[]=null;
     }//GEN-LAST:event_clearButtonMouseClicked
 
     public void clear(){
-        idTextBox.setText("");
+        String uniqueID = UUID.randomUUID().toString();
+       idTextBox.setText(uniqueID);
         locationTextBox.setText("");
         intervalTextBox2.setText("");
         buttonGroup1.clearSelection();
