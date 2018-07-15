@@ -23,4 +23,29 @@ router.post('/',(req,res,next)=>{
 
 })
 
+router.get('/',(req,res,next)=>{
+
+    readline = require('readline');
+
+var rd = readline.createInterface({
+    input: fs.createReadStream('D:/Github/CSSD-asignment/location.txt'),
+    //output: process.stdout,
+    console: false
+});
+
+rd.on('line', function(line) {
+    console.log(line);
+    var str=""+line;
+    var arr=str.split("/");
+    
+    res.status(200).json({
+        message: "written success",
+        latitude: arr[0],
+        longitude: arr[1]
+
+    });
+});
+    
+
+})
 module.exports = router;

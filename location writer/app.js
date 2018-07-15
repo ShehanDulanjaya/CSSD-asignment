@@ -22,4 +22,5 @@ app.use((req, res, next) => {
     next();
   });
 app.use('/location',locationroute);
+
 module.exports = app;
