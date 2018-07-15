@@ -65,6 +65,7 @@ boolean select=false;
       Location l =new Location(coords.get(0), coords.get(1));
       String s=l.toAdress();
       locationTextBox.setText(s);
+      nameTextBox.setText(m.getName());
       
        
     }
@@ -81,7 +82,7 @@ boolean select=false;
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        addButton = new javax.swing.JPanel();
+        updateButton = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -97,6 +98,8 @@ boolean select=false;
         jLabel9 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         intervalTextBox2 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        nameTextBox = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(680, 480));
 
@@ -107,29 +110,29 @@ boolean select=false;
         jLabel15.setText("A step towards Smart Sri Lanka");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 450, 171, -1));
 
-        addButton.setBackground(new java.awt.Color(102, 48, 142));
-        addButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        addButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        updateButton.setBackground(new java.awt.Color(102, 48, 142));
+        updateButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        updateButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addButtonMouseClicked(evt);
+                updateButtonMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                addButtonMouseEntered(evt);
+                updateButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                addButtonMouseExited(evt);
+                updateButtonMouseExited(evt);
             }
         });
-        addButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        addButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 50));
+        updateButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        updateButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 50));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Update Monitor");
-        addButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        updateButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
-        jPanel1.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 150, -1));
+        jPanel1.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 150, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Sensor ID");
@@ -140,26 +143,26 @@ boolean select=false;
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel5.setText("Status");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 120, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 120, 30));
 
         buttonGroup1.add(activeRadioButton);
         activeRadioButton.setText("Active");
-        jPanel1.add(activeRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
+        jPanel1.add(activeRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, -1, -1));
 
         buttonGroup1.add(deactiveRadioButton);
         deactiveRadioButton.setText("Deactive");
-        jPanel1.add(deactiveRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, -1, -1));
+        jPanel1.add(deactiveRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel10.setText("Update Monitor");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
 
         locationTextBox.setEditable(false);
-        jPanel1.add(locationTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 230, 30));
+        jPanel1.add(locationTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 230, 30));
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel11.setText("Location");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 120, 30));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 120, 30));
 
         setLocationButton.setBackground(new java.awt.Color(102, 81, 181));
         setLocationButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
@@ -185,14 +188,19 @@ boolean select=false;
         jLabel9.setText("Select Location");
         setLocationButton.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
 
-        jPanel1.add(setLocationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 230, 50));
+        jPanel1.add(setLocationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 230, 50));
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel12.setText("Interval");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 120, 30));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 120, 30));
 
         intervalTextBox2.setText("0");
-        jPanel1.add(intervalTextBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 230, 30));
+        jPanel1.add(intervalTextBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 230, 30));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel2.setText("Sensor Name");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 120, 30));
+        jPanel1.add(nameTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 230, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -208,13 +216,13 @@ boolean select=false;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseEntered
+    private void updateButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseEntered
         evt.getComponent().setBackground(new Color(80, 80, 125));
-    }//GEN-LAST:event_addButtonMouseEntered
+    }//GEN-LAST:event_updateButtonMouseEntered
 
-    private void addButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseExited
+    private void updateButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseExited
         evt.getComponent().setBackground(new Color(102, 48, 142));
-    }//GEN-LAST:event_addButtonMouseExited
+    }//GEN-LAST:event_updateButtonMouseExited
 
     public void clear(){
         idTextBox.setText("");
@@ -224,7 +232,7 @@ boolean select=false;
             
     }
     
-    private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
+    private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
         
         Boolean status;
         if(activeRadioButton.isSelected()){
@@ -243,18 +251,19 @@ boolean select=false;
         station.removeSensorMonitor(m);
         m.setCoords(coords);
         m.setIsActive(status);
+        m.setName(nameTextBox.getText());
         station.addNewSensorMonitor(m);
        boolean check= mother.addNewSensorStation(station);
        
         
         if(check){
             JOptionPane.showMessageDialog(null,"Sensor Monitor Update Successfully");
-            clear();
+            
         }
         else{
             JOptionPane.showMessageDialog(null,"Sensor Monitor Update Fail");
         }
-    }//GEN-LAST:event_addButtonMouseClicked
+    }//GEN-LAST:event_updateButtonMouseClicked
 
     private void setLocationButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setLocationButtonMouseClicked
         // TODO add your handling code here:
@@ -301,7 +310,6 @@ public void mapload(){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton activeRadioButton;
-    private javax.swing.JPanel addButton;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton deactiveRadioButton;
     private javax.swing.JTextField idTextBox;
@@ -311,6 +319,7 @@ public void mapload(){
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -318,6 +327,8 @@ public void mapload(){
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField locationTextBox;
+    private javax.swing.JTextField nameTextBox;
     private javax.swing.JPanel setLocationButton;
+    private javax.swing.JPanel updateButton;
     // End of variables declaration//GEN-END:variables
 }

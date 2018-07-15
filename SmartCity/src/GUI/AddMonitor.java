@@ -83,6 +83,8 @@ String x[]=null;
         jLabel9 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         intervalTextBox2 = new javax.swing.JTextField();
+        nameTextBox = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(680, 480));
 
@@ -148,26 +150,26 @@ String x[]=null;
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel5.setText("Status");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 120, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 120, 30));
 
         buttonGroup1.add(activeRadioButton);
         activeRadioButton.setText("Active");
-        jPanel1.add(activeRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
+        jPanel1.add(activeRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, -1, -1));
 
         buttonGroup1.add(deactiveRadioButton);
         deactiveRadioButton.setText("Deactive");
-        jPanel1.add(deactiveRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, -1, -1));
+        jPanel1.add(deactiveRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel10.setText("Add Monitor");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
 
         locationTextBox.setEditable(false);
-        jPanel1.add(locationTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 230, 30));
+        jPanel1.add(locationTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 230, 30));
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel11.setText("Location");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 120, 30));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 120, 30));
 
         setLocationButton.setBackground(new java.awt.Color(102, 81, 181));
         setLocationButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
@@ -193,14 +195,19 @@ String x[]=null;
         jLabel9.setText("Select Location");
         setLocationButton.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
 
-        jPanel1.add(setLocationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 230, 50));
+        jPanel1.add(setLocationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 230, 50));
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel12.setText("Interval");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 120, 30));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 120, 30));
 
         intervalTextBox2.setText("0");
-        jPanel1.add(intervalTextBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 230, 30));
+        jPanel1.add(intervalTextBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 230, 30));
+        jPanel1.add(nameTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 230, 30));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel2.setText("Sensor Name");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 120, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -242,6 +249,7 @@ String x[]=null;
         locationTextBox.setText("");
         intervalTextBox2.setText("");
         buttonGroup1.clearSelection();
+        nameTextBox.setText("");
             
     }
     
@@ -263,7 +271,7 @@ String x[]=null;
         coords.add(Double.parseDouble(x[1]));
         
         Sensor sensor =new Sensor(title, title, title, status, title, data);
-        SensorMonitor monitor= new SensorMonitor(idTextBox.getText(), coords, status, 0, 0, 0, data, sensor, station);
+        SensorMonitor monitor= new SensorMonitor(idTextBox.getText(), coords, status, 0, 0, 0, data, sensor, station,nameTextBox.getText());
         
         mother.removeSensorStation(globalStationId);
         station.addNewSensorMonitor(monitor);
@@ -334,6 +342,7 @@ public void mapload(){
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -343,6 +352,7 @@ public void mapload(){
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField locationTextBox;
+    private javax.swing.JTextField nameTextBox;
     private javax.swing.JPanel setLocationButton;
     // End of variables declaration//GEN-END:variables
 }

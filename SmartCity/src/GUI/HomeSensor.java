@@ -38,7 +38,15 @@ ArrayList<Sensor> allSensors = serialize.getAllSensors();
      model.setRowCount(0);
     
                 for(Sensor sensor:allSensors){
-                        model.addRow(new Object[]{sensor.getSensorID(),sensor.getSensorType(),sensor.getDescription(),sensor.getStatus(),sensor.getFrequency()});
+                    
+                    String status;
+                    if(sensor.getStatus()){
+                        status ="Active";
+                    }
+                    else{
+                        status = "Deactive";
+                    }
+                        model.addRow(new Object[]{sensor.getSensorID(),sensor.getSensorType(),sensor.getDescription(),status,sensor.getFrequency()});
                     }  
     }
     

@@ -49,7 +49,15 @@ SensorStation station = mother.findSensorStation(globalStationId);
                         Location l =new Location(cords.get(0),cords.get(1));
                         String s=l.toAdress();
                         
-                        model.addRow(new Object[]{monitor.getSensorMonitorID(),s});
+                        String status;
+                        if(monitor.getIsActive()){
+                            status ="Active";
+                        }
+                        else{
+                            status = "Deactive";
+                        }
+                        
+                        model.addRow(new Object[]{monitor.getSensorMonitorID(),monitor.getName(),status,s});
                     }  
             }
     }
@@ -100,29 +108,29 @@ SensorStation station = mother.findSensorStation(globalStationId);
 
         monitorTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Monitor Id", "Location"
+                "Monitor Id", "Monitor Name", "Status", "Location"
             }
         ));
         monitorTable.setGridColor(new java.awt.Color(255, 255, 255));

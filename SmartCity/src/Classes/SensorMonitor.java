@@ -27,11 +27,12 @@ public class SensorMonitor implements Observer,Serializable{
     private SensorStation observers;
     private long lastReadingTime;
    private Sensor sensor;
+    private String name;
     public int readingsCount;
     public Data reading;
     public Location location;
 
-    public SensorMonitor(String sensorMonitorID, List<Double> coords, Boolean isActive, long intereval, long lastReadingTime, int readingsCount, Data reading,Sensor sensor,SensorStation observers) {
+    public SensorMonitor(String sensorMonitorID, List<Double> coords, Boolean isActive, long intereval, long lastReadingTime, int readingsCount, Data reading,Sensor sensor,SensorStation observers,String name) {
         this.sensorMonitorID = sensorMonitorID;
         this.coords = coords;
         this.isActive = isActive;
@@ -41,6 +42,15 @@ public class SensorMonitor implements Observer,Serializable{
         this.reading = reading;
         this.sensor=sensor;
         this.observers=observers;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public SensorStation getObservers() {
