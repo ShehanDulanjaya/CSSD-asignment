@@ -79,7 +79,7 @@ return false;
             
             
         } catch (Exception e) {
-            System.out.println("read "+ e);
+            System.out.println("Serialization read error: "+ e);
         }
 
             
