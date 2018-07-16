@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutes } from './app.routes.service';
 import { DirectionComponent } from './direction/direction.component';
 import { PickerComponent } from './picker/picker.component';
+import { AgmDirectionModule } from 'agm-direction'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PickerComponent } from './picker/picker.component';
     RouterModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCCu1RHF_poxJ-UnzJIessLJ_2CMLlyPI8'
-    })
+    }),
+    AgmDirectionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
