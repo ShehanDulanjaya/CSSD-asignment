@@ -138,12 +138,14 @@ public class SensorMonitor implements Observer,Serializable{
     }
     
     public void doTick(){
-         
+         ArrayList<Sensor> allSensors = serialize.getAllSensors();
         Data data = new Data();
         System.out.println("Sensor Monitor Do tick");
+        removeSensor(sensor);
         sensor.setData(data);
         sensor.store(data);
-        serialize.write("sensor.txt", sensor);
+        addNewSensor(sensor);
+       
         setReading(data);
 //        setLocation(location);
        
@@ -203,7 +205,16 @@ public class SensorMonitor implements Observer,Serializable{
         
         
     }
-    
+     public Sensor findSensor(String sensorId){
+          ArrayList<Sensor> allSensors = serialize.getAllSensors();
+        for(Sensor sensor:allSensors){
+                if(sensorId.equals(sensor.getSensorID())){
+                   
+                    return sensor;
+                }
+            }
+                        return null;
+    }
     
     public void notifyObservers(EmbllishedData emb) {
         System.out.println("Notify Sensor Staion");
