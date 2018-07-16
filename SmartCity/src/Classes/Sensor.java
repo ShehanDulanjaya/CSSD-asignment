@@ -11,14 +11,26 @@ public class Sensor implements Serializable{
     private Boolean status;
     private String frequency;
     private Data data;
+    private ArrayList<Data> store;
+    private String monitorName;
 
-    public Sensor(String sensorID, String sensorType, String description, Boolean status, String frequency,Data data) {
+    public Sensor(String sensorID, String sensorType, String description, Boolean status, String frequency,Data data,String monitorName) {
         this.sensorID = sensorID;
         this.sensorType = sensorType;
         this.description = description;
         this.status = status;
         this.frequency = frequency;
         this.data=data;
+        this.monitorName=monitorName;
+        this.store=new ArrayList<>();
+    }
+
+    public String getMonitorName() {
+        return monitorName;
+    }
+
+    public void setMonitorName(String monitorName) {
+        this.monitorName = monitorName;
     }
 
     public Data getData() {
@@ -29,8 +41,15 @@ public class Sensor implements Serializable{
         this.data = data;
     }
 
+    public void store(Data data){
+        this.store.add(data);
+    }
     
-
+    public ArrayList<Data> getStore(){
+        
+    return this.store;
+    }
+    
     public String getSensorType() {
         return sensorType;
     }

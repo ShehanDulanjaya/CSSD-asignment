@@ -27,3 +27,5 @@ SmartCity/nbproject/project.properties
 SmartCity/src/GUI/ViewSensor.form
 SmartCity/src/GUI/ViewSensor.java
 SmartCity/src/GUI/ViewSensor.java
+SmartCity/sensor.txt
+SmartCity/sensorstation.txt

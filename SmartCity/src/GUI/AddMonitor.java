@@ -273,7 +273,7 @@ String x[]=null;
         coords.add(Double.parseDouble(x[0]));
         coords.add(Double.parseDouble(x[1]));
         
-        Sensor sensor =new Sensor(title, title, title, status, title, data);
+        Sensor sensor =new Sensor(title, title, title, status, title, data,nameTextBox.getText());
         SensorMonitor monitor= new SensorMonitor(idTextBox.getText(), coords, status, 0, 0, 0, data, sensor, station,nameTextBox.getText());
         
         mother.removeSensorStation(globalStationId);
