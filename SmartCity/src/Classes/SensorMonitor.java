@@ -138,8 +138,9 @@ public class SensorMonitor implements Observer,Serializable{
     }
     
     public void doTick(){
-         System.out.println("Sensor Monitor Do tick");
+         
         Data data = new Data();
+        System.out.println("Sensor Monitor Do tick");
         sensor.setData(data);
         sensor.store(data);
         serialize.write("sensor.txt", sensor.getStore());

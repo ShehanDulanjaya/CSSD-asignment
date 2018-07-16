@@ -115,7 +115,8 @@ public class SensorStation implements Observer,Serializable{
     public void update(Observable o, Object ob) {
          if(ob instanceof EmbllishedData){
              receiveSensorData((EmbllishedData) ob);
-             System.out.println("Sensor Station Data Recieved: " + ((EmbllishedData) ob).getData().getReadings());
+             System.out.println("Sensor Station Data Recieved: " + ((EmbllishedData) ob).getData().getReadings()+" "+
+                     ((EmbllishedData) ob).getData().getDateTime());
          }
         
     }
