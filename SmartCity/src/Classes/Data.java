@@ -18,15 +18,16 @@ import java.util.Random;
  */
 public class Data implements Serializable{
        private Double readings;
-       DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+       DateFormat df = new SimpleDateFormat("dd/MM/yy                                 HH:mm:ss");
        private Date dateobj; 
     private static DecimalFormat df2 = new DecimalFormat("0.##");
    
     public Data() {
+        setDate();
     }
     
      public String getReadings() {
-        setDate();
+        
         this.readings = new Random().nextDouble();		
         return df2.format(readings);
     }

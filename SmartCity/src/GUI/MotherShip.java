@@ -159,6 +159,9 @@ public static long waitTime=10000;
 
         jPanel2.setBackground(new java.awt.Color(102, 0, 102));
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel2MouseEntered(evt);
             }
@@ -170,7 +173,7 @@ public static long waitTime=10000;
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("View Data");
+        jLabel3.setText("Route Finder");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -356,6 +359,13 @@ public static long waitTime=10000;
         v.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        // TODO add your handling code here:
+        MainEmergency m = new MainEmergency();
+        m.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel2MouseClicked
 
     
     /**

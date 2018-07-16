@@ -141,7 +141,7 @@ public class SensorMonitor implements Observer,Serializable{
          ArrayList<Sensor> allSensors = serialize.getAllSensors();
         Data data = new Data();
         System.out.println("Sensor Monitor Do tick");
-        removeSensor(sensor);
+        removeSensor(sensor.getSensorID());
         sensor.setData(data);
         sensor.store(data);
         addNewSensor(sensor);
@@ -188,13 +188,21 @@ public class SensorMonitor implements Observer,Serializable{
         return result;
     }
     
-    public  boolean removeSensor(Sensor sensor){
+    public  boolean removeSensor(String sensorId){
  
         ArrayList<Sensor> allSensors = serialize.getAllSensors();
-        allSensors.remove(sensor);
-        boolean result=serialize.write("sensor.txt", allSensors);
-        return result;
+        for(Sensor sensor:allSensors){
+                if(sensorId.equals(sensor.getSensorID())){
+                   
+                    allSensors.remove(sensor);
+                    boolean result=serialize.write("sensor.txt", allSensors);
+                    return result;
+                }
+            }
+        return false;
+        
     }
+    
     @Override
     public void update(Observable o, Object ob) {
          if(ob instanceof SensorMonitor){

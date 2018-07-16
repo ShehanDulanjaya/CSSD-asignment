@@ -205,7 +205,7 @@ Sensor s=m.getSensor();;
                 
                 mother.removeSensorStation(globalStationId);
                 station.removeSensorMonitor(m);
-                m.removeSensor(s);
+                m.removeSensor(s.getSensorID());
                 
                 s.setDescription(DescriptionTextBox.getText());
                 s.setFrequency(frequencyTextBox.getText());

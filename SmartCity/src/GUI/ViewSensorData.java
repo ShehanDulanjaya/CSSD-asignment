@@ -6,10 +6,13 @@
 package GUI;
 
 
+import Classes.Data;
 import Classes.Sensor;
 
 import File.serialize;
-import java.awt.Color;
+import static GUI.HomeViewData.globalSensorId;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,7 +27,7 @@ public class ViewSensorData extends javax.swing.JInternalFrame {
     public ViewSensorData() {
         initComponents();
         
-//        tableLoad();
+        tableLoad();
         
     }
  
@@ -32,13 +35,36 @@ public class ViewSensorData extends javax.swing.JInternalFrame {
     public void tableLoad(){
     DefaultTableModel model=(DefaultTableModel) dataTable.getModel();
      model.setRowCount(0);
-    
-                for(Sensor sensor:serialize.getAllSensors()){
+                ArrayList<Data> data=new ArrayList<>();
+               
+                Sensor sensor=findSensor(globalSensorId);
+                        data=sensor.getStore();
                         
-                        model.addRow(new Object[]{sensor.getSensorID(),sensor.getSensorType(),sensor.getMonitorName()});
-                    }  
+               
+                        if(data != null){
+                        
+                            for(Data da:data){
+                                model.addRow(new Object[]{da.getReadings(),da.getDateTime()});
+                        
+                            }
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(rootPane, "No Sensor Data");
+                        }
+                            
+                        
     }
   
+    public Sensor findSensor(String sensorId){
+          ArrayList<Sensor> allSensors = serialize.getAllSensors();
+        for(Sensor sensor:allSensors){
+                if(sensorId.equals(sensor.getSensorID())){
+                   
+                    return sensor;
+                }
+            }
+                        return null;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,34 +97,34 @@ public class ViewSensorData extends javax.swing.JInternalFrame {
 
         dataTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Data", "Time", "Date"
+                "Data", "Date                                          Time"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -108,7 +134,7 @@ public class ViewSensorData extends javax.swing.JInternalFrame {
         dataTable.setGridColor(new java.awt.Color(255, 255, 255));
         jScrollPane2.setViewportView(dataTable);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 640, 370));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 640, 370));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Sensor Data");

@@ -6,6 +6,7 @@
 package GUI;
 
 
+import Classes.Data;
 import Classes.Sensor;
 
 import File.serialize;
