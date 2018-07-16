@@ -11,7 +11,7 @@ public class Sensor implements Serializable{
     private Boolean status;
     private String frequency;
     private Data data;
-    private ArrayList<Data> store;
+    private ArrayList<Sensor> store;
     private String monitorName;
 
     public Sensor(String sensorID, String sensorType, String description, Boolean status, String frequency,Data data,String monitorName) {
