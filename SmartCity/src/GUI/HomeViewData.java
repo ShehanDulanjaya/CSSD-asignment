@@ -7,6 +7,7 @@ package GUI;
 
 import Classes.Clock;
 import Classes.Mothership;
+import Classes.Sensor;
 import Classes.SensorMonitor;
 import Classes.SensorStation;
 import File.serialize;
@@ -24,16 +25,13 @@ import javax.swing.table.DefaultTableModel;
  * @author Akila Jayaaasinghe
  */
 public class HomeViewData extends javax.swing.JInternalFrame {
-public static String globalStationId;
-Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
 
     /**
      * Creates new form Home
      */
     public HomeViewData() {
         initComponents();
-//       load();
-//        tableLoad();
+        tableLoad();
        
     }
  
@@ -42,11 +40,11 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
     DefaultTableModel model=(DefaultTableModel) dataTable.getModel();
      model.setRowCount(0);
     
-                for(SensorStation station:mother.getSensorStation()){
-                        model.addRow(new Object[]{station.getStationID(),station.getName()});
+                for(Object s:serialize.getAllSensors()){
+                    Sensor sensor= (Sensor) s;
+                        model.addRow(new Object[]{sensor.getSensorID()});
                     }  
     }
-//    dsasd
   
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,7 +62,6 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
         dataTable = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
         searchTextBox = new javax.swing.JTextField();
-        stationRadioButton = new javax.swing.JRadioButton();
         monitorRadioButton = new javax.swing.JRadioButton();
         sensorTypeRadioButton = new javax.swing.JRadioButton();
         sensorNameRadioButton = new javax.swing.JRadioButton();
@@ -85,33 +82,33 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
 
         dataTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Sensor ID", "Sensor Name", "Sensor Type", "Sensor Monitor", "Sensor Station"
+                "Sensor ID", "Sensor Type", "Sensor Monitor"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, true
+                false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -135,10 +132,6 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
         });
         jPanel1.add(searchTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 190, 30));
 
-        buttonGroup1.add(stationRadioButton);
-        stationRadioButton.setText("By Sensor Station");
-        jPanel1.add(stationRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
-
         buttonGroup1.add(monitorRadioButton);
         monitorRadioButton.setText("By Sensor Monitor");
         monitorRadioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +139,7 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
                 monitorRadioButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(monitorRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, -1, -1));
+        jPanel1.add(monitorRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
 
         buttonGroup1.add(sensorTypeRadioButton);
         sensorTypeRadioButton.setText("By Sensor Type");
@@ -190,6 +183,5 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
     private javax.swing.JTextField searchTextBox;
     private javax.swing.JRadioButton sensorNameRadioButton;
     private javax.swing.JRadioButton sensorTypeRadioButton;
-    private javax.swing.JRadioButton stationRadioButton;
     // End of variables declaration//GEN-END:variables
 }
