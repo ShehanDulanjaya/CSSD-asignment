@@ -123,6 +123,8 @@ public static long waitTime=10000;
 
         background.add(topPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 80));
 
+        bodyPanel.setBackground(new java.awt.Color(255, 255, 255));
+
         jPanel1.setBackground(new java.awt.Color(102, 0, 102));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
