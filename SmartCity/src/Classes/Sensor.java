@@ -41,11 +41,11 @@ public class Sensor implements Serializable{
         this.data = data;
     }
 
-    public void store(Data data){
+    public void store(Sensor data){
         this.store.add(data);
     }
     
-    public ArrayList<Data> getStore(){
+    public ArrayList<Sensor> getStore(){
         
     return this.store;
     }
