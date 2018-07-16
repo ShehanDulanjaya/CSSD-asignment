@@ -205,11 +205,15 @@ Sensor s=m.getSensor();;
                 
                 mother.removeSensorStation(globalStationId);
                 station.removeSensorMonitor(m);
+                m.removeSensor(s);
+                
                 s.setDescription(DescriptionTextBox.getText());
                 s.setFrequency(frequencyTextBox.getText());
                 s.setSensorType(typeComboBox.getSelectedItem().toString());
                 s.setStatus(status);
+                
                 m.setSensor(s);
+                m.addNewSensor(s);
                 station.addNewSensorMonitor(m);
                 
                     

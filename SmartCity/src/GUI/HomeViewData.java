@@ -5,34 +5,30 @@
  */
 package GUI;
 
-import Classes.Clock;
-import Classes.Mothership;
-import Classes.Sensor;
-import Classes.SensorMonitor;
-import Classes.SensorStation;
-import File.serialize;
-import static GUI.MainSensorStation.waitTime;
 
+import Classes.Sensor;
+
+import File.serialize;
+import static GUI.HomeStation.globalStationId;
+
+import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Observer;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author Akila Jayaaasinghe
  */
 public class HomeViewData extends javax.swing.JInternalFrame {
-
+public static String globalSensorId;
     /**
      * Creates new form Home
      */
     public HomeViewData() {
         initComponents();
+        System.out.println("GUI.HomeViewData.<init>()");
         tableLoad();
-       
+        
     }
  
     
@@ -40,9 +36,9 @@ public class HomeViewData extends javax.swing.JInternalFrame {
     DefaultTableModel model=(DefaultTableModel) dataTable.getModel();
      model.setRowCount(0);
     
-                for(Object s:serialize.getAllSensors()){
-                    Sensor sensor= (Sensor) s;
-                        model.addRow(new Object[]{sensor.getSensorID()});
+                for(Sensor sensor:serialize.getAllSensors()){
+                        
+                        model.addRow(new Object[]{sensor.getSensorID(),sensor.getSensorType(),sensor.getMonitorName()});
                     }  
     }
   
@@ -65,6 +61,9 @@ public class HomeViewData extends javax.swing.JInternalFrame {
         monitorRadioButton = new javax.swing.JRadioButton();
         sensorTypeRadioButton = new javax.swing.JRadioButton();
         sensorNameRadioButton = new javax.swing.JRadioButton();
+        homePanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setBorder(null);
         setOpaque(true);
@@ -98,9 +97,6 @@ public class HomeViewData extends javax.swing.JInternalFrame {
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
                 {null, null, null}
             },
             new String [] {
@@ -116,9 +112,14 @@ public class HomeViewData extends javax.swing.JInternalFrame {
             }
         });
         dataTable.setGridColor(new java.awt.Color(255, 255, 255));
+        dataTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dataTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(dataTable);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 640, 348));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 640, 300));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Search");
@@ -149,6 +150,50 @@ public class HomeViewData extends javax.swing.JInternalFrame {
         sensorNameRadioButton.setText("By Sensor Name");
         jPanel1.add(sensorNameRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, -1));
 
+        homePanel.setBackground(new java.awt.Color(54, 43, 100));
+        homePanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homePanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                homePanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                homePanelMouseExited(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Home_25px.png")); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("View Data");
+
+        javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
+        homePanel.setLayout(homePanelLayout);
+        homePanelLayout.setHorizontalGroup(
+            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homePanelLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel2)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel3)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+        homePanelLayout.setVerticalGroup(
+            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(homePanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel3))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jPanel1.add(homePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 150, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -171,11 +216,50 @@ public class HomeViewData extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_monitorRadioButtonActionPerformed
 
+    private void homePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homePanelMouseClicked
+                if (true == dataTable.getSelectionModel().isSelectionEmpty())
+        {
+            JOptionPane.showMessageDialog(null,"Select Sensor from the Table");
+        }
+        else{
+            int x=dataTable.getSelectedRow();
+            String id=(String) dataTable.getValueAt(x, 0);
+         
+            globalSensorId=id;
+            
+            ViewSensorData a =new ViewSensorData();
+            JDesktopPane n =this.getDesktopPane();
+            n.removeAll();
+            
+            n.add(a);
+            a.show();
+            
+        }
+    }//GEN-LAST:event_homePanelMouseClicked
+
+    private void homePanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homePanelMouseEntered
+        // TODO add your handling code here:
+        evt.getComponent().setBackground(new Color(85,65,118));
+    }//GEN-LAST:event_homePanelMouseEntered
+
+    private void homePanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homePanelMouseExited
+        // TODO add your handling code here:
+        evt.getComponent().setBackground(new Color(54,43,100));
+    }//GEN-LAST:event_homePanelMouseExited
+
+    private void dataTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataTableMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_dataTableMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTable dataTable;
+    private javax.swing.JPanel homePanel;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;

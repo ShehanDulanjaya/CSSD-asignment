@@ -238,11 +238,12 @@ System.out.println("GUI.AddSensor.<init>()"+ globalStationId);
         ArrayList<Sensor> allSensors = serialize.getAllSensors();
 
         
-        Sensor sr = new Sensor(idTextBox.getText(), typeComboBox.getSelectedItem().toString(), DescriptionTextBox.getText(), status, frequencyTextBox.getText(),data,globalMonitorId);
+        Sensor sr = new Sensor(idTextBox.getText(), typeComboBox.getSelectedItem().toString(), DescriptionTextBox.getText(), status, frequencyTextBox.getText(),data,m.getName());
         mother.removeSensorStation(globalStationId);
         station.removeSensorMonitor(m);
         m.setSensor(sr);
         m.setCheckSensor(true);
+        m.addNewSensor(sr);
 //        clock.registerObserver(m);
         station.addNewSensorMonitor(m);
 
