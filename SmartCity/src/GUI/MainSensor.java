@@ -5,16 +5,19 @@
  */
 package GUI;
 
+import Classes.Clock;
 import Classes.Mothership;
 import Classes.SensorMonitor;
 import Classes.SensorStation;
 import File.serialize;
 import static GUI.HomeMonitor.globalMonitorId;
 import static GUI.HomeStation.globalStationId;
+import static GUI.MainSensorStation.waitTime;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -52,6 +55,8 @@ SensorMonitor m=station.getASensorMonitor(globalMonitorId);
             h.setVisible(true);
             bodyPane.add(h);
         }
+        Clock clock=Clock.getInstance();
+        clock.waitForTime(waitTime);
         
     }
     
@@ -68,16 +73,24 @@ SensorMonitor m=station.getASensorMonitor(globalMonitorId);
         jLabel1 = new javax.swing.JLabel();
         background = new javax.swing.JPanel();
         sidePanel = new javax.swing.JPanel();
-        homePanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         weatherLabel = new javax.swing.JLabel();
         cityLabel = new javax.swing.JLabel();
-        monitorHomePanel2 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
+        homePanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        monitorHomePanel = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        homePanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        waitTimePanel = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        waitTimeTextBox = new javax.swing.JTextField();
+        waitTimeButton = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         titlePanel = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         topPanel = new javax.swing.JPanel();
@@ -98,10 +111,33 @@ SensorMonitor m=station.getASensorMonitor(globalMonitorId);
         sidePanel.setBackground(new java.awt.Color(54, 33, 89));
         sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel14.setFont(new java.awt.Font("Comic Sans MS", 1, 30)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("iCity");
+        sidePanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator1.setAlignmentY(1.0F);
+        jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        sidePanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 160, 15));
+        jSeparator1.getAccessibleContext().setAccessibleName("");
+
+        weatherLabel.setText("Weather");
+        sidePanel.add(weatherLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 100, 40));
+
+        cityLabel.setText("City");
+        sidePanel.add(cityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 90, -1));
+
         homePanel.setBackground(new java.awt.Color(54, 43, 100));
         homePanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 homePanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                homePanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                homePanelMouseExited(evt);
             }
         });
 
@@ -120,7 +156,7 @@ SensorMonitor m=station.getASensorMonitor(globalMonitorId);
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         homePanelLayout.setVerticalGroup(
             homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,68 +170,151 @@ SensorMonitor m=station.getASensorMonitor(globalMonitorId);
                 .addGap(19, 19, 19))
         );
 
-        sidePanel.add(homePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, 60));
+        sidePanel.add(homePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 230, 60));
 
-        jLabel14.setFont(new java.awt.Font("Comic Sans MS", 1, 30)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("iCity");
-        sidePanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
-
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setAlignmentY(1.0F);
-        jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        sidePanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 160, 15));
-        jSeparator1.getAccessibleContext().setAccessibleName("");
-
-        weatherLabel.setText("Weather");
-        sidePanel.add(weatherLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 100, 40));
-
-        cityLabel.setText("City");
-        sidePanel.add(cityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 90, -1));
-
-        monitorHomePanel2.setBackground(new java.awt.Color(85, 65, 118));
-        monitorHomePanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        monitorHomePanel.setBackground(new java.awt.Color(85, 65, 118));
+        monitorHomePanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                monitorHomePanel2MouseClicked(evt);
+                monitorHomePanelMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                monitorHomePanel2MouseEntered(evt);
+                monitorHomePanelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                monitorHomePanel2MouseExited(evt);
+                monitorHomePanelMouseExited(evt);
             }
         });
 
-        jLabel19.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Structural_25px.png")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Structural_25px.png")); // NOI18N
 
-        jLabel20.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setText("Sensor Monitor");
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Sensor Monitor");
 
-        javax.swing.GroupLayout monitorHomePanel2Layout = new javax.swing.GroupLayout(monitorHomePanel2);
-        monitorHomePanel2.setLayout(monitorHomePanel2Layout);
-        monitorHomePanel2Layout.setHorizontalGroup(
-            monitorHomePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(monitorHomePanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout monitorHomePanelLayout = new javax.swing.GroupLayout(monitorHomePanel);
+        monitorHomePanel.setLayout(monitorHomePanelLayout);
+        monitorHomePanelLayout.setHorizontalGroup(
+            monitorHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(monitorHomePanelLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel19)
+                .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        monitorHomePanel2Layout.setVerticalGroup(
-            monitorHomePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, monitorHomePanel2Layout.createSequentialGroup()
+        monitorHomePanelLayout.setVerticalGroup(
+            monitorHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, monitorHomePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, monitorHomePanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, monitorHomePanelLayout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(jLabel20)
+                .addComponent(jLabel11)
                 .addGap(20, 20, 20))
         );
 
-        sidePanel.add(monitorHomePanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 230, -1));
+        sidePanel.add(monitorHomePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 230, -1));
+
+        homePanel1.setBackground(new java.awt.Color(54, 43, 100));
+        homePanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homePanel1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                homePanel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                homePanel1MouseExited(evt);
+            }
+        });
+
+        jLabel6.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Home_25px.png")); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Home");
+
+        javax.swing.GroupLayout homePanel1Layout = new javax.swing.GroupLayout(homePanel1);
+        homePanel1.setLayout(homePanel1Layout);
+        homePanel1Layout.setHorizontalGroup(
+            homePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homePanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(71, Short.MAX_VALUE))
+        );
+        homePanel1Layout.setVerticalGroup(
+            homePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(19, 19, 19))
+        );
+
+        sidePanel.add(homePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 230, 60));
+
+        waitTimePanel.setOpaque(false);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Wait Time");
+
+        waitTimeTextBox.setText("10000");
+        waitTimeTextBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                waitTimeTextBoxActionPerformed(evt);
+            }
+        });
+
+        waitTimeButton.setBackground(new java.awt.Color(102, 0, 102));
+        waitTimeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                waitTimeButtonMouseClicked(evt);
+            }
+        });
+        waitTimeButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Set Wait Time");
+        waitTimeButton.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        javax.swing.GroupLayout waitTimePanelLayout = new javax.swing.GroupLayout(waitTimePanel);
+        waitTimePanel.setLayout(waitTimePanelLayout);
+        waitTimePanelLayout.setHorizontalGroup(
+            waitTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(waitTimePanelLayout.createSequentialGroup()
+                .addGroup(waitTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(waitTimePanelLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(waitTimeTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(waitTimePanelLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(waitTimeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        waitTimePanelLayout.setVerticalGroup(
+            waitTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(waitTimePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(waitTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(waitTimeTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(waitTimeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        sidePanel.add(waitTimePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 230, -1));
 
         background.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 570));
 
@@ -289,28 +408,66 @@ SensorMonitor m=station.getASensorMonitor(globalMonitorId);
         
     }//GEN-LAST:event_closeLabelMouseClicked
 
-    
     private void homePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homePanelMouseClicked
         MainSensorStation m =new MainSensorStation();
         this.dispose();
         m.setVisible(true);
     }//GEN-LAST:event_homePanelMouseClicked
 
-    private void monitorHomePanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_monitorHomePanel2MouseClicked
+    private void homePanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homePanelMouseEntered
         // TODO add your handling code here:
-        MainSensorMonitor m = new MainSensorMonitor();
-        this.dispose();
+        evt.getComponent().setBackground(new Color(85,65,118));
+    }//GEN-LAST:event_homePanelMouseEntered
+
+    private void homePanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homePanelMouseExited
+        // TODO add your handling code here:
+        evt.getComponent().setBackground(new Color(54,43,100));
+    }//GEN-LAST:event_homePanelMouseExited
+
+    private void monitorHomePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_monitorHomePanelMouseClicked
+        // TODO add your handling code here:
+         MainSensorMonitor m = new MainSensorMonitor();
+         m.setVisible(true);
+         this.dispose();
+    }//GEN-LAST:event_monitorHomePanelMouseClicked
+
+    private void monitorHomePanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_monitorHomePanelMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_monitorHomePanelMouseEntered
+
+    private void monitorHomePanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_monitorHomePanelMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_monitorHomePanelMouseExited
+
+    private void homePanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homePanel1MouseClicked
+        MotherShip m = new MotherShip();
         m.setVisible(true);
-    }//GEN-LAST:event_monitorHomePanel2MouseClicked
+        this.dispose();
+    }//GEN-LAST:event_homePanel1MouseClicked
 
-    private void monitorHomePanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_monitorHomePanel2MouseEntered
+    private void homePanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homePanel1MouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_monitorHomePanel2MouseEntered
+        evt.getComponent().setBackground(new Color(85,65,118));
+    }//GEN-LAST:event_homePanel1MouseEntered
 
-    private void monitorHomePanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_monitorHomePanel2MouseExited
+    private void homePanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homePanel1MouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_monitorHomePanel2MouseExited
+        evt.getComponent().setBackground(new Color(54,43,100));
+    }//GEN-LAST:event_homePanel1MouseExited
 
+    private void waitTimeTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_waitTimeTextBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_waitTimeTextBoxActionPerformed
+
+    private void waitTimeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_waitTimeButtonMouseClicked
+        // TODO add your handling code here:
+        waitTime = Long.parseLong(waitTimeTextBox.getText());
+        Clock clock=Clock.getInstance();
+        clock.waitForTime(waitTime);
+        JOptionPane.showMessageDialog(null,"Wait Time Successfully set");
+    }//GEN-LAST:event_waitTimeButtonMouseClicked
+
+    
     /**
      * @param args the command line arguments
      */
@@ -355,25 +512,27 @@ SensorMonitor m=station.getASensorMonitor(globalMonitorId);
     private javax.swing.JLabel cityLabel;
     private javax.swing.JLabel closeLabel;
     private javax.swing.JPanel homePanel;
+    private javax.swing.JPanel homePanel1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel monitorHomePanel;
-    private javax.swing.JPanel monitorHomePanel1;
-    private javax.swing.JPanel monitorHomePanel2;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JPanel titlePanel;
     private javax.swing.JPanel topPanel;
+    private javax.swing.JPanel waitTimeButton;
+    private javax.swing.JPanel waitTimePanel;
+    private javax.swing.JTextField waitTimeTextBox;
     private javax.swing.JLabel weatherLabel;
     // End of variables declaration//GEN-END:variables
 }

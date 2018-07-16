@@ -13,6 +13,7 @@ import File.serialize;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.UUID;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -186,6 +187,12 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
         if(check){
             JOptionPane.showMessageDialog(null,"Sensor Station Added Successfully");
             clear();
+            HomeStation h = new HomeStation();
+            JDesktopPane n =this.getDesktopPane();
+            n.removeAll();
+            
+            n.add(h);
+            h.show();
         }
         else{
             JOptionPane.showMessageDialog(null,"Sensor Station Add Fail");

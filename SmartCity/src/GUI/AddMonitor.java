@@ -284,6 +284,12 @@ String x[]=null;
         if(check){
             JOptionPane.showMessageDialog(null,"Sensor Monitor Added Successfully");
             clear();
+            HomeMonitor h = new HomeMonitor();
+            JDesktopPane n =this.getDesktopPane();
+            n.removeAll();
+            
+            n.add(h);
+            h.show();
         }
         else{
             JOptionPane.showMessageDialog(null,"Sensor Monitor Add Fail");

@@ -53,7 +53,7 @@ Sensor s=m.getSensor();;
 //        }
     }
     
-    
+    JOptionPane.showMessageDialog(null,"You allready added a Sensor. Now You Can use Update");
     }
 
     /**
