@@ -149,5 +149,8 @@ public class Clock extends Observable implements Serializable {
             trackTime();
         
     }
+    public long getwaitTime(){
+        return this.wait;
+    }
     
 }

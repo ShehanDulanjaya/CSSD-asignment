@@ -381,6 +381,7 @@ public class SensorMonitor implements Observer,Serializable{
          if(ob instanceof SensorMonitor){
                 if(((SensorMonitor) ob).getIsActive()){
                     ((SensorMonitor) ob).doTick();
+                    ((SensorMonitor) ob).setLastReadingTime(((Clock)o).getwaitTime());
                 }
             }
         
