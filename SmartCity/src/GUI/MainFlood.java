@@ -21,12 +21,12 @@ import javax.swing.JOptionPane;
  *
  * @author Akila Jayaaaaasinghe
  */
-public class MainBin extends javax.swing.JFrame {
+public class MainFlood extends javax.swing.JFrame {
 public static long waitTime=10000;
     /**
      * Creates new form AddSensor
      */
-    public MainBin() {
+    public MainFlood() {
         initComponents();
         homeUi();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -37,7 +37,7 @@ public static long waitTime=10000;
     public void homeUi(){
         
         bodyPane.removeAll();
-        HomeBin h =new HomeBin();
+        HomeFlood h =new HomeFlood();
         h.setVisible(true);
         bodyPane.add(h);
 
@@ -157,7 +157,7 @@ public static long waitTime=10000;
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Bin");
+        jLabel7.setText("Flood Data");
 
         javax.swing.GroupLayout homePanel1Layout = new javax.swing.GroupLayout(homePanel1);
         homePanel1.setLayout(homePanel1Layout);
@@ -224,7 +224,7 @@ public static long waitTime=10000;
         jLabel16.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Bin Sensor");
+        jLabel16.setText("Flood Sensor");
 
         javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
         titlePanel.setLayout(titlePanelLayout);
@@ -315,14 +315,22 @@ public static long waitTime=10000;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainBin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFlood.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainBin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFlood.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainBin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFlood.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainBin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFlood.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -335,7 +343,7 @@ public static long waitTime=10000;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainBin().setVisible(true);
+                new MainFlood().setVisible(true);
             }
         });
     }

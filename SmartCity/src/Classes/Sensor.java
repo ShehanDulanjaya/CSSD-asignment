@@ -13,8 +13,9 @@ public class Sensor implements Serializable{
     private Data data;
     private ArrayList<Data> store;
     private String monitorName;
+    private String station;
 
-    public Sensor(String sensorID, String sensorType, String description, Boolean status, String frequency,Data data,String monitorName) {
+    public Sensor(String sensorID, String sensorType, String description, Boolean status, String frequency,Data data,String monitorName,String station) {
         this.sensorID = sensorID;
         this.sensorType = sensorType;
         this.description = description;
@@ -23,6 +24,15 @@ public class Sensor implements Serializable{
         this.data=data;
         this.monitorName=monitorName;
         this.store=new ArrayList<>();
+        this.station=station;
+    }
+
+    public String getStation() {
+        return station;
+    }
+
+    public void setStation(String station) {
+        this.station = station;
     }
 
     public String getMonitorName() {

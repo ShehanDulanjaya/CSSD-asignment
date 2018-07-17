@@ -250,7 +250,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Bin"/>
+                    <Property name="text" type="java.lang.String" value="Flood Data"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -351,7 +351,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Bin Sensor"/>
+                <Property name="text" type="java.lang.String" value="Flood Sensor"/>
               </Properties>
             </Component>
           </SubComponents>
