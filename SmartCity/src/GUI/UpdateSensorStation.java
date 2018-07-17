@@ -146,6 +146,10 @@ SensorStation s=null;
     
     private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
 
+    if("".equals(nameTextBox.getText()) || "".equals(nameTextBox.getText())){
+        JOptionPane.showMessageDialog(null,"Please fill all fields");
+    }
+    else{    
        int y=JOptionPane.showConfirmDialog(null,"Do you really want to Update ?","Update",JOptionPane.YES_NO_OPTION);
             if(y==0){
                 
@@ -167,7 +171,7 @@ SensorStation s=null;
                     }
         
             }
-
+    }
     }//GEN-LAST:event_updateButtonMouseClicked
 
 

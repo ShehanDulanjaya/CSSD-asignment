@@ -353,7 +353,7 @@ String x[]=null;
 
     private void intervalTextBox2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_intervalTextBox2KeyTyped
         // TODO add your handling code here:
-                char c=evt.getKeyChar();
+        char c=evt.getKeyChar();
         String s=intervalTextBox2.getText();
          
          if(!(Character.isDigit(c))||(c==com.sun.glass.events.KeyEvent.VK_BACKSPACE) || (c== com.sun.glass.events.KeyEvent.VK_DELETE))

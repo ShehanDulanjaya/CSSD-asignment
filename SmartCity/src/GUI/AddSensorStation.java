@@ -184,6 +184,10 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
     
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
 
+    if("".equals(nameTextBox.getText()) || "".equals(nameTextBox.getText())){
+        JOptionPane.showMessageDialog(null,"Please fill all fields");
+    }
+    else{
         ArrayList<SensorMonitor> sensorMonitor=new ArrayList<>();
         SensorStation station =new SensorStation(idTextBox.getText(), nameTextBox.getText(), sensorMonitor, mother);
         boolean check=mother.addNewSensorStation(station);
@@ -202,7 +206,7 @@ Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());
             JOptionPane.showMessageDialog(null,"Sensor Station Add Fail");
         }
         
-
+    }
     }//GEN-LAST:event_addButtonMouseClicked
 
 
