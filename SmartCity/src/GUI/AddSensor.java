@@ -42,7 +42,7 @@ SensorMonitor m=station.getASensorMonitor(globalMonitorId);
 //        javax.swing.plaf.InternalFrameUI ifu;
 //        ifu = this.getUI();
 //        ((javax.swing.plaf.basic.BasicInternalFrameUI)ifu).setNorthPane(null);
-System.out.println("GUI.AddSensor.<init>()"+ globalStationId);
+        
         JOptionPane.showMessageDialog(null,"You can add only one Sensor to the Monitor");
 
     }
@@ -164,6 +164,11 @@ System.out.println("GUI.AddSensor.<init>()"+ globalStationId);
                 frequencyTextBoxActionPerformed(evt);
             }
         });
+        frequencyTextBox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                frequencyTextBoxKeyTyped(evt);
+            }
+        });
         jPanel1.add(frequencyTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 230, 30));
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -230,7 +235,10 @@ System.out.println("GUI.AddSensor.<init>()"+ globalStationId);
     }
     
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
-        
+    if("".equals(DescriptionTextBox.getText()) || "".equals(frequencyTextBox.getText()) || typeComboBox.getSelectedItem()=="- Select -"){
+        JOptionPane.showMessageDialog(null,"Please fill all fields");
+    }
+    else{
         Boolean status;
         if(activeRadioButton.isSelected()){
             status=true;
@@ -264,13 +272,24 @@ System.out.println("GUI.AddSensor.<init>()"+ globalStationId);
         else{
             JOptionPane.showMessageDialog(null,"Sensor Add Fail");
         }
-
+        }
 
     }//GEN-LAST:event_addButtonMouseClicked
 
     private void frequencyTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frequencyTextBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_frequencyTextBoxActionPerformed
+
+    private void frequencyTextBoxKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_frequencyTextBoxKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        String s=frequencyTextBox.getText();
+         
+         if(!(Character.isDigit(c))||(c==com.sun.glass.events.KeyEvent.VK_BACKSPACE) || (c== com.sun.glass.events.KeyEvent.VK_DELETE))
+         {
+             evt.consume();
+         }
+    }//GEN-LAST:event_frequencyTextBoxKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

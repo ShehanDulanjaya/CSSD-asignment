@@ -13,6 +13,7 @@ import File.serialize;
 import static GUI.HomeStation.globalStationId;
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -145,6 +146,10 @@ SensorStation s=null;
     
     private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
 
+    if("".equals(nameTextBox.getText()) || "".equals(nameTextBox.getText())){
+        JOptionPane.showMessageDialog(null,"Please fill all fields");
+    }
+    else{    
        int y=JOptionPane.showConfirmDialog(null,"Do you really want to Update ?","Update",JOptionPane.YES_NO_OPTION);
             if(y==0){
                 
@@ -157,14 +162,16 @@ SensorStation s=null;
                
                     if(check){
                         JOptionPane.showMessageDialog(null,"Sensor Station Updated");
-                        
+                        HomeStation h = new HomeStation();
+                        JDesktopPane n =this.getDesktopPane();
+                        n.removeAll();
                     }
                     else{
                         JOptionPane.showMessageDialog(null,"Sensor Station Update Error");
                     }
         
             }
-
+    }
     }//GEN-LAST:event_updateButtonMouseClicked
 
 

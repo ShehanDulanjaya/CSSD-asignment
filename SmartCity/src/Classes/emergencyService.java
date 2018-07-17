@@ -27,7 +27,7 @@ public class emergencyService implements Observer{
      */
     public void warnEmergancy(String location){
         try{    
-           FileWriter fw=new FileWriter("D:\\Github\\CSSD-asignment\\SmartCity\\emergancy.txt");    
+           FileWriter fw=new FileWriter("D:\\GitHub\\CSSD-asignment\\emergency.txt");    
            fw.write(location);    
            fw.close();    
           }

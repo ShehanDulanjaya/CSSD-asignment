@@ -188,6 +188,11 @@ private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/M
                 waitTimeTextBoxActionPerformed(evt);
             }
         });
+        waitTimeTextBox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                waitTimeTextBoxKeyTyped(evt);
+            }
+        });
 
         waitTimeButton.setBackground(new java.awt.Color(102, 0, 102));
         waitTimeButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -394,6 +399,17 @@ private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/M
         // TODO add your handling code here:v
          evt.getComponent().setBackground(new Color(54,43,100));
     }//GEN-LAST:event_homePanelMouseExited
+
+    private void waitTimeTextBoxKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_waitTimeTextBoxKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        String s=waitTimeTextBox.getText();
+         
+         if(!(Character.isDigit(c))||(c==com.sun.glass.events.KeyEvent.VK_BACKSPACE) || (c== com.sun.glass.events.KeyEvent.VK_DELETE))
+         {
+             evt.consume();
+         }
+    }//GEN-LAST:event_waitTimeTextBoxKeyTyped
 
     /**
      * @param args the command line arguments

@@ -38,6 +38,7 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  * @author Akila Jayasinghe
  */
 public class AddMonitor extends javax.swing.JInternalFrame {
+    
 Mothership mother=new Mothership("Kaduwela", serialize.getAllSensorStations());    
 SensorStation station = mother.findSensorStation(globalStationId);
 String x[]=null;
@@ -210,7 +211,24 @@ String x[]=null;
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 120, 30));
 
         intervalTextBox2.setText("0");
+        intervalTextBox2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                intervalTextBox2KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                intervalTextBox2KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                intervalTextBox2KeyTyped(evt);
+            }
+        });
         jPanel1.add(intervalTextBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 230, 30));
+
+        nameTextBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameTextBoxActionPerformed(evt);
+            }
+        });
         jPanel1.add(nameTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 230, 30));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -263,7 +281,11 @@ String x[]=null;
     }
     
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
-        
+    
+    if("".equals(nameTextBox.getText()) || "".equals(locationTextBox.getText())){
+        JOptionPane.showMessageDialog(null,"Please fill all fields");
+    }
+    else{
         Boolean status;
         if(activeRadioButton.isSelected()){
             status=true;
@@ -300,6 +322,7 @@ String x[]=null;
         else{
             JOptionPane.showMessageDialog(null,"Sensor Monitor Add Fail");
         }
+    }
     }//GEN-LAST:event_addButtonMouseClicked
 
     private void setLocationButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setLocationButtonMouseClicked
@@ -314,6 +337,30 @@ String x[]=null;
     private void setLocationButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setLocationButtonMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_setLocationButtonMouseExited
+
+    private void nameTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameTextBoxActionPerformed
+
+    private void intervalTextBox2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_intervalTextBox2KeyReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_intervalTextBox2KeyReleased
+
+    private void intervalTextBox2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_intervalTextBox2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_intervalTextBox2KeyPressed
+
+    private void intervalTextBox2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_intervalTextBox2KeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        String s=intervalTextBox2.getText();
+         
+         if(!(Character.isDigit(c))||(c==com.sun.glass.events.KeyEvent.VK_BACKSPACE) || (c== com.sun.glass.events.KeyEvent.VK_DELETE))
+         {
+             evt.consume();
+         }
+    }//GEN-LAST:event_intervalTextBox2KeyTyped
 
 public void mapload(){
     Browser browser = new Browser();

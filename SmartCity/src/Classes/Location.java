@@ -32,7 +32,7 @@ public class Location extends Observable{
     private double latitude;
     private double longitude;
     private String address;
-    emergencyService observer;
+    emergencyService observer= new emergencyService();
     private String random;
 
     /**

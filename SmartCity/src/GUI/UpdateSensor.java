@@ -144,6 +144,11 @@ Sensor s=m.getSensor();;
                 frequencyTextBoxActionPerformed(evt);
             }
         });
+        frequencyTextBox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                frequencyTextBoxKeyTyped(evt);
+            }
+        });
         jPanel1.add(frequencyTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 230, 30));
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -189,6 +194,11 @@ Sensor s=m.getSensor();;
 
     
     private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
+    if("".equals(DescriptionTextBox.getText()) || "".equals(frequencyTextBox.getText()) || typeComboBox.getSelectedItem()=="- Select -"){
+        JOptionPane.showMessageDialog(null,"Please fill all fields");
+    }
+    else{
+        
         int y=JOptionPane.showConfirmDialog(null,"Do you really want to Update ?","Update",JOptionPane.YES_NO_OPTION);
             if(y==0){
                 
@@ -221,19 +231,33 @@ Sensor s=m.getSensor();;
 
                     if(check){
                         JOptionPane.showMessageDialog(null,"Sensor Updated");
-                        
+                        HomeMonitor h = new HomeMonitor();
+                        JDesktopPane n =this.getDesktopPane();
+                        n.removeAll();
                     }
                     else{
                         JOptionPane.showMessageDialog(null,"Sensor Update Error");
                     }
         
             }
+    }
 
     }//GEN-LAST:event_updateButtonMouseClicked
 
     private void frequencyTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frequencyTextBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_frequencyTextBoxActionPerformed
+
+    private void frequencyTextBoxKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_frequencyTextBoxKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        String s=frequencyTextBox.getText();
+         
+         if(!(Character.isDigit(c))||(c==com.sun.glass.events.KeyEvent.VK_BACKSPACE) || (c== com.sun.glass.events.KeyEvent.VK_DELETE))
+         {
+             evt.consume();
+         }
+    }//GEN-LAST:event_frequencyTextBoxKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
