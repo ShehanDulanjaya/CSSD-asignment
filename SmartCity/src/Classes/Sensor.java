@@ -36,6 +36,10 @@ public class Sensor implements Serializable{
     public Data getData() {
         return data;
     }
+
+    public void setStore(ArrayList<Data> store) {
+        this.store = store;
+    }
 //com
     public void setData(Data data) {
         this.data = data;

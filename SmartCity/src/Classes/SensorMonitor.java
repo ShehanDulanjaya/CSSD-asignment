@@ -138,12 +138,15 @@ public class SensorMonitor implements Observer,Serializable{
     }
     
     public void doTick(){
-         ArrayList<Sensor> allSensors = serialize.getAllSensors();
+        setSensor(findSensor(sensor.getSensorID()));
+         ArrayList<Data> dt=sensor.getStore();
         Data data = new Data();
         System.out.println("Sensor Monitor Do tick");
         removeSensor(sensor.getSensorID());
+        sensor.setStore(dt);
         sensor.setData(data);
         sensor.store(data);
+        
         addNewSensor(sensor);
        
         setReading(data);
