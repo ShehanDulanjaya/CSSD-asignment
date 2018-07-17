@@ -14,24 +14,48 @@ import java.util.List;
 public class PublicInterface {
 
     private String ID;
+
+    /**
+     *
+     */
     public List<EmbllishedData> data;
 
+    /**
+     *
+     * @param ID
+     */
     public PublicInterface(String ID) {
         this.ID = ID;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getID() {
         return ID;
     }
 
+    /**
+     *
+     * @param ID
+     */
     public void setID(String ID) {
         this.ID = ID;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<EmbllishedData> getData() {
         return data;
     }
 
+    /**
+     *
+     * @param data
+     */
     public void setData(List<EmbllishedData> data) {
         this.data = data;
     }

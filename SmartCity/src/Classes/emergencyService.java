@@ -15,9 +15,16 @@ import java.util.Observer;
  */
 public class emergencyService implements Observer{
 
+    /**
+     *
+     */
     public emergencyService() {
     }
     
+    /**
+     *
+     * @param location
+     */
     public void warnEmergancy(String location){
         try{    
            FileWriter fw=new FileWriter("D:\\Github\\CSSD-asignment\\SmartCity\\emergancy.txt");    

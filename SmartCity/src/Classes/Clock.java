@@ -8,9 +8,20 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Timer;
 
+/**
+ *
+ * @author CJ
+ */
 public class Clock extends Observable implements Serializable {
     
+    /**
+     *
+     */
     public ArrayList<SensorMonitor> observers;
+
+    /**
+     *
+     */
     public double notifyFrequncy;
     private Clock clock;
     private static long wait=5000;
@@ -18,42 +29,77 @@ public class Clock extends Observable implements Serializable {
    Timer t;
    private boolean hasStart=false;
    
-   public static Clock getInstance(){
+    /**
+     *
+     * @return
+     */
+    public static Clock getInstance(){
        
        return instance;
        
    }
     
+    /**
+     *
+     * @return
+     */
     public List<SensorMonitor> getObservers() {
         return observers;
     }
 
+    /**
+     *
+     * @param observers
+     */
     public void setObservers(ArrayList<SensorMonitor> observers) {
         this.observers = observers;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getNotifyFrequncy() {
         return notifyFrequncy;
     }
 
+    /**
+     *
+     * @param notifyFrequncy
+     */
     public void setNotifyFrequncy(double notifyFrequncy) {
         this.notifyFrequncy = notifyFrequncy;
     }
 
+    /**
+     *
+     * @return
+     */
     public Clock getClock() {
         return clock;
     }
 
+    /**
+     *
+     * @param clock
+     */
     public void setClock(Clock clock) {
         this.clock = clock;
     }
         
-    
+    /**
+     *
+     * @param o
+     */
     public void registerObserver(Observer o) {
         this.observers.add((SensorMonitor) o);
        // serialize.write("clocksm.txt", this.observers);//add available sensor monitors
     }
 
+    /**
+     *
+     * @param o
+     */
     public void unregisterObserver(Observer o) {
         this.observers.remove((SensorMonitor)o);
        // serialize.write("clocksm.txt", this.observers);//remove sensor monitor from list
@@ -87,7 +133,10 @@ public class Clock extends Observable implements Serializable {
 );
     }
     
-  
+    /**
+     *
+     * @param wait
+     */
     public void waitForTime(long wait){
         if(hasStart){
             t.cancel();

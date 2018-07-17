@@ -19,18 +19,37 @@ import javax.swing.SwingConstants;
 import java.util.*;
 import java.text.*;
  
+/**
+ *
+ * @author CJ
+ */
 public class DigitalClock {
     
+    /**
+     *
+     */
     public int timeD;
     
+    /**
+     *
+     * @param x
+     */
     public DigitalClock(int x){
         this.timeD = x;
     }
+
+    /**
+     *
+     */
     public DigitalClock() {
         this.timeD = 5000;
     }
  
-  public static void main(String[] arguments) {
+    /**
+     *
+     * @param arguments
+     */
+    public static void main(String[] arguments) {
  
     ClockLabel dateLable = new ClockLabel("date");
     ClockLabel timeLable = new ClockLabel("time");

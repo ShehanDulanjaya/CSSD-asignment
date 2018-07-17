@@ -14,6 +14,12 @@ import java.io.FileReader;
  * @author Akila Jayasinghe
  */
 public class Map {
+
+    /**
+     *
+     * @return
+     */
+    //Extract location data
     public static String[] readmap(){
         String result[];
         try {
@@ -35,6 +41,11 @@ public class Map {
 
     }
     
+    /**
+     *
+     * @return
+     */
+    //Read emergency path map data
     public static String[] emergencyread(){
         String result[];
         try {

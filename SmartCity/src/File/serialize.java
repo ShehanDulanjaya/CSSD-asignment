@@ -24,13 +24,26 @@ import java.util.ArrayList;
  */
 public class serialize implements Serializable{
 private Sensor sensor;
- public static serialize slib;
+
+    /**
+     *
+     */
+    public static serialize slib;
+
+    /**
+     *
+     */
     public serialize() {
       
     }
     
-    
-        public static boolean write(String filename, Object obj){
+    /**
+     *
+     * @param filename
+     * @param obj
+     * @return
+     */
+    public static boolean write(String filename, Object obj){
             
         try {
             FileOutputStream fil=new FileOutputStream(filename);
@@ -47,8 +60,11 @@ private Sensor sensor;
 return false;
     }
         
-        
-        public static void delete(String filename){
+    /**
+     *
+     * @param filename
+     */
+    public static void delete(String filename){
         
         File file = new File (filename);
         if (! file.exists() )
@@ -69,7 +85,12 @@ return false;
                }
     }
 
-    
+    /**
+     *
+     * @param filename
+     * @param clas
+     * @return
+     */
     public static boolean read(String filename,Object clas){
         try {
             FileInputStream fil=new FileInputStream(filename);
@@ -85,7 +106,12 @@ return false;
             
         return false;
     }
-public static ArrayList<Sensor> getAllSensors(){
+
+    /**
+     *
+     * @return
+     */
+    public static ArrayList<Sensor> getAllSensors(){
           try {
             FileInputStream fil=new FileInputStream("sensor.txt");
                      
@@ -111,7 +137,11 @@ public static ArrayList<Sensor> getAllSensors(){
         return null;
       }
 
-public static ArrayList<SensorStation> getAllSensorStations(){
+    /**
+     *
+     * @return
+     */
+    public static ArrayList<SensorStation> getAllSensorStations(){
           try {
             FileInputStream fil=new FileInputStream("sensorstation.txt");
                      
@@ -137,6 +167,10 @@ public static ArrayList<SensorStation> getAllSensorStations(){
         return null;
       }
     
+    /**
+     *
+     * @return
+     */
     public static ArrayList<SensorMonitor> readSensorMonitor(){
         try {
             FileInputStream fil=new FileInputStream("clocksm.txt");

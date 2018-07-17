@@ -22,20 +22,36 @@ public class Data implements Serializable{
        private Date dateobj; 
     private static DecimalFormat df2 = new DecimalFormat("0.##");
    
+    /**
+     *
+     */
     public Data() {
         setDate();
     }
     
-     public String getReadings() {
+    /**
+     *
+     * @return
+     */
+    public String getReadings() {
         
         this.readings = new Random().nextDouble();		
         return df2.format(readings);
     }
-     public void setDate(){
+
+    /**
+     *
+     */
+    public void setDate(){
           this.dateobj = new Date();
 
      }
-     public String getDateTime(){
+
+    /**
+     *
+     * @return
+     */
+    public String getDateTime(){
          
          return this.df.format(this.dateobj);
      }

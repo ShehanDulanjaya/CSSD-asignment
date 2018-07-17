@@ -35,32 +35,66 @@ public class Location extends Observable{
     emergencyService observer;
     private String random;
 
+    /**
+     *
+     * @param latitude
+     * @param longitude
+     */
+    //constructor
     public Location(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
         
     }
     
+    /**
+     *
+     */
     public Location(){
         
     }
 
+    /**
+     *
+     * @return
+     */
+    //get Latitude
     public double getLatitude() {
         return latitude;
     }
 
+    /**
+     *
+     * @param latitude
+     */
+    //set Latitude
     public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
+    /**
+     *
+     * @return
+     */
+    //get Longitude
     public double getLongitude() {
         return longitude;
     }
 
+    /**
+     *
+     * @param longitude
+     */
+    //set Longitude
     public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
+    /**
+     *
+     * @return
+     */
+    //Extract coodinates from the map and pass to UI
     public String toAdress(){
         
             
@@ -98,6 +132,11 @@ public class Location extends Observable{
         return this.address;
     }
     
+    /**
+     *
+     * @return
+     */
+    //Set Emergency Coordinates
     public String setemergency(){
         String[] cordinates = {"6.864124613608374/80.0048899434737","6.930399406839585/79.9771101098645","6.941487794409919/79.9135422706604"
                 ,"6.932092591524386/79.88621896274822","6.876004993503434/79.90870034814657","6.930080472159258/79.84503842599281","6.852634708845186/79.9179616201177","6.828754293439086/80.01523604897454"};
@@ -106,16 +145,31 @@ public class Location extends Observable{
         return this.random;
     }
     
+    /**
+     *
+     * @param listener
+     */
+    //register Observer
     public void registerObserver(emergencyService listener) {
         this.observer=listener;
          
     }
 
+    /**
+     *
+     * @param listener
+     */
+    //unregister Observer
     public void unregisterObserver(emergencyService listener) {
         this.observer=null;
       
     }
 
+    /**
+     *
+     * @param ob
+     */
+    //notify Observers
     public void notifyObservers(String ob) {
             this.observer.update(this,ob );
             
