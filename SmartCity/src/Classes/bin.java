@@ -22,6 +22,11 @@ public class bin {
         return instance;
     }
     
+    /**
+     * 
+     * @return 
+     */
+    //get bins
     public ArrayList<Sensor> getBins(){
         this.sens=new ArrayList<>();
     
@@ -32,6 +37,11 @@ public class bin {
     }
          return this.sens;
     }
+    /**
+     * 
+     * @return 
+     */
+    //get location
     public String getlocation(){
         this.location=new Location();
         return this.location.getemergency();
