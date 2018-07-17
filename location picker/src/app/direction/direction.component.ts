@@ -25,16 +25,17 @@ export class DirectionComponent implements OnInit {
 
   public latt: Number ;
   public lonn: Number;
+  public waypoints: object = []
+
+  public provideRouteAlternatives: boolean = true
+  public travelMode: string = 'DRIVING'
+  
    
   ngOnInit() {
-    this.getDirection();
+    
     
   }
    
-  getDirection() {
-   
-    
-  }
 
   getDestination(){
     const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
@@ -45,7 +46,7 @@ export class DirectionComponent implements OnInit {
 
       this.latitu=Number(this.input.latitude);
       this.longti=Number(this.input.longitude);
-      
+
       this.origin = { lat: 6.914834928510645, lng: 79.97314095497131 }
       this.destination = { lat:Number(this.latitu) , lng: Number(this.longti) }
 

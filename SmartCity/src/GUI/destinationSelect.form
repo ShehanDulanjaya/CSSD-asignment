@@ -91,6 +91,11 @@
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel3">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="D:\CSSD-asignment\Images\Waypoint Map_25px.png"/>
+                </Property>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="10" y="0" width="30" height="50"/>
@@ -197,7 +202,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="520" y="130" width="30" height="30"/>
+              <AbsoluteConstraints x="510" y="80" width="20" height="30"/>
             </Constraint>
           </Constraints>
 
@@ -208,7 +213,7 @@
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\CSSD-asignment\Images\Marker_30px.png"/>
+                  <Image iconType="2" name="D:\CSSD-asignment\Images\Marker_20px.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -216,7 +221,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="0" width="30" height="30"/>
+                  <AbsoluteConstraints x="0" y="0" width="20" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>

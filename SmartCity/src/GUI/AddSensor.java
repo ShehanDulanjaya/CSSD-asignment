@@ -101,6 +101,8 @@ System.out.println("GUI.AddSensor.<init>()"+ globalStationId);
             }
         });
         addButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Add New_25px.png")); // NOI18N
         addButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 50));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -125,6 +127,8 @@ System.out.println("GUI.AddSensor.<init>()"+ globalStationId);
             }
         });
         clearButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Broom_25px.png")); // NOI18N
         clearButton.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 30, 50));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));

@@ -130,7 +130,7 @@ public static String globalMonitorId;
         });
         viewDirectionButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Available Updates_25px.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Map Marker_25px.png")); // NOI18N
         viewDirectionButton.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 50));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));

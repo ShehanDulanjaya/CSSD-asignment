@@ -151,7 +151,7 @@
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\CSSD-asignment\Images\Available Updates_25px.png"/>
+                  <Image iconType="2" name="D:\CSSD-asignment\Images\Map Marker_25px.png"/>
                 </Property>
               </Properties>
               <Constraints>

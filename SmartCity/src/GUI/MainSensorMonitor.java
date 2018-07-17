@@ -81,7 +81,6 @@ public class MainSensorMonitor extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         topPanel = new javax.swing.JPanel();
         closeLabel = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         titlePanel = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         bodyPane = new javax.swing.JDesktopPane();
@@ -112,7 +111,7 @@ public class MainSensorMonitor extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Home_25px.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Log Cabin_25px.png")); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -173,7 +172,7 @@ public class MainSensorMonitor extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Structural_25px.png")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Bungalow_25px.png")); // NOI18N
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -315,25 +314,18 @@ public class MainSensorMonitor extends javax.swing.JFrame {
             }
         });
 
-        jLabel17.setFont(new java.awt.Font("Comic Sans MS", 3, 12)); // NOI18N
-        jLabel17.setText("Sensor Station");
-
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
         topPanelLayout.setHorizontalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 560, Short.MAX_VALUE)
+                .addContainerGap(656, Short.MAX_VALUE)
                 .addComponent(closeLabel))
         );
         topPanelLayout.setVerticalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanelLayout.createSequentialGroup()
-                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel17)
-                    .addComponent(closeLabel))
+                .addComponent(closeLabel)
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
@@ -504,7 +496,6 @@ public class MainSensorMonitor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

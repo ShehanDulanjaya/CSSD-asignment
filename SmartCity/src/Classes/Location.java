@@ -40,6 +40,10 @@ public class Location extends Observable{
         this.longitude = longitude;
         
     }
+    
+    public Location(){
+        
+    }
 
     public double getLatitude() {
         return latitude;
@@ -113,7 +117,7 @@ public class Location extends Observable{
     }
 
     public void notifyObservers(String ob) {
-            observer.update(this,ob );
+            this.observer.update(this,ob );
             
         }
                

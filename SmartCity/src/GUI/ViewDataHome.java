@@ -84,7 +84,6 @@ public static long waitTime=10000;
         cityLabel = new javax.swing.JLabel();
         topPanel = new javax.swing.JPanel();
         closeLabel = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         titlePanel = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         bodyPane = new javax.swing.JDesktopPane();
@@ -168,25 +167,18 @@ public static long waitTime=10000;
             }
         });
 
-        jLabel17.setFont(new java.awt.Font("Comic Sans MS", 3, 12)); // NOI18N
-        jLabel17.setText("Sensor Station");
-
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
         topPanelLayout.setHorizontalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 560, Short.MAX_VALUE)
+                .addContainerGap(656, Short.MAX_VALUE)
                 .addComponent(closeLabel))
         );
         topPanelLayout.setVerticalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanelLayout.createSequentialGroup()
-                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel17)
-                    .addComponent(closeLabel))
+                .addComponent(closeLabel)
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
@@ -304,7 +296,6 @@ public static long waitTime=10000;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;

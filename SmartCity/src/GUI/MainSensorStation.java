@@ -13,6 +13,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -23,6 +25,7 @@ import javax.swing.JOptionPane;
  */
 public class MainSensorStation extends javax.swing.JFrame {
 public static long waitTime=10000;
+private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
     /**
      * Creates new form AddSensor
      */
@@ -32,6 +35,7 @@ public static long waitTime=10000;
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         clockLoad();
+        
     }
     
     public void homeUi(){
@@ -93,7 +97,7 @@ public static long waitTime=10000;
         jLabel7 = new javax.swing.JLabel();
         topPanel = new javax.swing.JPanel();
         closeLabel = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        DateTimeLabel = new javax.swing.JLabel();
         titlePanel = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         bodyPane = new javax.swing.JDesktopPane();
@@ -277,8 +281,8 @@ public static long waitTime=10000;
             }
         });
 
-        jLabel17.setFont(new java.awt.Font("Comic Sans MS", 3, 12)); // NOI18N
-        jLabel17.setText("Sensor Station");
+        DateTimeLabel.setFont(new java.awt.Font("Comic Sans MS", 3, 12)); // NOI18N
+        DateTimeLabel.setText("Sensor Station");
 
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
@@ -286,7 +290,7 @@ public static long waitTime=10000;
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel17)
+                .addComponent(DateTimeLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 560, Short.MAX_VALUE)
                 .addComponent(closeLabel))
         );
@@ -294,7 +298,7 @@ public static long waitTime=10000;
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanelLayout.createSequentialGroup()
                 .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel17)
+                    .addComponent(DateTimeLabel)
                     .addComponent(closeLabel))
                 .addGap(0, 6, Short.MAX_VALUE))
         );
@@ -428,6 +432,7 @@ public static long waitTime=10000;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DateTimeLabel;
     private javax.swing.JPanel background;
     private javax.swing.JDesktopPane bodyPane;
     private javax.swing.JLabel cityLabel;
@@ -437,7 +442,6 @@ public static long waitTime=10000;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

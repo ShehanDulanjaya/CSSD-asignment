@@ -95,7 +95,6 @@ boolean select=false;
         jLabel11 = new javax.swing.JLabel();
         setLocationButton = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         intervalTextBox2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -124,6 +123,8 @@ boolean select=false;
             }
         });
         updateButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Available Updates_25px.png")); // NOI18N
         updateButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 50));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -179,16 +180,10 @@ boolean select=false;
         });
         setLocationButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Marker_30px.png")); // NOI18N
-        setLocationButton.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 30, 50));
+        jLabel6.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Marker_20px.png")); // NOI18N
+        setLocationButton.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 20, 30));
 
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Select Location");
-        setLocationButton.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
-
-        jPanel1.add(setLocationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 230, 50));
+        jPanel1.add(setLocationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 260, 20, 30));
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel12.setText("Interval");
@@ -324,7 +319,6 @@ public void mapload(){
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField locationTextBox;
     private javax.swing.JTextField nameTextBox;

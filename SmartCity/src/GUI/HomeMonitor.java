@@ -159,7 +159,7 @@ JTable bindTable = new JTable();
         });
         viewButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\View_25px.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Sensor_25px.png")); // NOI18N
         viewButton.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 50));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));

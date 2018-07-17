@@ -32,7 +32,27 @@ public class Map {
             System.out.println("Error "+ e);
         }
         return null;
+
+    }
+    
+    public static String[] emergencyread(){
+        String result[];
+        try {
+            File file = new File("../emergency.txt");
+            BufferedReader br = new BufferedReader(new FileReader(file));
             
-  
+            String res=null;
+            String st;
+            
+            while ((st = br.readLine()) != null)
+              res=st;
+            
+            result = res.split("/");
+            return result;
+        } catch (Exception e) {
+            System.out.println("Error "+ e);
+        }
+        return null;
+
     }
 }

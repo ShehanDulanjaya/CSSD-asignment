@@ -225,7 +225,7 @@ public static String globalSensorId;
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Home_25px.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Database View_25px.png")); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -238,9 +238,9 @@ public static String globalSensorId;
             .addGroup(homePanelLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel2)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         homePanelLayout.setVerticalGroup(
             homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,7 +278,7 @@ public static String globalSensorId;
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Home_25px.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Search_20px.png")); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -293,7 +293,7 @@ public static String globalSensorId;
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
         SearchButtonLayout.setVerticalGroup(
             SearchButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

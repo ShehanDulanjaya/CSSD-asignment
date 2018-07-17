@@ -11,6 +11,7 @@ import Classes.Mothership;
 import Classes.Sensor;
 import Classes.SensorMonitor;
 import Classes.SensorStation;
+import Classes.emergencyService;
 import static File.Map.readmap;
 import File.serialize;
 import static GUI.HomeStation.globalStationId;
@@ -46,9 +47,12 @@ String x[]=null;
     public destinationSelect() {
 
         initComponents();
-        Location l =new Location(6.914834928510645, 79.97314095497131);
-        String s=l.toAdress();
-        currentLocationTextBox.setText(s);
+        
+        emergencyService emergency = new emergencyService();
+        Location l = new Location();
+        l.addObserver(emergency);
+        l.setemergency();
+        
     }
 
     /**
@@ -97,6 +101,8 @@ String x[]=null;
             }
         });
         findRouteButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Waypoint Map_25px.png")); // NOI18N
         findRouteButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 50));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -140,15 +146,15 @@ String x[]=null;
         });
         setLocationButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Marker_30px.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Marker_20px.png")); // NOI18N
         jLabel6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jLabel6KeyPressed(evt);
             }
         });
-        setLocationButton.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
+        setLocationButton.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 20, 30));
 
-        jPanel1.add(setLocationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, 30, 30));
+        jPanel1.add(setLocationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 20, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,13 +178,6 @@ String x[]=null;
         evt.getComponent().setBackground(new Color(102, 48, 142));
     }//GEN-LAST:event_findRouteButtonMouseExited
 
-    public void clear(){
-        String uniqueID = UUID.randomUUID().toString();
-        currentLocationTextBox.setText(uniqueID);
-        destinationTextBox.setText("");
-        buttonGroup1.clearSelection();
-            
-    }
     
     private void findRouteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_findRouteButtonMouseClicked
             bestRouteMap();        
@@ -215,7 +214,7 @@ public void mapload(){
                             x=readmap();
                             Location l =new Location(Double.parseDouble(x[0]), Double.parseDouble(x[1]));
                             String s=l.toAdress();
-                            destinationTextBox.setText(s);
+                            currentLocationTextBox.setText(s);
                             m.dispose();
                         }
                         
