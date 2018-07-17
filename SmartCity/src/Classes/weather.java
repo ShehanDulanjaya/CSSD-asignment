@@ -26,10 +26,18 @@ import org.json.simple.parser.JSONParser;
 public class weather {
    private String[] result;
    
+   /**
+    * constructor
+    */
     public weather(){
         result=new String[3];
     }
     
+    /**
+     * 
+     * @return 
+     */
+    //get weather
    public String[] getWeather(){
 //       String URL = "http://dataservice.accuweather.com/currentconditions/v1/311426?apikey=lY1XA38vgKFMuDmsgT4C1JYRStRaAAud"; 
 //       String URL = "http://dataservice.accuweather.com/currentconditions/v1/311426?apikey=FyWGmTSPz6eAZdRM9I30v3cuoSve61TG";
@@ -70,6 +78,12 @@ public class weather {
     
    }
    
+   /**
+    * 
+    * @param no
+    * @return 
+    */
+   //read image
    public ImageIcon readimage(String no){
        
        String path = "https://developer.accuweather.com/sites/default/files/"+no+"-s.png";
