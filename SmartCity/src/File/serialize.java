@@ -24,7 +24,7 @@ import java.util.ArrayList;
  */
 public class serialize implements Serializable{
 private Sensor sensor;
-
+ private static final long serialVersionUID = 6529685098267757690L;
     /**
      *
      */

@@ -133,6 +133,7 @@ public class SensorStation implements Observer,Serializable{
     //receive data of the sensor
     public void receiveSensorData(EmbllishedData embllishedData){
         this.embllishedData=embllishedData;
+        notifyObservers(embllishedData);
     }
     
     /**
@@ -199,7 +200,11 @@ public class SensorStation implements Observer,Serializable{
     }
 
     
-    
+     public void notifyObservers(EmbllishedData emb) {
+        System.out.println("Notify Mothership");
+        observer.update(null,emb);
+        
+    }
 
     
 
