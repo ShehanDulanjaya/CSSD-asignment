@@ -5,6 +5,7 @@
  */
 package File;
 
+import Classes.EmbllishedData;
 import Classes.Sensor;
 import Classes.SensorMonitor;
 import Classes.SensorStation;
@@ -184,6 +185,32 @@ return false;
                 }
                 else{
                      ArrayList<SensorMonitor>sr  = new ArrayList<>();
+
+                     fil.close();
+                     return sr;
+                }
+            
+        } catch (Exception e) {
+            System.out.println("read "+ e);
+        }
+
+            
+        return null;
+    }
+    
+     public static ArrayList<EmbllishedData> upload(){
+        try {
+            FileInputStream fil=new FileInputStream("clocksm.txt");
+                     
+                if(fil.available()>0){
+                    ObjectInputStream oo=new ObjectInputStream(fil);
+                 ArrayList<EmbllishedData> sr = (ArrayList<EmbllishedData>) oo.readObject();
+                 oo.close();
+                 fil.close();
+                 return sr;
+                }
+                else{
+                     ArrayList<EmbllishedData>sr  = new ArrayList<>();
 
                      fil.close();
                      return sr;

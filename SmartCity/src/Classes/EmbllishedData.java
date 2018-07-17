@@ -9,6 +9,7 @@ package Classes;
  *
  * @author Dos
  */
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
  *
  * @author CJ
  */
-public class EmbllishedData {
+public class EmbllishedData implements Serializable{
 
     /**
      *

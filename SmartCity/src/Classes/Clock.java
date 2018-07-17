@@ -122,6 +122,7 @@ public class Clock extends Observable implements Serializable {
             @Override
             public void run() {
                 hasStart=true;
+                System.out.println("----------------------------------");
                 System.out.println("Clock Running: " + wait);
                 notifyObservers();
                     

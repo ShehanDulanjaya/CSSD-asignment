@@ -80,8 +80,8 @@ public class Mothership implements Observer,Serializable{
     }
 
     @Override
-    public void update(Observable o, Object o1) {
-        
+    public void update(Observable o, Object dat) {
+        uploadData((EmbllishedData)dat);
     }
     
     /**
@@ -113,5 +113,13 @@ public class Mothership implements Observer,Serializable{
                         return null;
     }
     
+    public void uploadData(EmbllishedData data){
+        ArrayList<EmbllishedData> emb=new ArrayList<>();
+        emb=serialize.upload();
+        emb.add(data);
+        serialize.write("publicInterface.txt", emb);
+        System.out.println("Mothership Upload data to public Interface");
+        
+    }
     
 }
