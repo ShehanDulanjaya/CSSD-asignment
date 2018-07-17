@@ -10,6 +10,9 @@ import Classes.SensorMonitor;
 import Classes.SensorStation;
 import Classes.weather;
 import File.serialize;
+import static GUI.MotherShip.globalTempreature;
+import static GUI.MotherShip.globalWeather;
+import static GUI.MotherShip.globalWeatherIcon;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -43,9 +46,9 @@ private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/M
     public void setWeather(){
         weather w=new weather();
         String arr[]=w.getWeather();
-        tempreatureLabel.setText(arr[0] + " C");
-        weatherLabel.setText(arr[1]);
-        cloudLabel.setIcon(w.readimage(arr[2]));
+        tempreatureLabel.setText(globalTempreature + " C");
+        weatherLabel.setText(globalWeather);
+        cloudLabel.setIcon(globalWeatherIcon);
     }  
     
     public void homeUi(){
@@ -62,20 +65,21 @@ private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/M
         ArrayList<SensorStation> mon=serialize.getAllSensorStations();
          ArrayList<SensorMonitor> monitor=new ArrayList<>();
          clock.setObservers(monitor);
-        for(SensorStation moni:mon){
-           
-           for(SensorMonitor newmoni:moni.getAllSensorMonitors()){
-             
-             SensorMonitor s =(SensorMonitor) newmoni;
-             System.out.println("Observer Registered : "+ s.getName());
-            clock.registerObserver(s);
-           
+         if(mon != null){
+                for(SensorStation moni:mon){
+
+                   for(SensorMonitor newmoni:moni.getAllSensorMonitors()){
+
+                     SensorMonitor s =(SensorMonitor) newmoni;
+                     System.out.println("Observer Registered : "+ s.getName());
+                    clock.registerObserver(s);
+
+                        }
                 }
-        }
-        
-        
-        clock.waitForTime(waitTime);
-        
+
+
+                clock.waitForTime(waitTime);
+                 }
     }
 
     /**
