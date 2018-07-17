@@ -113,13 +113,6 @@ public class Mothership implements Observer,Serializable{
                         return null;
     }
     
-    public void uploadData(EmbllishedData data){
-        ArrayList<EmbllishedData> emb=new ArrayList<>();
-        emb=serialize.upload();
-        emb.add(data);
-        serialize.write("publicInterface.txt", emb);
-        System.out.println("Mothership Upload data to public Interface");
-        
-    }
+    
     
 }
