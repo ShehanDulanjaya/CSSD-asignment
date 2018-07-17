@@ -42,7 +42,7 @@ SensorMonitor m=station.getASensorMonitor(globalMonitorId);
 //        javax.swing.plaf.InternalFrameUI ifu;
 //        ifu = this.getUI();
 //        ((javax.swing.plaf.basic.BasicInternalFrameUI)ifu).setNorthPane(null);
-System.out.println("GUI.AddSensor.<init>()"+ globalStationId);
+        
         JOptionPane.showMessageDialog(null,"You can add only one Sensor to the Monitor");
 
     }

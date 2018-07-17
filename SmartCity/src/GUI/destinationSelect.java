@@ -47,12 +47,20 @@ String x[]=null;
     public destinationSelect() {
 
         initComponents();
+        setDestinationUi();
         
+    }
+    
+    public void setDestinationUi(){
         emergencyService emergency = new emergencyService();
         Location l = new Location();
         l.addObserver(emergency);
-        l.setemergency();
+        String coords=l.setemergency();
         
+        String str[]=coords.split("/");
+        Location location =new Location(Double.parseDouble(str[0]), Double.parseDouble(str[1]));
+        String s=location.toAdress();
+        destinationTextBox.setText(s);
     }
 
     /**

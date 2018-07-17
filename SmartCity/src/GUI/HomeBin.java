@@ -41,12 +41,18 @@ public static String globalMonitorId;
     public HomeBin() {
         initComponents();
 //       load();
-//        tableLoad();
+        tableLoad();
         
     }
     
     public void tableLoad(){
-    
+        DefaultTableModel model=(DefaultTableModel) dataTable.getModel();
+        model.setRowCount(0);
+        for(Sensor sensor:serialize.getAllSensors()){
+            if("Bin Sensor".equals(sensor.getSensorType())){
+                model.addRow(new Object[]{sensor.getSensorID(),sensor.getMonitorName()});
+            }          
+        }
     }
 
     /**
@@ -62,7 +68,7 @@ public static String globalMonitorId;
         jPanel1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        monitorTable = new javax.swing.JTable();
+        dataTable = new javax.swing.JTable();
         viewDirectionButton = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -83,35 +89,43 @@ public static String globalMonitorId;
         jLabel15.setText("A step towards Smart Sri Lanka");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 430, 171, -1));
 
-        monitorTable.setModel(new javax.swing.table.DefaultTableModel(
+        dataTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Monitor Name", "Location"
+                "Sensor Id", "Monitor Name", "Location"
             }
-        ));
-        monitorTable.setGridColor(new java.awt.Color(255, 255, 255));
-        jScrollPane2.setViewportView(monitorTable);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        dataTable.setGridColor(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setViewportView(dataTable);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 640, 348));
 
@@ -184,13 +198,13 @@ public static String globalMonitorId;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable dataTable;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable monitorTable;
     private javax.swing.JPanel viewDirectionButton;
     // End of variables declaration//GEN-END:variables
 }

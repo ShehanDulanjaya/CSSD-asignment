@@ -190,6 +190,11 @@ boolean select=false;
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 120, 30));
 
         intervalTextBox2.setText("0");
+        intervalTextBox2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                intervalTextBox2KeyTyped(evt);
+            }
+        });
         jPanel1.add(intervalTextBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 230, 30));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -219,44 +224,44 @@ boolean select=false;
         evt.getComponent().setBackground(new Color(102, 48, 142));
     }//GEN-LAST:event_updateButtonMouseExited
 
-    public void clear(){
-        idTextBox.setText("");
-        locationTextBox.setText("");
-        intervalTextBox2.setText("");
-        buttonGroup1.clearSelection();
-            
-    }
-    
+
     private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
         
-        Boolean status;
-        if(activeRadioButton.isSelected()){
-            status=true;
+        if("".equals(nameTextBox.getText()) || "".equals(locationTextBox.getText())){
+            JOptionPane.showMessageDialog(null,"Please fill all fields");
         }
-        else{
-            status=false;
-        }
-       
-        if(select){
-            coords.set(0,Double.parseDouble(x[0]));
-            coords.set(1,Double.parseDouble(x[1]));
-        }
-        
-        mother.removeSensorStation(globalStationId);
-        station.removeSensorMonitor(m);
-        m.setCoords(coords);
-        m.setIsActive(status);
-        m.setName(nameTextBox.getText());
-        station.addNewSensorMonitor(m);
-       boolean check= mother.addNewSensorStation(station);
-       
-        
-        if(check){
-            JOptionPane.showMessageDialog(null,"Sensor Monitor Update Successfully");
-            
-        }
-        else{
-            JOptionPane.showMessageDialog(null,"Sensor Monitor Update Fail");
+                else{
+                Boolean status;
+                if(activeRadioButton.isSelected()){
+                    status=true;
+                }
+                else{
+                    status=false;
+                }
+
+                if(select){
+                    coords.set(0,Double.parseDouble(x[0]));
+                    coords.set(1,Double.parseDouble(x[1]));
+                }
+
+                mother.removeSensorStation(globalStationId);
+                station.removeSensorMonitor(m);
+                m.setCoords(coords);
+                m.setIsActive(status);
+                m.setName(nameTextBox.getText());
+                station.addNewSensorMonitor(m);
+               boolean check= mother.addNewSensorStation(station);
+
+
+                if(check){
+                    JOptionPane.showMessageDialog(null,"Sensor Monitor Update Successfully");
+                    HomeMonitor h = new HomeMonitor();
+                    JDesktopPane n =this.getDesktopPane();
+                    n.removeAll();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"Sensor Monitor Update Fail");
+                }
         }
     }//GEN-LAST:event_updateButtonMouseClicked
 
@@ -272,6 +277,17 @@ boolean select=false;
     private void setLocationButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setLocationButtonMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_setLocationButtonMouseExited
+
+    private void intervalTextBox2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_intervalTextBox2KeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        String s=intervalTextBox2.getText();
+         
+         if(!(Character.isDigit(c))||(c==com.sun.glass.events.KeyEvent.VK_BACKSPACE) || (c== com.sun.glass.events.KeyEvent.VK_DELETE))
+         {
+             evt.consume();
+         }
+    }//GEN-LAST:event_intervalTextBox2KeyTyped
 
 public void mapload(){
     Browser browser = new Browser();
