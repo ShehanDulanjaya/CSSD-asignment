@@ -137,7 +137,7 @@ public class Location extends Observable{
      * @return
      */
     //Set Emergency Coordinates
-    public String setemergency(){
+    public String getemergency(){
         String[] cordinates = {"6.864124613608374/80.0048899434737","6.930399406839585/79.9771101098645","6.941487794409919/79.9135422706604"
                 ,"6.932092591524386/79.88621896274822","6.876004993503434/79.90870034814657","6.930080472159258/79.84503842599281","6.852634708845186/79.9179616201177","6.828754293439086/80.01523604897454"};
         this.random = (cordinates[new Random().nextInt(cordinates.length)]);

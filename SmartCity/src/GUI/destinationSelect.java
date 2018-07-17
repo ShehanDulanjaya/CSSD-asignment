@@ -55,7 +55,7 @@ String x[]=null;
         emergencyService emergency = new emergencyService();
         Location l = new Location();
         l.addObserver(emergency);
-        String coords=l.setemergency();
+        String coords=l.getemergency();
         
         String str[]=coords.split("/");
         Location location =new Location(Double.parseDouble(str[0]), Double.parseDouble(str[1]));
