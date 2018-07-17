@@ -6,6 +6,7 @@
 package GUI;
 
 import Classes.Clock;
+import Classes.Data;
 import Classes.Location;
 import Classes.Mothership;
 import Classes.Sensor;
@@ -52,9 +53,11 @@ public static String globalMonitorId;
         bin b=bin.getinstance();
         
         for(Sensor sensor:b.getBins()){
+            Data data=sensor.getData();
+            if(Double.parseDouble(data.getReadings())>0.8){
             
                 model.addRow(new Object[]{sensor.getSensorID(),sensor.getMonitorName(),b.getlocation()});
-                    
+            }        
         }
     }
 
