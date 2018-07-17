@@ -38,7 +38,7 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  * @author Akila Jayasinghe
  */
 public class destinationSelect extends javax.swing.JInternalFrame {
-
+String x[]=null;
 
     /**
      * Creates new form Home
@@ -46,7 +46,9 @@ public class destinationSelect extends javax.swing.JInternalFrame {
     public destinationSelect() {
 
         initComponents();
-       
+        Location l =new Location(6.914834928510645, 79.97314095497131);
+        String s=l.toAdress();
+        currentLocationTextBox.setText(s);
     }
 
     /**
@@ -61,20 +63,16 @@ public class destinationSelect extends javax.swing.JInternalFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        addButton = new javax.swing.JPanel();
+        findRouteButton = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        clearButton = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        idTextBox = new javax.swing.JTextField();
+        currentLocationTextBox = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        locationTextBox = new javax.swing.JTextField();
+        destinationTextBox = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         setLocationButton = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(680, 480));
 
@@ -85,71 +83,47 @@ public class destinationSelect extends javax.swing.JInternalFrame {
         jLabel15.setText("A step towards Smart Sri Lanka");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 450, 171, -1));
 
-        addButton.setBackground(new java.awt.Color(102, 48, 142));
-        addButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        addButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        findRouteButton.setBackground(new java.awt.Color(102, 48, 142));
+        findRouteButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        findRouteButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addButtonMouseClicked(evt);
+                findRouteButtonMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                addButtonMouseEntered(evt);
+                findRouteButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                addButtonMouseExited(evt);
+                findRouteButtonMouseExited(evt);
             }
         });
-        addButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        addButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 50));
+        findRouteButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        findRouteButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 50));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Add Monitor");
-        addButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        jLabel4.setText("Find Best Route");
+        findRouteButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
-        jPanel1.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 130, -1));
-
-        clearButton.setBackground(new java.awt.Color(102, 48, 142));
-        clearButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        clearButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                clearButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                clearButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                clearButtonMouseExited(evt);
-            }
-        });
-        clearButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        clearButton.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 30, 50));
-
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Clear Form");
-        clearButton.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
-
-        jPanel1.add(clearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 140, -1));
+        jPanel1.add(findRouteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 150, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Current Location");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 120, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 120, 30));
 
-        idTextBox.setEditable(false);
-        jPanel1.add(idTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 230, 30));
+        currentLocationTextBox.setEditable(false);
+        jPanel1.add(currentLocationTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 230, 30));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel10.setText("Set Destination");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
 
-        locationTextBox.setEditable(false);
-        jPanel1.add(locationTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 230, 30));
+        destinationTextBox.setEditable(false);
+        jPanel1.add(destinationTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 230, 30));
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel11.setText("Destination");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 120, 30));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 120, 30));
 
         setLocationButton.setBackground(new java.awt.Color(102, 81, 181));
         setLocationButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
@@ -165,15 +139,16 @@ public class destinationSelect extends javax.swing.JInternalFrame {
             }
         });
         setLocationButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        setLocationButton.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 30, 50));
 
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Select Location");
-        setLocationButton.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+        jLabel6.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Marker_30px.png")); // NOI18N
+        jLabel6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jLabel6KeyPressed(evt);
+            }
+        });
+        setLocationButton.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
 
-        jPanel1.add(setLocationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 230, 50));
+        jPanel1.add(setLocationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, 30, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,42 +164,30 @@ public class destinationSelect extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseEntered
+    private void findRouteButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_findRouteButtonMouseEntered
         evt.getComponent().setBackground(new Color(80, 80, 125));
-    }//GEN-LAST:event_addButtonMouseEntered
+    }//GEN-LAST:event_findRouteButtonMouseEntered
 
-    private void addButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseExited
+    private void findRouteButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_findRouteButtonMouseExited
         evt.getComponent().setBackground(new Color(102, 48, 142));
-    }//GEN-LAST:event_addButtonMouseExited
-
-    private void clearButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseEntered
-        evt.getComponent().setBackground(new Color(80, 80, 125));
-    }//GEN-LAST:event_clearButtonMouseEntered
-
-    private void clearButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseExited
-        evt.getComponent().setBackground(new Color(102, 48, 142));
-    }//GEN-LAST:event_clearButtonMouseExited
-
-    private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseClicked
-          
-        clear();
-    }//GEN-LAST:event_clearButtonMouseClicked
+    }//GEN-LAST:event_findRouteButtonMouseExited
 
     public void clear(){
         String uniqueID = UUID.randomUUID().toString();
-       idTextBox.setText(uniqueID);
-        locationTextBox.setText("");
+        currentLocationTextBox.setText(uniqueID);
+        destinationTextBox.setText("");
         buttonGroup1.clearSelection();
             
     }
     
-    private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
+    private void findRouteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_findRouteButtonMouseClicked
+            bestRouteMap();        
         
-        
-    }//GEN-LAST:event_addButtonMouseClicked
+    }//GEN-LAST:event_findRouteButtonMouseClicked
 
     private void setLocationButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setLocationButtonMouseClicked
         // TODO add your handling code here:
+        mapload();
        
     }//GEN-LAST:event_setLocationButtonMouseClicked
 
@@ -236,14 +199,71 @@ public class destinationSelect extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_setLocationButtonMouseExited
 
+    private void jLabel6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel6KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel6KeyPressed
 
+    public void mapload(){
+    Browser browser = new Browser();
+    BrowserView view = new BrowserView(browser);
 
+    JFrame m = new JFrame();
+        m.add(view).addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                        int y=JOptionPane.showConfirmDialog(null,"Add this Location ?","Location",JOptionPane.YES_NO_OPTION);
+                        if(y==0){
+                            x=readmap();
+                            Location l =new Location(Double.parseDouble(x[0]), Double.parseDouble(x[1]));
+                            String s=l.toAdress();
+                            destinationTextBox.setText(s);
+                            m.dispose();
+                        }
+                        
+            }
+        });
+        
+        m.setSize(920,580);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        m.setLocation(dim.width/2-m.getSize().width/2, dim.height/2-m.getSize().height/2);
+        m.setVisible(true);
+        
+
+    browser.loadURL("http://localhost:4200/");
+}
+
+public void bestRouteMap(){
+    Browser browser = new Browser();
+    BrowserView view = new BrowserView(browser);
+
+    JFrame m = new JFrame();
+//        m.add(view).addMouseListener(new MouseAdapter() {
+//            public void mouseClicked(MouseEvent e) {
+//                        int y=JOptionPane.showConfirmDialog(null,"Add this Location ?","Location",JOptionPane.YES_NO_OPTION);
+//                        if(y==0){
+//                            x=readmap();
+//                            Location l =new Location(Double.parseDouble(x[0]), Double.parseDouble(x[1]));
+//                            String s=l.toAdress();
+//                            destinationTextBox.setText(s);
+//                            m.dispose();
+//                        }
+//                        
+//            }
+//        });
+        m.add(view);
+        m.setSize(920,580);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        m.setLocation(dim.width/2-m.getSize().width/2, dim.height/2-m.getSize().height/2);
+        m.setVisible(true);
+        
+
+    browser.loadURL("http://localhost:4200/direction");
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel addButton;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JPanel clearButton;
-    private javax.swing.JTextField idTextBox;
+    private javax.swing.JTextField currentLocationTextBox;
+    private javax.swing.JTextField destinationTextBox;
+    private javax.swing.JPanel findRouteButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -251,11 +271,7 @@ public class destinationSelect extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField locationTextBox;
     private javax.swing.JPanel setLocationButton;
     // End of variables declaration//GEN-END:variables
 }
