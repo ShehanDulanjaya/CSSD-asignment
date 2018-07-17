@@ -203,7 +203,7 @@ String x[]=null;
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel6KeyPressed
 
-    public void mapload(){
+public void mapload(){
     Browser browser = new Browser();
     BrowserView view = new BrowserView(browser);
 
@@ -236,19 +236,6 @@ public void bestRouteMap(){
     BrowserView view = new BrowserView(browser);
 
     JFrame m = new JFrame();
-//        m.add(view).addMouseListener(new MouseAdapter() {
-//            public void mouseClicked(MouseEvent e) {
-//                        int y=JOptionPane.showConfirmDialog(null,"Add this Location ?","Location",JOptionPane.YES_NO_OPTION);
-//                        if(y==0){
-//                            x=readmap();
-//                            Location l =new Location(Double.parseDouble(x[0]), Double.parseDouble(x[1]));
-//                            String s=l.toAdress();
-//                            destinationTextBox.setText(s);
-//                            m.dispose();
-//                        }
-//                        
-//            }
-//        });
         m.add(view);
         m.setSize(920,580);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();

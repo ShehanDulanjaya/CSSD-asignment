@@ -34,13 +34,39 @@ public static String globalSensorId;
  
     
     public void tableLoad(){
-    DefaultTableModel model=(DefaultTableModel) dataTable.getModel();
-     model.setRowCount(0);
-    
-                for(Sensor sensor:serialize.getAllSensors()){
-                        
-                        model.addRow(new Object[]{sensor.getSensorID(),sensor.getSensorType(),sensor.getMonitorName()});
-                    }  
+        DefaultTableModel model=(DefaultTableModel) dataTable.getModel();
+        model.setRowCount(0);
+        
+    switch (sensorTypeComboBox.getSelectedIndex()) {
+        case 0:
+            for(Sensor sensor:serialize.getAllSensors()){
+                model.addRow(new Object[]{sensor.getSensorID(),sensor.getSensorType(),sensor.getMonitorName()});
+            }
+            break;
+        case 1:
+            for(Sensor sensor:serialize.getAllSensors()){
+                if("Bin Sensor".equals(sensor.getSensorType())){
+                    model.addRow(new Object[]{sensor.getSensorID(),sensor.getSensorType(),sensor.getMonitorName()});
+                }
+            }
+            break;
+        case 2:
+            for(Sensor sensor:serialize.getAllSensors()){
+                if("Flood Sensor".equals(sensor.getSensorType())){
+                    model.addRow(new Object[]{sensor.getSensorID(),sensor.getSensorType(),sensor.getMonitorName()});
+                }
+            }
+            break;
+        case 3:
+            for(Sensor sensor:serialize.getAllSensors()){
+                if("Traffic Sensor".equals(sensor.getSensorType())){
+                    model.addRow(new Object[]{sensor.getSensorID(),sensor.getSensorType(),sensor.getMonitorName()});
+                }
+            }
+            break;
+        default:
+            break;
+    }
     }
   
     /**
@@ -60,11 +86,11 @@ public static String globalSensorId;
         jLabel9 = new javax.swing.JLabel();
         searchTextBox = new javax.swing.JTextField();
         monitorRadioButton = new javax.swing.JRadioButton();
-        sensorTypeRadioButton = new javax.swing.JRadioButton();
         sensorNameRadioButton = new javax.swing.JRadioButton();
         homePanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        sensorTypeComboBox = new javax.swing.JComboBox<>();
 
         setBorder(null);
         setOpaque(true);
@@ -124,7 +150,7 @@ public static String globalSensorId;
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Search");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
         searchTextBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         searchTextBox.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +158,7 @@ public static String globalSensorId;
                 searchTextBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(searchTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 190, 30));
+        jPanel1.add(searchTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 190, 30));
 
         buttonGroup1.add(monitorRadioButton);
         monitorRadioButton.setText("By Sensor Monitor");
@@ -141,15 +167,11 @@ public static String globalSensorId;
                 monitorRadioButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(monitorRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
-
-        buttonGroup1.add(sensorTypeRadioButton);
-        sensorTypeRadioButton.setText("By Sensor Type");
-        jPanel1.add(sensorTypeRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, -1, -1));
+        jPanel1.add(monitorRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, -1, -1));
 
         buttonGroup1.add(sensorNameRadioButton);
         sensorNameRadioButton.setText("By Sensor Name");
-        jPanel1.add(sensorNameRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, -1));
+        jPanel1.add(sensorNameRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, -1));
 
         homePanel.setBackground(new java.awt.Color(54, 43, 100));
         homePanel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -194,6 +216,15 @@ public static String globalSensorId;
         );
 
         jPanel1.add(homePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 150, 50));
+
+        sensorTypeComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        sensorTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Sensors", "Bin Sensors", "Flood Sensors", "Traffic Sensors" }));
+        sensorTypeComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sensorTypeComboBoxActionPerformed(evt);
+            }
+        });
+        jPanel1.add(sensorTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 130, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -253,6 +284,11 @@ public static String globalSensorId;
 
     }//GEN-LAST:event_dataTableMouseClicked
 
+    private void sensorTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sensorTypeComboBoxActionPerformed
+        // TODO add your handling code here:
+        tableLoad();
+    }//GEN-LAST:event_sensorTypeComboBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -267,6 +303,6 @@ public static String globalSensorId;
     private javax.swing.JRadioButton monitorRadioButton;
     private javax.swing.JTextField searchTextBox;
     private javax.swing.JRadioButton sensorNameRadioButton;
-    private javax.swing.JRadioButton sensorTypeRadioButton;
+    private javax.swing.JComboBox<String> sensorTypeComboBox;
     // End of variables declaration//GEN-END:variables
 }

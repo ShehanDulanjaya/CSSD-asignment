@@ -8,13 +8,15 @@ import { RouterModule } from '@angular/router';
 import { AppRoutes } from './app.routes.service';
 import { DirectionComponent } from './direction/direction.component';
 import { PickerComponent } from './picker/picker.component';
-import { AgmDirectionModule } from 'agm-direction'
+import { AgmDirectionModule } from 'agm-direction';
+import { WaypointComponent } from './waypoint/waypoint.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     DirectionComponent,
     PickerComponent,
+    WaypointComponent,
    
     
   ],

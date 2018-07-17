@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-
 @Component({
-  selector: 'app-direction',
-  templateUrl: './direction.component.html',
-  styleUrls: ['./direction.component.css']
+  selector: 'app-waypoint',
+  templateUrl: './waypoint.component.html',
+  styleUrls: ['./waypoint.component.css']
 })
-export class DirectionComponent implements OnInit {
+export class WaypointComponent implements OnInit {
 
   constructor(private http:HttpClient) {
     this.getDestination(); 
@@ -22,6 +21,14 @@ export class DirectionComponent implements OnInit {
   public input:any;
   public origin: {}
   public destination:  {}
+  public waypoints: any = []
+  public renderOptions = {
+      draggable: true,
+  }
+  public change(event: any) {
+      this.waypoints = event.request.waypoints;
+      console.log(this.waypoints);
+  }
 
   public latt: Number ;
   public lonn: Number;
@@ -48,6 +55,9 @@ export class DirectionComponent implements OnInit {
       
       this.origin = { lat: 6.914834928510645, lng: 79.97314095497131 }
       this.destination = { lat:Number(this.latitu) , lng: Number(this.longti) }
+      this.waypoints=[{location: { lat: 6.90857336837404, lng: 79.94718745033106 },stopover: false},
+                      {location: { lat: 6.9362879623542595, lng: 79.93862117853826 },stopover: false}
+                      ]
 
        console.log(this.latitu);
        console.log(this.longti);
