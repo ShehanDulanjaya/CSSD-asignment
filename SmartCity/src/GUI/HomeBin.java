@@ -11,6 +11,7 @@ import Classes.Mothership;
 import Classes.Sensor;
 import Classes.SensorMonitor;
 import Classes.SensorStation;
+import Classes.bin;
 import File.serialize;
 import static GUI.HomeStation.globalStationId;
 import com.teamdev.jxbrowser.chromium.Browser;
@@ -48,10 +49,12 @@ public static String globalMonitorId;
     public void tableLoad(){
         DefaultTableModel model=(DefaultTableModel) dataTable.getModel();
         model.setRowCount(0);
-        for(Sensor sensor:serialize.getAllSensors()){
-            if("Bin Sensor".equals(sensor.getSensorType())){
-                model.addRow(new Object[]{sensor.getSensorID(),sensor.getMonitorName()});
-            }          
+        bin b=bin.getinstance();
+        
+        for(Sensor sensor:b.getBins()){
+            
+                model.addRow(new Object[]{sensor.getSensorID(),sensor.getMonitorName(),b.getlocation()});
+                    
         }
     }
 

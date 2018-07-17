@@ -11,6 +11,9 @@ import Classes.SensorStation;
 import Classes.weather;
 import File.serialize;
 import static GUI.MainSensorStation.waitTime;
+import static GUI.MotherShip.globalTempreature;
+import static GUI.MotherShip.globalWeather;
+import static GUI.MotherShip.globalWeatherIcon;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -53,9 +56,9 @@ public class MainSensorMonitor extends javax.swing.JFrame {
     public void setWeather(){
         weather w=new weather();
         String arr[]=w.getWeather();
-        tempreatureLabel.setText(arr[0] + " C");
-        weatherLabel.setText(arr[1]);
-        cloudLabel.setIcon(w.readimage(arr[2]));
+        tempreatureLabel.setText(globalTempreature + " C");
+        weatherLabel.setText(globalWeather);
+        cloudLabel.setIcon(globalWeatherIcon);
     }
     
 

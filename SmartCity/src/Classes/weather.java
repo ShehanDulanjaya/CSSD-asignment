@@ -31,7 +31,8 @@ public class weather {
     }
     
    public String[] getWeather(){
-       String URL = "http://dataservice.accuweather.com/currentconditions/v1/311426?apikey=FyWGmTSPz6eAZdRM9I30v3cuoSve61TG"; 
+       String URL = "http://dataservice.accuweather.com/currentconditions/v1/311426?apikey=lY1XA38vgKFMuDmsgT4C1JYRStRaAAud"; 
+//       String URL = "http://dataservice.accuweather.com/currentconditions/v1/311426?apikey=FyWGmTSPz6eAZdRM9I30v3cuoSve61TG";
 
             try {
             URL url = new URL(URL);

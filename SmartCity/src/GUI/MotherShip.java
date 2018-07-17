@@ -20,6 +20,7 @@ import java.awt.Polygon;
 import java.awt.Shape;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import javax.swing.Icon;
 import javax.swing.JButton;
 
 
@@ -29,6 +30,9 @@ import javax.swing.JButton;
  */
 public class MotherShip extends javax.swing.JFrame {
 public static long waitTime=10000;
+public static String globalTempreature;
+public static String globalWeather;
+public static Icon globalWeatherIcon;
 
     /**
      * Creates new form AddSensor
@@ -50,9 +54,12 @@ public static long waitTime=10000;
     public void setWeather(){
         weather w=new weather();
         String arr[]=w.getWeather();
-        tempreatureLabel.setText(arr[0] + " C");
-        weatherLabel.setText(arr[1]);
-        cloudLabel.setIcon(w.readimage(arr[2]));
+        globalTempreature=arr[0];
+        globalWeather=arr[1];
+        globalWeatherIcon=w.readimage(arr[2]);
+        tempreatureLabel.setText(globalTempreature + " C");
+        weatherLabel.setText(globalWeather);
+        cloudLabel.setIcon(globalWeatherIcon);
     }
     
     public void clockLoad(){
