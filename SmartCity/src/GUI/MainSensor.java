@@ -9,6 +9,7 @@ import Classes.Clock;
 import Classes.Mothership;
 import Classes.SensorMonitor;
 import Classes.SensorStation;
+import Classes.weather;
 import File.serialize;
 import static GUI.HomeMonitor.globalMonitorId;
 import static GUI.HomeStation.globalStationId;
@@ -57,7 +58,15 @@ SensorMonitor m=station.getASensorMonitor(globalMonitorId);
         }
         Clock clock=Clock.getInstance();
         clock.waitForTime(waitTime);
-        
+        setWeather();
+    }
+    
+public void setWeather(){
+        weather w=new weather();
+        String arr[]=w.getWeather();
+        tempreatureLabel.setText(arr[0] + " C");
+        weatherLabel.setText(arr[1]);
+        cloudLabel.setIcon(w.readimage(arr[2]));
     }
     
 
@@ -73,10 +82,6 @@ SensorMonitor m=station.getASensorMonitor(globalMonitorId);
         jLabel1 = new javax.swing.JLabel();
         background = new javax.swing.JPanel();
         sidePanel = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        weatherLabel = new javax.swing.JLabel();
-        cityLabel = new javax.swing.JLabel();
         homePanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -91,6 +96,12 @@ SensorMonitor m=station.getASensorMonitor(globalMonitorId);
         waitTimeTextBox = new javax.swing.JTextField();
         waitTimeButton = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        weatherLabel = new javax.swing.JLabel();
+        tempreatureLabel = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        cloudLabel = new javax.swing.JLabel();
         titlePanel = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         topPanel = new javax.swing.JPanel();
@@ -109,23 +120,6 @@ SensorMonitor m=station.getASensorMonitor(globalMonitorId);
 
         sidePanel.setBackground(new java.awt.Color(54, 33, 89));
         sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel14.setFont(new java.awt.Font("Comic Sans MS", 1, 30)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("iCity");
-        sidePanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
-
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setAlignmentY(1.0F);
-        jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        sidePanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 160, 15));
-        jSeparator1.getAccessibleContext().setAccessibleName("");
-
-        weatherLabel.setText("Weather");
-        sidePanel.add(weatherLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 100, 40));
-
-        cityLabel.setText("City");
-        sidePanel.add(cityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 90, -1));
 
         homePanel.setBackground(new java.awt.Color(54, 43, 100));
         homePanel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -319,6 +313,30 @@ SensorMonitor m=station.getASensorMonitor(globalMonitorId);
         );
 
         sidePanel.add(waitTimePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 230, -1));
+
+        jLabel14.setFont(new java.awt.Font("Comic Sans MS", 1, 30)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("iCity");
+        sidePanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 3, -1, 60));
+
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator1.setAlignmentY(1.0F);
+        jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        sidePanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 160, 15));
+
+        weatherLabel.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        weatherLabel.setForeground(new java.awt.Color(255, 255, 255));
+        sidePanel.add(weatherLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 90, 20));
+
+        tempreatureLabel.setFont(new java.awt.Font("Comic Sans MS", 1, 16)); // NOI18N
+        tempreatureLabel.setForeground(new java.awt.Color(255, 255, 255));
+        sidePanel.add(tempreatureLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 60, 20));
+
+        jLabel8.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("KADUWELA");
+        sidePanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
+        sidePanel.add(cloudLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 70, 50));
 
         background.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 570));
 
@@ -517,8 +535,8 @@ SensorMonitor m=station.getASensorMonitor(globalMonitorId);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JDesktopPane bodyPane;
-    private javax.swing.JLabel cityLabel;
     private javax.swing.JLabel closeLabel;
+    private javax.swing.JLabel cloudLabel;
     private javax.swing.JPanel homePanel;
     private javax.swing.JPanel homePanel1;
     private javax.swing.JLabel jLabel1;
@@ -532,9 +550,11 @@ SensorMonitor m=station.getASensorMonitor(globalMonitorId);
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel monitorHomePanel;
     private javax.swing.JPanel sidePanel;
+    private javax.swing.JLabel tempreatureLabel;
     private javax.swing.JPanel titlePanel;
     private javax.swing.JPanel topPanel;
     private javax.swing.JPanel waitTimeButton;

@@ -38,23 +38,23 @@ public static long waitTime=10000;
        
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-//        clockLoad();
 
         if("user".equals(loginStatus)){
             System.out.println("GUI.MotherShip.<init>()");
             jPanel4.setVisible(false);
         }
         
+        setWeather();
+    }
+    
+    public void setWeather(){
         weather w=new weather();
         String arr[]=w.getWeather();
         tempreatureLabel.setText(arr[0] + " C");
         weatherLabel.setText(arr[1]);
-        
         cloudLabel.setIcon(w.readimage(arr[2]));
     }
     
-
-       
     public void clockLoad(){
         Clock clock=Clock.getInstance();
         ArrayList<SensorStation> mon=serialize.getAllSensorStations();

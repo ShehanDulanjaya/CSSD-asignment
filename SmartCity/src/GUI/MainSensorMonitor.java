@@ -8,6 +8,7 @@ package GUI;
 import Classes.Clock;
 import Classes.SensorMonitor;
 import Classes.SensorStation;
+import Classes.weather;
 import File.serialize;
 import static GUI.MainSensorStation.waitTime;
 import java.awt.BorderLayout;
@@ -32,10 +33,12 @@ public class MainSensorMonitor extends javax.swing.JFrame {
         initComponents();
         waitTimeTextBox.setText(Long.toString(waitTime));
         homeUi();
+        setWeather();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         Clock clock=Clock.getInstance();
         clock.waitForTime(waitTime);
+        
     }
     
     public void homeUi(){
@@ -45,6 +48,14 @@ public class MainSensorMonitor extends javax.swing.JFrame {
         h.setVisible(true);
         bodyPane.add(h);
 
+    }
+    
+    public void setWeather(){
+        weather w=new weather();
+        String arr[]=w.getWeather();
+        tempreatureLabel.setText(arr[0] + " C");
+        weatherLabel.setText(arr[1]);
+        cloudLabel.setIcon(w.readimage(arr[2]));
     }
     
 
@@ -64,10 +75,6 @@ public class MainSensorMonitor extends javax.swing.JFrame {
         homePanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        weatherLabel = new javax.swing.JLabel();
-        cityLabel = new javax.swing.JLabel();
         monitorHomePanel = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -79,6 +86,12 @@ public class MainSensorMonitor extends javax.swing.JFrame {
         homePanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        weatherLabel = new javax.swing.JLabel();
+        tempreatureLabel = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        cloudLabel = new javax.swing.JLabel();
         topPanel = new javax.swing.JPanel();
         closeLabel = new javax.swing.JLabel();
         titlePanel = new javax.swing.JPanel();
@@ -141,23 +154,6 @@ public class MainSensorMonitor extends javax.swing.JFrame {
         );
 
         sidePanel.add(homePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 230, 60));
-
-        jLabel14.setFont(new java.awt.Font("Comic Sans MS", 1, 30)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("iCity");
-        sidePanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
-
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setAlignmentY(1.0F);
-        jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        sidePanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 160, 15));
-        jSeparator1.getAccessibleContext().setAccessibleName("");
-
-        weatherLabel.setText("Weather");
-        sidePanel.add(weatherLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 100, 40));
-
-        cityLabel.setText("City");
-        sidePanel.add(cityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 90, -1));
 
         monitorHomePanel.setBackground(new java.awt.Color(85, 65, 118));
         monitorHomePanel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -307,6 +303,30 @@ public class MainSensorMonitor extends javax.swing.JFrame {
         );
 
         sidePanel.add(homePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 230, 60));
+
+        jLabel14.setFont(new java.awt.Font("Comic Sans MS", 1, 30)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("iCity");
+        sidePanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 3, -1, 60));
+
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator1.setAlignmentY(1.0F);
+        jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        sidePanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 160, 15));
+
+        weatherLabel.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        weatherLabel.setForeground(new java.awt.Color(255, 255, 255));
+        sidePanel.add(weatherLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 90, 20));
+
+        tempreatureLabel.setFont(new java.awt.Font("Comic Sans MS", 1, 16)); // NOI18N
+        tempreatureLabel.setForeground(new java.awt.Color(255, 255, 255));
+        sidePanel.add(tempreatureLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 60, 20));
+
+        jLabel8.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("KADUWELA");
+        sidePanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
+        sidePanel.add(cloudLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 70, 50));
 
         background.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 570));
 
@@ -503,8 +523,8 @@ public class MainSensorMonitor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JDesktopPane bodyPane;
-    private javax.swing.JLabel cityLabel;
     private javax.swing.JLabel closeLabel;
+    private javax.swing.JLabel cloudLabel;
     private javax.swing.JPanel homePanel;
     private javax.swing.JPanel homePanel1;
     private javax.swing.JLabel jLabel1;
@@ -518,9 +538,11 @@ public class MainSensorMonitor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel monitorHomePanel;
     private javax.swing.JPanel sidePanel;
+    private javax.swing.JLabel tempreatureLabel;
     private javax.swing.JPanel titlePanel;
     private javax.swing.JPanel topPanel;
     private javax.swing.JPanel waitTimeButton;
