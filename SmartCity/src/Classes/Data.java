@@ -53,6 +53,6 @@ public class Data implements Serializable{
      */
     public String getDateTime(){
          
-         return this.df.format(this.dateobj);
+         return this.df.format(this.dateobj).toString();
      }
 }
