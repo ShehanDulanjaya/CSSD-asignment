@@ -115,7 +115,6 @@ public class Clock extends Observable implements Serializable {
     }
     
     private  void trackTime(){
-//          long wait=5000;
     
     t.schedule( 
         new java.util.TimerTask() {
