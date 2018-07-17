@@ -8,6 +8,7 @@ package GUI;
 import Classes.Clock;
 import Classes.SensorMonitor;
 import Classes.SensorStation;
+import Classes.weather;
 import File.serialize;
 import static GUI.Login.loginStatus;
 import java.awt.BorderLayout;
@@ -43,6 +44,13 @@ public static long waitTime=10000;
             System.out.println("GUI.MotherShip.<init>()");
             jPanel4.setVisible(false);
         }
+        
+        weather w=new weather();
+        String arr[]=w.getWeather();
+        tempreatureLabel.setText(arr[0] + " C");
+        weatherLabel.setText(arr[1]);
+        
+        cloudLabel.setIcon(w.readimage(arr[2]));
     }
     
 
@@ -83,9 +91,11 @@ public static long waitTime=10000;
         topPanel = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        tempreatureLabel = new javax.swing.JLabel();
         weatherLabel = new javax.swing.JLabel();
-        cityLabel = new javax.swing.JLabel();
         closeLabel = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        cloudLabel = new javax.swing.JLabel();
         bodyPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -111,22 +121,24 @@ public static long waitTime=10000;
         topPanel.setBackground(new java.awt.Color(54, 33, 89));
         topPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel14.setFont(new java.awt.Font("Comic Sans MS", 1, 30)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("iCity");
-        topPanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        topPanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, 70));
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator1.setAlignmentY(1.0F);
         jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        topPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 160, 15));
+        topPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 200, 15));
         jSeparator1.getAccessibleContext().setAccessibleName("");
 
-        weatherLabel.setText("Weather");
-        topPanel.add(weatherLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 60, 40));
+        tempreatureLabel.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        tempreatureLabel.setForeground(new java.awt.Color(255, 255, 255));
+        topPanel.add(tempreatureLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 60, 20));
 
-        cityLabel.setText("City");
-        topPanel.add(cityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 90, -1));
+        weatherLabel.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        weatherLabel.setForeground(new java.awt.Color(255, 255, 255));
+        topPanel.add(weatherLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 90, 20));
 
         closeLabel.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Close Window_20px.png")); // NOI18N
         closeLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -135,6 +147,12 @@ public static long waitTime=10000;
             }
         });
         topPanel.add(closeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 0, 30, 30));
+
+        jLabel8.setFont(new java.awt.Font("Comic Sans MS", 1, 13)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("KADUWELA");
+        topPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
+        topPanel.add(cloudLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 90, 50));
 
         background.add(topPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 80));
 
@@ -454,8 +472,8 @@ public static long waitTime=10000;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JPanel bodyPanel;
-    private javax.swing.JLabel cityLabel;
     private javax.swing.JLabel closeLabel;
+    private javax.swing.JLabel cloudLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
@@ -464,11 +482,13 @@ public static long waitTime=10000;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel tempreatureLabel;
     private javax.swing.JPanel topPanel;
     private javax.swing.JLabel weatherLabel;
     // End of variables declaration//GEN-END:variables

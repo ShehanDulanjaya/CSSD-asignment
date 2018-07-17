@@ -7,6 +7,7 @@ package GUI;
 
 import Classes.Clock;
 import Classes.SensorMonitor;
+import Classes.weather;
 import Classes.SensorStation;
 import File.serialize;
 import java.awt.BorderLayout;
@@ -31,6 +32,7 @@ public static long waitTime=10000;
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 //        clockLoad();
+        
     }
     
     public void homeUi(){

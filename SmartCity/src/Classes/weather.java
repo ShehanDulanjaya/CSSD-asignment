@@ -5,11 +5,16 @@
  */
 package Classes;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -22,14 +27,12 @@ public class weather {
    private String[] result;
    
     public weather(){
-        
+        result=new String[3];
     }
     
    public String[] getWeather(){
        String URL = "http://dataservice.accuweather.com/currentconditions/v1/311426?apikey=FyWGmTSPz6eAZdRM9I30v3cuoSve61TG"; 
 
-
- 
             try {
             URL url = new URL(URL);
 
@@ -49,8 +52,10 @@ public class weather {
             JSONObject data2 = (JSONObject)data1.get("Metric");
             Double res=(Double)data2.get("Value");
             String type =(String)data.get("WeatherText");
-            this.result[1]=res.toString();
-            this.result[2]=type;
+            String icon =data.get("WeatherIcon").toString();
+            this.result[0]=res.toString();
+            this.result[1]=type;
+            this.result[2]="13";
                
           
         }catch (Exception  e) {
@@ -62,5 +67,25 @@ public class weather {
         return this.result;
         
     
-   } 
+   }
+   
+   public ImageIcon readimage(String no){
+       
+       String path = "https://developer.accuweather.com/sites/default/files/"+no+"-s.png";
+                    System.out.println("Get Image from " + path);
+                    URL url;
+       try {
+           url = new URL(path);
+       
+                    BufferedImage image = ImageIO.read(url);
+                    System.out.println("Load image into frame...");
+                  return   new ImageIcon(image);
+                    } catch (MalformedURLException ex) {
+                         System.out.println (ex.toString());
+                     }
+                catch(IOException ex){
+                         System.out.println (ex.toString());
+                    }
+       return null;
+   }
 }
