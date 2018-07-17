@@ -13,6 +13,7 @@ import File.serialize;
 import static GUI.HomeStation.globalStationId;
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -157,7 +158,9 @@ SensorStation s=null;
                
                     if(check){
                         JOptionPane.showMessageDialog(null,"Sensor Station Updated");
-                        
+                        HomeStation h = new HomeStation();
+                        JDesktopPane n =this.getDesktopPane();
+                        n.removeAll();
                     }
                     else{
                         JOptionPane.showMessageDialog(null,"Sensor Station Update Error");

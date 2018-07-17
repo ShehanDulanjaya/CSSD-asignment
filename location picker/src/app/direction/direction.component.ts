@@ -10,7 +10,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class DirectionComponent implements OnInit {
 
   constructor(private http:HttpClient) {
-    this.getDestination(); 
+    this.getorigin(); 
+    this.getDestination();
   }
 
   public lat: Number = 24.799448
@@ -37,7 +38,7 @@ export class DirectionComponent implements OnInit {
   }
    
 
-  getDestination(){
+  getorigin(){
     const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
     
     this.http.get('http://localhost:3000/location/', { headers: headers})
@@ -47,15 +48,24 @@ export class DirectionComponent implements OnInit {
       this.latitu=Number(this.input.latitude);
       this.longti=Number(this.input.longitude);
 
-      this.origin = { lat: 6.914834928510645, lng: 79.97314095497131 }
+      this.origin = { lat: Number(this.latitu), lng: Number(this.longti) }
+      
+    })
+  }
+
+  getDestination(){
+    const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
+    
+    this.http.get('http://localhost:3000/location/emergency', { headers: headers})
+    .subscribe((data) =>{
+      this.input=data;
+
+      this.latitu=Number(this.input.latitude);
+      this.longti=Number(this.input.longitude);
+
+
       this.destination = { lat:Number(this.latitu) , lng: Number(this.longti) }
 
-       console.log(this.latitu);
-       console.log(this.longti);
-
-      //  this.latt = encodeURIComponent(JSON.stringify({type: 'float', value: this.input.latitude.toString()}));
-      // this.lonn = encodeURIComponent(JSON.stringify({type: 'float', value: this.input.longitude.toString()}));
-      
     })
   }
 

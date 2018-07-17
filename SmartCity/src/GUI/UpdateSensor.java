@@ -221,7 +221,9 @@ Sensor s=m.getSensor();;
 
                     if(check){
                         JOptionPane.showMessageDialog(null,"Sensor Updated");
-                        
+                        HomeMonitor h = new HomeMonitor();
+                        JDesktopPane n =this.getDesktopPane();
+                        n.removeAll();
                     }
                     else{
                         JOptionPane.showMessageDialog(null,"Sensor Update Error");
