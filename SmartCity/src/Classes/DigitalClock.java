@@ -152,12 +152,21 @@ class ClockLabel extends JLabel implements ActionListener {
   
   
   
- 
+ /**
+  * 
+  * @param ae 
+  */
+  //set date
   public void actionPerformed(ActionEvent ae) {
     Date d = new Date();
     setText(sdf.format(d));
   }
   
+  /**
+   * 
+   * @param time 
+   */
+  //thread sleep time
   public static void sleep(int time){
       try{
           Thread.sleep(time);

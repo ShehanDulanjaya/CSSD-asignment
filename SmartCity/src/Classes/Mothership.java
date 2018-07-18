@@ -112,7 +112,11 @@ public class Mothership implements Observer,Serializable{
             }
                         return null;
     }
-    
+    /**
+     * 
+     * @param data 
+     */
+    //upload data
     public void uploadData(EmbllishedData data){
         ArrayList<EmbllishedData> emb=new ArrayList<>();
         emb=serialize.upload();

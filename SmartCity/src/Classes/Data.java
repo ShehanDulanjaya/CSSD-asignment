@@ -33,6 +33,7 @@ public class Data implements Serializable{
      *
      * @return
      */
+    //get readings
     public String getReadings() {
         
         this.readings = new Random().nextDouble();		
@@ -42,6 +43,7 @@ public class Data implements Serializable{
     /**
      *
      */
+    //set date
     public void setDate(){
           this.dateobj = new Date();
 
@@ -51,6 +53,7 @@ public class Data implements Serializable{
      *
      * @return
      */
+    //get date and time
     public String getDateTime(){
          
          return this.df.format(this.dateobj).toString();

@@ -199,7 +199,11 @@ public class SensorStation implements Observer,Serializable{
         
     }
 
-    
+    /**
+     * 
+     * @param emb 
+     */
+    //nofify observers
      public void notifyObservers(EmbllishedData emb) {
         System.out.println("Notify Mothership");
         observer.update(null,emb);

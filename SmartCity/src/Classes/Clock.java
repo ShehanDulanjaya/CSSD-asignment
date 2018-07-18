@@ -33,6 +33,7 @@ public class Clock extends Observable implements Serializable {
      *
      * @return
      */
+   //get an instance
     public static Clock getInstance(){
        
        return instance;
@@ -59,6 +60,7 @@ public class Clock extends Observable implements Serializable {
      *
      * @return
      */
+    //get frequency 
     public double getNotifyFrequncy() {
         return notifyFrequncy;
     }
@@ -67,6 +69,7 @@ public class Clock extends Observable implements Serializable {
      *
      * @param notifyFrequncy
      */
+    //set the frequency
     public void setNotifyFrequncy(double notifyFrequncy) {
         this.notifyFrequncy = notifyFrequncy;
     }
@@ -83,6 +86,7 @@ public class Clock extends Observable implements Serializable {
      *
      * @param clock
      */
+    //set the clock
     public void setClock(Clock clock) {
         this.clock = clock;
     }
@@ -105,6 +109,10 @@ public class Clock extends Observable implements Serializable {
        // serialize.write("clocksm.txt", this.observers);//remove sensor monitor from list
     }
     
+    /**
+     * 
+     */
+    //notify 
     public void notifyObservers() {
         for(Observer o:observers){
             System.out.println("Clock start Notify Monitors");
@@ -114,6 +122,10 @@ public class Clock extends Observable implements Serializable {
                
     }
     
+    /**
+     * 
+     */
+    //track time
     private  void trackTime(){
     
     t.schedule( 
@@ -149,6 +161,11 @@ public class Clock extends Observable implements Serializable {
             trackTime();
         
     }
+    /**
+     * 
+     * @return 
+     */
+    //get wait time
     public long getwaitTime(){
         return this.wait;
     }
