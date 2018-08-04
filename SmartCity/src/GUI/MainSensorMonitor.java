@@ -319,7 +319,7 @@ public class MainSensorMonitor extends javax.swing.JFrame {
 
         weatherLabel.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         weatherLabel.setForeground(new java.awt.Color(255, 255, 255));
-        sidePanel.add(weatherLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 90, 20));
+        sidePanel.add(weatherLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 150, 20));
 
         tempreatureLabel.setFont(new java.awt.Font("Comic Sans MS", 1, 16)); // NOI18N
         tempreatureLabel.setForeground(new java.awt.Color(255, 255, 255));

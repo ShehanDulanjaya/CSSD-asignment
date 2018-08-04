@@ -278,6 +278,7 @@ public class SensorMonitor implements Observer,Serializable{
          ArrayList<Data> dt=sensor.getStore();
          if(dt !=null){
             Data data = new Data();
+            data.getReadings();
             System.out.println("Sensor Monitor Do tick");
             removeSensor(sensor.getSensorID());
             sensor.setStore(dt);

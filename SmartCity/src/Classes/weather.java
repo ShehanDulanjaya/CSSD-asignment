@@ -39,9 +39,9 @@ public class weather {
      */
     //get weather
    public String[] getWeather(){
-//       String URL = "http://dataservice.accuweather.com/currentconditions/v1/311426?apikey=lY1XA38vgKFMuDmsgT4C1JYRStRaAAud"; 
+       String URL = "http://dataservice.accuweather.com/currentconditions/v1/311426?apikey=lY1XA38vgKFMuDmsgT4C1JYRStRaAAud"; 
 //       String URL = "http://dataservice.accuweather.com/currentconditions/v1/311426?apikey=FyWGmTSPz6eAZdRM9I30v3cuoSve61TG";
-        String URL = "http://dataservice.accuweather.com/currentconditions/v1/311426?apikey=M4BwK9QZWb8nZNYyicsMax0JJz8egJFT";
+//        String URL = "http://dataservice.accuweather.com/currentconditions/v1/311426?apikey=M4BwK9QZWb8nZNYyicsMax0JJz8egJFT";
             try {
             URL url = new URL(URL);
 
@@ -64,7 +64,10 @@ public class weather {
             String icon =data.get("WeatherIcon").toString();
             this.result[0]=res.toString();
             this.result[1]=type;
-            this.result[2]="13";
+            if(icon.length()==1){
+                icon="0"+icon;
+            }
+            this.result[2]=icon;
                
           
         }catch (Exception  e) {

@@ -28,7 +28,7 @@ import javax.swing.JOptionPane;
  * @author Akila Jayaaaaasinghe
  */
 public class MainSensorStation extends javax.swing.JFrame {
-public static long waitTime=10000;
+public static long waitTime=600000;
 private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
     /**
      * Creates new form AddSensor
@@ -290,7 +290,7 @@ private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/M
 
         weatherLabel.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         weatherLabel.setForeground(new java.awt.Color(255, 255, 255));
-        sidePanel.add(weatherLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 90, 20));
+        sidePanel.add(weatherLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 150, 20));
 
         jLabel8.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));

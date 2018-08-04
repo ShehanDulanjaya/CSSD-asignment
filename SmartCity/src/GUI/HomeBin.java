@@ -34,7 +34,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Akila Jayasinghe
  */
 public class HomeBin extends javax.swing.JInternalFrame {
-    
+ bin b=bin.getinstance();   
 public static String globalMonitorId;
 
     /**
@@ -50,14 +50,18 @@ public static String globalMonitorId;
     public void tableLoad(){
         DefaultTableModel model=(DefaultTableModel) dataTable.getModel();
         model.setRowCount(0);
-        bin b=bin.getinstance();
+        ArrayList<Data>chData=new ArrayList<>();
         
         for(Sensor sensor:b.getBins()){
-            Data data=sensor.getData();
-            if(Double.parseDouble(data.getReadings())>0.8){
+            chData=sensor.getStore();
+            for(Data data:chData){
+                
+            if(Double.parseDouble(data.getStore())>0.8){
             
                 model.addRow(new Object[]{sensor.getSensorID(),sensor.getMonitorName(),b.getlocation()});
-            }        
+                break;
+            } 
+                }
         }
     }
 
@@ -131,6 +135,11 @@ public static String globalMonitorId;
             }
         });
         dataTable.setGridColor(new java.awt.Color(255, 255, 255));
+        dataTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dataTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(dataTable);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 640, 348));
@@ -185,8 +194,22 @@ public static String globalMonitorId;
 
     
     private void viewDirectionButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewDirectionButtonMouseClicked
-        bestRouteMap();
+        if (true == dataTable.getSelectionModel().isSelectionEmpty())
+        {
+            JOptionPane.showMessageDialog(null,"Select Bin from the Table");
+        }
+        else{
+            bestRouteMap();
+        }
     }//GEN-LAST:event_viewDirectionButtonMouseClicked
+
+    private void dataTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataTableMouseClicked
+
+        int x=dataTable.getSelectedRow();
+        String coord=(String) dataTable.getValueAt(x, 2);
+            
+        b.writeBin(coord);
+    }//GEN-LAST:event_dataTableMouseClicked
 
     public void bestRouteMap(){
         Browser browser = new Browser();

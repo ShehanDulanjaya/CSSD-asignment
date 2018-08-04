@@ -21,6 +21,7 @@ public class Data implements Serializable{
        DateFormat df = new SimpleDateFormat("dd/MM/yy                                 HH:mm:ss");
        private Date dateobj; 
     private static DecimalFormat df2 = new DecimalFormat("0.##");
+    private String store;
    
     /**
      *
@@ -36,8 +37,15 @@ public class Data implements Serializable{
     //get readings
     public String getReadings() {
         
-        this.readings = new Random().nextDouble();		
-        return df2.format(readings);
+        this.readings = new Random().nextDouble();
+        this.store=df2.format(readings).toString();
+        return this.store;
+//        this.store="0.9";
+//        return this.store;
+    }
+    
+    public String getStore(){
+        return this.store;
     }
 
     /**

@@ -6,6 +6,7 @@
 package Classes;
 
 import File.serialize;
+import java.io.FileWriter;
 import java.util.ArrayList;
 /**
  *
@@ -16,6 +17,8 @@ public class bin {
     ArrayList<Sensor>sens;
     Location location;
     private static final bin instance = new bin ();
+    
+    
     public static bin getinstance(){
        
      
@@ -46,4 +49,20 @@ public class bin {
         this.location=new Location();
         return this.location.getemergency();
     }
+    
+    public void writeBin(String location){
+        try{    
+           FileWriter fw=new FileWriter("D:\\GitHub\\CSSD-asignment\\location.txt");    
+           fw.write(location);    
+           fw.close();    
+          }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }  
+        
+       
+     
+    }
+
 }

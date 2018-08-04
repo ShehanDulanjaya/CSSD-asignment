@@ -33,3 +33,5 @@ SmartCity/sensorstation.txt
 *.txt
 *.txt
 SmartCity/sensor.txt
+/SmartCity/dist/
+SmartCity/sensor.txt

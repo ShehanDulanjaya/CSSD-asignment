@@ -145,7 +145,7 @@ public static Icon globalWeatherIcon;
 
         weatherLabel.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         weatherLabel.setForeground(new java.awt.Color(255, 255, 255));
-        topPanel.add(weatherLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 90, 20));
+        topPanel.add(weatherLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 140, 20));
 
         closeLabel.setIcon(new javax.swing.ImageIcon("D:\\CSSD-asignment\\Images\\Close Window_20px.png")); // NOI18N
         closeLabel.addMouseListener(new java.awt.event.MouseAdapter() {
